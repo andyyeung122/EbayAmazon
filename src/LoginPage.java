@@ -15,10 +15,9 @@ import javafx.stage.Stage;
 public class LoginPage extends Scene {
 
     GridPane grid;
-    Main main = new Main();
-    SignUpPage signuppage = new SignUpPage();
-    GuestHomePage guesthomepage = new GuestHomePage();
-
+    private Main main = new Main();
+    private static SignUpPage signuppage = new SignUpPage();
+    private static OrdHomePage ordhomepage = new OrdHomePage();
 
     public LoginPage() {
 
@@ -56,14 +55,16 @@ public class LoginPage extends Scene {
         signupbtn.getChildren().add(signup);
         grid.add(signup, 0, 4);
 
+        // Connect to Database
         signup.setOnAction( e -> {
             main.getPrimaryStage().setScene(signuppage);
             main.getPrimaryStage().setTitle("SignUp Page");
             main.getPrimaryStage().show();
         });
 
+        // Connect to Database
         login.setOnAction( e -> {
-            main.getPrimaryStage().setScene(guesthomepage);
+            main.getPrimaryStage().setScene(ordhomepage);
             main.getPrimaryStage().setTitle("Home Page");
             main.getPrimaryStage().show();
         });

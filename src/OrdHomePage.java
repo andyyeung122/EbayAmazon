@@ -8,14 +8,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class GuestHomePage extends Scene {
+public class OrdHomePage extends Scene{
 
     GridPane grid;
-    private static LoginPage loginpage2 = new LoginPage();
-    Main main = new Main();
 
-
-    public GuestHomePage() {
+    public OrdHomePage() {
         super(new GridPane(),600,600);
         grid = (GridPane)this.getRoot();
         grid.setAlignment(Pos.CENTER);
@@ -30,28 +27,11 @@ public class GuestHomePage extends Scene {
         searchTextField.setPromptText("Search");
         grid.add(searchTextField, 0, 1);
 
-        Button login = new Button("Log in");
-        HBox loginBtn = new HBox(10);
-        loginBtn.setAlignment(Pos.TOP_RIGHT);
-        loginBtn.getChildren().add(login);
-        grid.add(loginBtn, 2, 1);
-
         Button search = new Button("Search");
         HBox searchBtn = new HBox(10);
         searchBtn.getChildren().add(search);
         grid.add(searchBtn, 1, 1);
 
-        // Link to DB
-        login.setOnAction( e -> {
-            main.getPrimaryStage().setScene(loginpage2);
-            main.getPrimaryStage().setTitle("Guest Home Page");
-            main.getPrimaryStage().show();
-        });
 
-        search.setOnAction( e -> {
-//            main.getPrimaryStage().setScene(loginpage2);
-//            main.getPrimaryStage().setTitle("Home Page");
-//            main.getPrimaryStage().show();
-        });
     }
 }

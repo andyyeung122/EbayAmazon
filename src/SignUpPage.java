@@ -1,8 +1,10 @@
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -10,6 +12,9 @@ import javafx.scene.text.Text;
 public class SignUpPage extends Scene {
 
     GridPane grid;
+    private Main main = new Main();
+    private static LoginPage loginpage3 = new LoginPage();
+
 
     public SignUpPage() {
         super(new GridPane(),390,300);
@@ -57,6 +62,32 @@ public class SignUpPage extends Scene {
 
         TextField creditCardTextField = new TextField();
         grid.add(creditCardTextField, 1, 6);
+
+        Button backtologin = new Button("Back");
+        HBox backbtn = new HBox(10);
+        backbtn.setAlignment(Pos.BOTTOM_LEFT);
+        backbtn.getChildren().add(backtologin);
+        grid.add(backtologin, 0, 7);
+
+        Button signup = new Button("Sign Up");
+        HBox signupbtn = new HBox(10);
+        signupbtn.setAlignment(Pos.BOTTOM_LEFT);
+        signupbtn.getChildren().add(signup);
+        grid.add(signup, 1, 7);
+
+        // Connect to database, add new user
+        signup.setOnAction( e -> {
+//            main.getPrimaryStage().setScene(loginpage);
+//            main.getPrimaryStage().setTitle("Login Page");
+//            main.getPrimaryStage().show();
+        });
+
+        // Leave alone
+        backtologin.setOnAction( e -> {
+            main.getPrimaryStage().setScene(loginpage3);
+            main.getPrimaryStage().setTitle("Login Page");
+            main.getPrimaryStage().show();
+        });
 
     }
 }
