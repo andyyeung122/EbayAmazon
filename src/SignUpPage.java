@@ -13,7 +13,7 @@ public class SignUpPage extends Scene {
 
     GridPane grid;
     private Main main = new Main();
-    private static LoginPage loginpage3 = new LoginPage();
+    private static LoginPage loginpage = new LoginPage();
 
 
     public SignUpPage() {
@@ -71,7 +71,7 @@ public class SignUpPage extends Scene {
 
         Button signup = new Button("Sign Up");
         HBox signupbtn = new HBox(10);
-        signupbtn.setAlignment(Pos.BOTTOM_LEFT);
+        signupbtn.setAlignment(Pos.BASELINE_RIGHT);
         signupbtn.getChildren().add(signup);
         grid.add(signup, 1, 7);
 
@@ -80,11 +80,13 @@ public class SignUpPage extends Scene {
 //            main.getPrimaryStage().setScene(loginpage);
 //            main.getPrimaryStage().setTitle("Login Page");
 //            main.getPrimaryStage().show();
+            AlertBox.display("Signup Popup", "Your application was sent to the Super User!");
+
         });
 
         // Leave alone
         backtologin.setOnAction( e -> {
-            main.getPrimaryStage().setScene(loginpage3);
+            main.getPrimaryStage().setScene(loginpage);
             main.getPrimaryStage().setTitle("Login Page");
             main.getPrimaryStage().show();
         });

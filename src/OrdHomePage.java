@@ -31,6 +31,5 @@ public class OrdHomePage extends Scene{
         searchBtn.getChildren().add(search);
         grid.add(searchBtn, 1, 1);
 
-
     }
 }
