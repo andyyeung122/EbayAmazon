@@ -22,14 +22,17 @@ public class OrdHomePage extends Scene{
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
+        Text finditem = new Text("Find an Item:");
+        grid.add(finditem, 0,1);
+
         TextField searchTextField = new TextField();
         searchTextField.setPromptText("Search");
-        grid.add(searchTextField, 0, 1);
+        grid.add(searchTextField, 0, 2);
 
         Button search = new Button("Search");
         HBox searchBtn = new HBox(10);
         searchBtn.getChildren().add(search);
-        grid.add(searchBtn, 1, 1);
+        grid.add(searchBtn, 1, 2);
 
     }
 }
