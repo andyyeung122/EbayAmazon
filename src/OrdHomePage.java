@@ -13,9 +13,8 @@ public class OrdHomePage extends Scene{
     GridPane grid;
 
     public OrdHomePage() {
-        super(new GridPane(),600,600);
+        super(new GridPane(),400,600);
         grid = (GridPane)this.getRoot();
-        grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
 

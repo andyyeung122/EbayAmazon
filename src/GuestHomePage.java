@@ -16,9 +16,8 @@ public class GuestHomePage extends Scene {
 
 
     public GuestHomePage() {
-        super(new GridPane(),600,600);
+        super(new GridPane(),400,600);
         grid = (GridPane)this.getRoot();
-        grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
 
@@ -34,7 +33,7 @@ public class GuestHomePage extends Scene {
         HBox loginBtn = new HBox(10);
         loginBtn.setAlignment(Pos.TOP_RIGHT);
         loginBtn.getChildren().add(login);
-        grid.add(loginBtn, 2, 1);
+        grid.add(loginBtn, 5, 0);
 
         Button search = new Button("Search");
         HBox searchBtn = new HBox(10);
