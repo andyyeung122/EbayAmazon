@@ -14,6 +14,7 @@ public class SignUpPage extends Scene {
     GridPane grid;
     private Main main = new Main();
     private static LoginPage loginpage = new LoginPage();
+    private static AlertBox alertbox = new AlertBox();
 
 
     public SignUpPage() {
@@ -80,7 +81,7 @@ public class SignUpPage extends Scene {
 //            main.getPrimaryStage().setScene(loginpage);
 //            main.getPrimaryStage().setTitle("Login Page");
 //            main.getPrimaryStage().show();
-            AlertBox.display("Signup Popup", "Your application was sent to the Super User!");
+            alertbox.display("Signup Popup", "Your application was sent to the Super User!");
 
         });
 

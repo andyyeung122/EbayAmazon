@@ -13,7 +13,7 @@ public class GuestHomePage extends Scene {
 
     GridPane grid;
     private static LoginPage loginpage2 = new LoginPage();
-    Main main = new Main();
+    private static Main main = new Main();
 
 
     public GuestHomePage() {
