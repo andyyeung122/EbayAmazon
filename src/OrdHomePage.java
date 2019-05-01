@@ -10,12 +10,13 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class OrdHomePage extends Scene{
 
     GridPane grid;
     private boolean isVIP = true;
-    private List<Items> itemList;
+    private List<Items> itemList = new ArrayList<>();
 
     public OrdHomePage() {
         super(new GridPane(),600,550);
@@ -40,7 +41,7 @@ public class OrdHomePage extends Scene{
         grid.add(finditem, 0,1);
 
         TextField searchTextField = new TextField();
-        searchTextField.setPromptText("Search");
+        searchTextField.setPromptText("Search Item");
         grid.add(searchTextField, 0, 2);
 
         Button search = new Button("Search");
@@ -90,10 +91,10 @@ public class OrdHomePage extends Scene{
         inboxBtn.getChildren().add(inbox);
         grid.add(inboxBtn, 4, 7);
 
-        itemList.add( = new Items());
+        itemList.add(new Items());
 //        itemList.add(new Items());
 //        itemList.add(new Items());
-//        grid.add(itemList.get(0), 1,1);
+        grid.add(itemList.get(0), 1,1);
 
 
         manage.setOnAction( e -> {
