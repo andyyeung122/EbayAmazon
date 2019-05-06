@@ -21,6 +21,7 @@ public class Main extends Application{
 
         stage.setTitle("Guest Home Page");
         stage.show();
+        
     }
 
     public static Stage getPrimaryStage() {
