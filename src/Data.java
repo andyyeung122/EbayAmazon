@@ -38,7 +38,7 @@ public class Data{
 
             connection = DriverManager.getConnection(databaseHost,user,password);
             statement = connection.createStatement();
-            
+
         }catch(Exception expt){
             expt.printStackTrace();
         }
@@ -46,6 +46,12 @@ public class Data{
 
     private static void createUserTable(){
         try{
+            String createUser = "CREATE TABLE IF NOT EXISTS User("
+            + "username VARCHAR(128) PRIMARY KEY,"
+            + "password VARCHAR(128),"
+            + "name VARCHAR(128));";
+
+            statement.executeUpdate(createUser);
 
         }catch(Exception expt){
             expt.printStackTrace();
@@ -54,6 +60,19 @@ public class Data{
 
     private static void createOrdinairyUserTable(){
         try{
+            String createOrdinairyUser = "CREATE TABLE IF NOT EXISTS OrdinairyUser("
+            + "username VARCHAR(128) PRIMARY KEY,"
+            + "password VARCHAR(128),"
+            + "address VARCHAR(128),"
+            + "creditCard VARCHAR(128),"
+            + "phoneNumber VARCHAR(128),"
+            + "desiredKeyWords VARCHAR(128),"
+            + "isVip BOOLEAN,"
+            + "isTempBlocked BOOLEAN,"
+            + "isPermBlocked BOOLEAN,"
+            + "FOREIGN KEY(username) REFERENCES User(username) ON UPDATE CASCADE ON DELETE CASCADE);";
+
+            statement.executeUpdate(createOrdinairyUser);
 
         }catch(Exception expt){
             expt.printStackTrace();
@@ -62,6 +81,11 @@ public class Data{
 
     private static void createSuperUserTable(){
         try{
+            String createSuperUser = "CREATE TABLE IF NOT EXISTS SuperUser("
+            + "username VARCHAR(128) PRIMARY KEY,"
+            + "FOREIGN KEY(username) REFERENCES User(username) ON UPDATE CASCADE ON DELETE CASCADE);";
+            
+            statement.executeUpdate(createSuperUser);
 
         }catch(Exception expt){
             expt.printStackTrace();
