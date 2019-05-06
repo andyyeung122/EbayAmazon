@@ -16,12 +16,11 @@ import java.util.List;
 
 public class GuestHomePage extends Scene {
 
-    GridPane grid;
+    public static GridPane grid;
 
     private static LoginPage loginpage2 = new LoginPage();
     private static Main main = new Main();
     private List<Items> itemList = new ArrayList<>();
-
 
 
     public GuestHomePage() {
@@ -41,11 +40,6 @@ public class GuestHomePage extends Scene {
         searchTextField.setPromptText("Search Item");
         grid.add(searchTextField, 0, 2);
 
-        Button login = new Button("Log in");
-        HBox loginBtn = new HBox(10);
-        loginBtn.setAlignment(Pos.TOP_RIGHT);
-        loginBtn.getChildren().add(login);
-        grid.add(loginBtn, 5, 0);
 
         Button search = new Button("Search");
         HBox searchBtn = new HBox(10);
@@ -54,12 +48,8 @@ public class GuestHomePage extends Scene {
 
         grid.add(getItemGrid(), 0, 3);
 
-        // Link to DB
-        login.setOnAction( e -> {
-            main.getPrimaryStage().setScene(loginpage2);
-            main.getPrimaryStage().setTitle("Guest Home Page");
-            main.getPrimaryStage().show();
-        });
+        initialize();
+
 
         search.setOnAction( e -> {
 //            main.getPrimaryStage().setScene(loginpage2);
@@ -81,5 +71,20 @@ public class GuestHomePage extends Scene {
         itemGrid.add(itemList.get(1).getVbox(), 0,1);
 
         return itemGrid;
+    }
+
+    private static void initialize() {
+        Button login = new Button("Log in");
+        HBox loginBtn = new HBox(10);
+        loginBtn.setAlignment(Pos.TOP_RIGHT);
+        loginBtn.getChildren().add(login);
+        grid.add(loginBtn, 5, 0);
+
+        // Link to DB
+        login.setOnAction( e -> {
+            main.getPrimaryStage().setScene(loginpage2);
+            main.getPrimaryStage().setTitle("Guest Home Page");
+            main.getPrimaryStage().show();
+        });
     }
 }

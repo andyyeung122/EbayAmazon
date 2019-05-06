@@ -12,23 +12,13 @@ import javafx.scene.text.Text;
 import java.util.List;
 import java.util.ArrayList;
 
-public class OrdHomePage extends Scene{
+public class OrdHomePage extends GuestHomePage{
 
-    GridPane grid;
     private boolean isVIP = true;
-    private List<Items> itemList = new ArrayList<>();
+
 
     public OrdHomePage() {
-        super(new GridPane(),600,550);
-        grid = (GridPane)this.getRoot();
-        grid.setHgap(10);
-        grid.setVgap(10);
-
-        Text scenetitle = new Text("Ebay-Amazon");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
-
-
+        super();
 
         if (isVIP) {
             Text VIP = new Text("VIP");
@@ -36,18 +26,6 @@ public class OrdHomePage extends Scene{
             VIP.setFill(Color.RED);
             grid.add(VIP, 1, 0, 2,1);
         }
-
-        Text finditem = new Text("Find an Item:");
-        grid.add(finditem, 0,1);
-
-        TextField searchTextField = new TextField();
-        searchTextField.setPromptText("Search Item");
-        grid.add(searchTextField, 0, 2);
-
-        Button search = new Button("Search");
-        HBox searchBtn = new HBox(10);
-        searchBtn.getChildren().add(search);
-        grid.add(searchBtn, 1, 2);
 
         Button sellItem = new Button("Sell Items");
         HBox sellBtn = new HBox(10);
@@ -91,15 +69,11 @@ public class OrdHomePage extends Scene{
         inboxBtn.getChildren().add(inbox);
         grid.add(inboxBtn, 4, 7);
 
-        itemList.add(new Items());
-//        itemList.add(new Items());
-//        itemList.add(new Items());
-        grid.add(itemList.get(0), 1,1);
 
 
         manage.setOnAction( e -> {
 
         });
-
     }
+    
 }
