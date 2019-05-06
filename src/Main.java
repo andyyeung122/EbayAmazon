@@ -5,7 +5,7 @@ import javafx.stage.*;
 public class Main extends Application{
 
     private LoginPage loginpage;
-    private GuestHomePage guesthomepage;
+    private SubGuestHomePage guesthomepage;
     private static Stage primaryStage;
 
 
@@ -16,7 +16,7 @@ public class Main extends Application{
     @Override
     public void start(Stage stage){
         primaryStage = stage;
-        guesthomepage = new GuestHomePage();
+        guesthomepage = new SubGuestHomePage();
         stage.setScene(guesthomepage);
 
         stage.setTitle("Guest Home Page");

@@ -16,12 +16,11 @@ import java.util.List;
 
 public class GuestHomePage extends Scene {
 
-    GridPane grid;
+    public static GridPane grid;
 
     private static LoginPage loginpage2 = new LoginPage();
     private static Main main = new Main();
     private List<Items> itemList = new ArrayList<>();
-
 
 
     public GuestHomePage() {
@@ -41,11 +40,6 @@ public class GuestHomePage extends Scene {
         searchTextField.setPromptText("Search Item");
         grid.add(searchTextField, 0, 2);
 
-        Button login = new Button("Log in");
-        HBox loginBtn = new HBox(10);
-        loginBtn.setAlignment(Pos.TOP_RIGHT);
-        loginBtn.getChildren().add(login);
-        grid.add(loginBtn, 5, 0);
 
         Button search = new Button("Search");
         HBox searchBtn = new HBox(10);
@@ -54,18 +48,14 @@ public class GuestHomePage extends Scene {
 
         grid.add(getItemGrid(), 0, 3);
 
-        // Link to DB
-        login.setOnAction( e -> {
-            main.getPrimaryStage().setScene(loginpage2);
-            main.getPrimaryStage().setTitle("Guest Home Page");
-            main.getPrimaryStage().show();
-        });
 
         search.setOnAction( e -> {
 //            main.getPrimaryStage().setScene(loginpage2);
 //            main.getPrimaryStage().setTitle("Home Page");
 //            main.getPrimaryStage().show();
         });
+
+
     }
 
     public GridPane getItemGrid() {
@@ -73,7 +63,7 @@ public class GuestHomePage extends Scene {
         ColumnConstraints colConstraint = new ColumnConstraints(100);
 
         itemGrid.getColumnConstraints().add(colConstraint);
-        
+
 
         itemList.add(new Items());
         itemList.add(new Items());
@@ -82,4 +72,6 @@ public class GuestHomePage extends Scene {
 
         return itemGrid;
     }
+
 }
+
