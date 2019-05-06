@@ -73,7 +73,7 @@ public class GuestHomePage extends Scene {
         ColumnConstraints colConstraint = new ColumnConstraints(100);
 
         itemGrid.getColumnConstraints().add(colConstraint);
-        
+
 
         itemList.add(new Items());
         itemList.add(new Items());
