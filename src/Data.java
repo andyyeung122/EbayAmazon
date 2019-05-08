@@ -4,7 +4,7 @@ public class Data{
 
     private static Connection connection;
     private static Statement statement;
-    private static PreparedStatement prepedStatement;
+    private static PreparedStatement preparedStatement;;
 
     static{
         getConnection();
@@ -51,6 +51,8 @@ public class Data{
         }
     }
 
+    //initializing database tables
+
     private static void createUserTable(){
         String createUserTable = "CREATE TABLE IF NOT EXISTS User("
         + "username VARCHAR(128) PRIMARY KEY,"
@@ -64,14 +66,13 @@ public class Data{
     private static void createOrdinairyUserTable(){
         String createOrdinairyUserTable = "CREATE TABLE IF NOT EXISTS OrdinairyUser("
         + "username VARCHAR(128) PRIMARY KEY,"
-        + "password VARCHAR(128),"
         + "address VARCHAR(128),"
         + "creditCard VARCHAR(128),"
         + "phoneNumber VARCHAR(128),"
         + "desiredKeyWords VARCHAR(128),"
-        + "isVip BOOLEAN,"
-        + "isTempBlocked BOOLEAN,"
-        + "isPermBlocked BOOLEAN,"
+        + "vip BOOLEAN,"
+        + "tempBlocked BOOLEAN,"
+        + "permBlocked BOOLEAN,"
         + "FOREIGN KEY(username) REFERENCES User(username) ON UPDATE CASCADE ON DELETE CASCADE);";
 
         executeUpdate(createOrdinairyUserTable);
@@ -160,7 +161,6 @@ public class Data{
         executeUpdate(createNotificationTable);
     }
 
-
     private static void createComplaintTable(){
         String createComplaintTable = "CREATE TABLE IF NOT EXISTS Complaint("
         + "id INT AUTO_INCREMENT PRIMARY KEY,"
@@ -195,6 +195,51 @@ public class Data{
         executeUpdate(createFriendRequestTable);
     }
 
+    //database insertion functions
+    //TODO: ADD AUTHENTIFICATION FOR INPUTS/PARAMETERS
+
+/*
+User(username:str primKey, password:str, name:str, superUser:boolean)
+OrdinaryUser(username:str primKey/frgn key, address:str, creidCard:str, phoneNumber:str, vip:bool, tempBlocked:bool,permBlocked:bool,desiredKeyWords:Str)
+*/
+
+    private static void createUser(String username, String password, String name, boolean superUser){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO User VALUES(?, ?, ?, ?);");
+            preparedStatement.setString(1,username);
+            preparedStatement.setString(2,password);
+            preparedStatement.setString(3,name);
+            preparedStatement.setBoolean(4,superUser);
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    public static void createSuperUser(String username, String password, String name){
+        createUser(username,password,name,true);
+    }
+
+    public static void createOrdinairyUser(String username, String password, String name, String address, String creditCard, String phoneNumber){
+        try{
+            createUser(username,password,name,false);
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO OrdinairyUser VALUES(?,?,?,?,?,?,?,?);");
+            preparedStatement.setString(1,username);
+            preparedStatement.setString(2,address);
+            preparedStatement.setString(3,creditCard);
+            preparedStatement.setString(4,phoneNumber);
+            preparedStatement.setBoolean(5,false);
+            preparedStatement.setBoolean(6,false);
+            preparedStatement.setBoolean(7,false);
+            preparedStatement.setString(8,"");
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    
 
     public static void closeResources(){
         try{
@@ -202,6 +247,8 @@ public class Data{
                 connection.close();
             if(statement != null)
                 statement.close();
+            if(preparedStatement != null)
+                preparedStatement.close();
 
         }catch(Exception expt){
             expt.printStackTrace();
@@ -212,9 +259,8 @@ public class Data{
 /*
 schemas
 
-User(username:str primKey, password:str, name:str)
-OrdinaryUser(username:str primKey/frgn key, password frgn key, address:str, creidCard:str, phoneNumber:str, vip:bool, tempBlocked:bool,permBlocked:bool,desiredKeyWords:Str)
-Superuser(username:str primKey, password:str, name:str)
+User(username:str primKey, password:str, name:str, superUser:boolean)
+OrdinaryUser(username:str primKey/frgn key, address:str, creidCard:str, phoneNumber:str, vip:bool, tempBlocked:bool,permBlocked:bool,desiredKeyWords:Str)
 
 Item(id:int primKey, name:str, registered:bool, imageURL/file:str, associatedKeywords:str) 
 FixedItem(id:int primKey/frgn key, fixedPrice: int) //price is input as string, then converted to float
