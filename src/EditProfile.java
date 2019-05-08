@@ -23,7 +23,7 @@ public class EditProfile extends Scene {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        Text scenetitle = new Text("SignUp Page");
+        Text scenetitle = new Text("Edit Profile");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
@@ -77,10 +77,7 @@ public class EditProfile extends Scene {
 
         // Connect to database, add new user
         update.setOnAction( e -> {
-//            main.getPrimaryStage().setScene(loginpage);
-//            main.getPrimaryStage().setTitle("Login Page");
-//            main.getPrimaryStage().show();
-            alertbox.display("Signup Popup", "Your application was sent to the Super User!");
+
 
         });
 

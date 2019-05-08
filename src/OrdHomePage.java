@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -17,6 +18,9 @@ public class OrdHomePage extends Scene{
     GridPane grid;
     private boolean isVIP = true;
     private List<Items> itemList = new ArrayList<>();
+    private static Main main = new Main();
+    private static EditProfile editprofile = new EditProfile();
+    private static SellItems sellitems = new SellItems();
 
     public OrdHomePage() {
         super(new GridPane(),600,550);
@@ -100,6 +104,16 @@ public class OrdHomePage extends Scene{
         manage.setOnAction( e -> {
 
         });
+
+        editProfile.setOnAction(( e -> {
+            final Stage dialog = new Stage();
+        }));
+
+        sellItem.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(sellitems);
+            main.getPrimaryStage().setTitle("Sell New Item");
+            main.getPrimaryStage().show();
+        }));
 
     }
 }
