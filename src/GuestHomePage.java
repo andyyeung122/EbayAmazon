@@ -57,7 +57,7 @@ public class GuestHomePage extends Scene {
         // Link to DB
         login.setOnAction( e -> {
             main.getPrimaryStage().setScene(loginpage2);
-            main.getPrimaryStage().setTitle("Guest Home Page");
+            main.getPrimaryStage().setTitle("Login");
             main.getPrimaryStage().show();
         });
 
