@@ -4,7 +4,8 @@ public class Data{
 
     private static Connection connection;
     private static Statement statement;
-    private static PreparedStatement preparedStatement;;
+    private static PreparedStatement preparedStatement;
+    private static ResultSet queryOutput;
 
     static{
         getConnection();
@@ -111,12 +112,12 @@ public class Data{
 
     private static void createBidTable(){
         String createBidTable = "CREATE TABLE IF NOT EXISTS Bid("
-        + "id INT AUTO_INCREMENT PRIMARY KEY,"
         + "itemID INT,"
-        + "biddingUser VARCHAR(128),"
+        + "bidder VARCHAR(128),"
         + "amount INT,"
+        + "PRIMARY KEY(itemID, bidder),"
         + "FOREIGN KEY(itemID) REFERENCES Item(id) ON DELETE CASCADE ON UPDATE CASCADE,"
-        + "FOREIGN KEY(biddingUser) REFERENCES OrdinairyUser(username) ON DELETE CASCADE ON UPDATE CASCADE);";
+        + "FOREIGN KEY(bidder) REFERENCES OrdinairyUser(username) ON DELETE CASCADE ON UPDATE CASCADE);";
 
         executeUpdate(createBidTable);
     }
@@ -198,11 +199,6 @@ public class Data{
     //database insertion functions
     //TODO: ADD AUTHENTIFICATION FOR INPUTS/PARAMETERS
 
-/*
-User(username:str primKey, password:str, name:str, superUser:boolean)
-OrdinaryUser(username:str primKey/frgn key, address:str, creidCard:str, phoneNumber:str, vip:bool, tempBlocked:bool,permBlocked:bool,desiredKeyWords:Str)
-*/
-
     private static void createUser(String username, String password, String name, boolean superUser){
         try{
             preparedStatement = connection.prepareStatement("INSERT IGNORE INTO User VALUES(?, ?, ?, ?);");
@@ -239,7 +235,74 @@ OrdinaryUser(username:str primKey/frgn key, address:str, creidCard:str, phoneNum
         }
     }
 
-    
+    private static void createItem(String itemName, String sellerUsername, String imageLocation, String associatedKeywords){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Item(name,seller,registered,imageLocation,associatedKeywords) VALUES(?,?,?,?,?);");
+            preparedStatement.setString(1,itemName);
+            preparedStatement.setString(2,sellerUsername);
+            preparedStatement.setBoolean(3,false);
+            preparedStatement.setString(4,imageLocation);
+            preparedStatement.setString(5,associatedKeywords);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    public static void createFixedItem(String itemName, String sellerUsername, String imageLocation, String associatedKeywords, int fixedPrice){
+        try{
+            createItem(itemName,sellerUsername,imageLocation, associatedKeywords);
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO FixedItem VALUES(?,?);");
+            preparedStatement.setInt(1,getLastItemIndex());
+            preparedStatement.setInt(2,fixedPrice);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    public static void createBidItem(String itemName, String sellerUsername, String imageLocation, String associatedKeywords, long startOfBid){
+        try{
+            createItem(itemName,sellerUsername,imageLocation,associatedKeywords);
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO BidItem VALUES(?,?);");
+            preparedStatement.setInt(1,getLastItemIndex());
+            preparedStatement.setLong(2,startOfBid);
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+/*
+Bid(itemID:int frgn key, bidder:str frgn key, amount:float) //primKey(itemID,bidder)
+*/
+
+    public static void createBid(int itemID, String bidder, int amount){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Bid VALUES(?,?,?);");
+            preparedStatement.setInt(1,itemID);
+            preparedStatement.setString(2,bidder);
+            preparedStatement.setInt(3,amount);
+
+        }catch(Exception expt){
+
+        }
+    }
+
+    private static int getLastItemIndex(){
+        int id = 0;
+        try{
+            queryOutput = statement.executeQuery("SELECT id FROM Item ORDER BY id DESC LIMIT 1");
+
+            if(queryOutput.next())
+                id = queryOutput.getInt("id");
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return id;
+    }
 
     public static void closeResources(){
         try{
@@ -249,6 +312,8 @@ OrdinaryUser(username:str primKey/frgn key, address:str, creidCard:str, phoneNum
                 statement.close();
             if(preparedStatement != null)
                 preparedStatement.close();
+            if(queryOutput != null)
+                queryOutput.close();
 
         }catch(Exception expt){
             expt.printStackTrace();
@@ -265,7 +330,7 @@ OrdinaryUser(username:str primKey/frgn key, address:str, creidCard:str, phoneNum
 Item(id:int primKey, name:str, registered:bool, imageURL/file:str, associatedKeywords:str) 
 FixedItem(id:int primKey/frgn key, fixedPrice: int) //price is input as string, then converted to float
 BidItem(id:int primKey/frgn key, startOfBid:long)//default bid duration: 3 min; startOfBid -> timestamp in milliseconds
-Bid(id primKey, itemID:int frgn key, user:str frgn key, amount:float)
+Bid(itemID:int frgn key, bidder:str primKey frgn key, amount:float)
 
 Purchase(itemID: int primKey/frgn key, seller:str frgn key, buyer:str frgn key, price: int)
 Notification(id:int primKey, title:str, message:str, receiver:str frgn key, warning:bool) //when retrieving notifications, order them descendingly (so that the lastest notificcation comes first
