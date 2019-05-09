@@ -12,6 +12,7 @@ public class Testing{
         Data.createComplaint("Title", "Message Message", "dude55");
         Data.createFriend("dude55","dude55");
         Data.createFriendRequest("dude55","dude55");
+        Data.createTabooWord("Fudge");
         Data.closeResources();
         
     }

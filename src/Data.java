@@ -192,6 +192,11 @@ public class Data{
         executeUpdate(createFriendRequestTable);
     }
 
+    private static void createTabooWordTable(){
+        String createTabooWordTable = "CREATE TABLE IF NOT EXISTS TabooWord("
+        + "word VARCHAR(128) PRIMARY KEY);"
+    }
+
     //database insertion functions
     //TODO: ADD AUTHENTIFICATION FOR INPUTS/PARAMETERS
 
@@ -364,6 +369,49 @@ public class Data{
         }
     }
 
+    public static void createTabooWord(String word){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO TabooWord VALUES(?);");
+            preparedStatement.setString(1,word);
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    //validation functions
+
+    //returns true if username corresponds to an ordinairy user, false otherwise
+    public static boolean isValidOrdinairyUser(String username){
+        return false;
+    }
+
+    //returns true if username corresponds to a superuser, false otherwise
+    public static boolean isValidSuperUser(String username){
+        return false;
+    }
+
+    //data retrieval functons
+
+    //returns a String array with the bid item's: [item-name,seller,registered,image-location,associated-keywords]
+    public static String [] getBidItemInfo(int itemID){
+        return null;
+    }
+
+    public static String [] getFixedItemInfo(int itemID){
+        return null;
+    }
+
+    //data modification functions
+
+    public static void registerItem(int itemID){
+
+    }
+
+    public static void removeItem(int itemID){
+
+    }
+
     private static int getLastItemIndex(){
         int id = 0;
         try{
@@ -413,6 +461,7 @@ Complaint(id:int primKey, title:str, message:str, sender:str frgn key, handled:b
 
 Friend(user:str frgn key, friend:str frgn key)primKey(user,friend)
 FriendRequest(sender:str frgn key, receiver frgn key) primKey(sender, receiver)
+TabooWords(word:str)
 */
 
 //removed code
@@ -429,4 +478,15 @@ FriendRequest(sender:str frgn key, receiver frgn key) primKey(sender, receiver)
             expt.printStackTrace();
         }
     }
+*/
+
+//repeated code
+/*
+        try{
+            preparedStatement = connection.prepareStatement("");
+
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
 */
