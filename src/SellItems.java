@@ -1,6 +1,9 @@
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -14,6 +17,9 @@ import java.io.File;
 public class SellItems extends Scene {
     GridPane grid;
     Stage stage;
+    private static Main main = new Main();
+    private static OrdHomePage ordhomepage = new OrdHomePage();
+
 
     public SellItems() {
         super(new GridPane(),390,300);
@@ -36,7 +42,36 @@ public class SellItems extends Scene {
         itemNameField.setPromptText("Search Item");
         grid.add(itemNameField, 1, 3);
 
+        TextField totalPriceField = new TextField();
+        totalPriceField.setPromptText("Price");
+
+        Text totalPrice = new Text("");
+        grid.add(totalPrice, 0,5);
+
+        ToggleGroup toggleGroup = new ToggleGroup();
+
+        RadioButton bidPrice = new RadioButton("Bid Price");
+        grid.add(bidPrice,0,4);
+
+        RadioButton fixedPrice = new RadioButton("Fixed Price");
+        grid.add(fixedPrice,1,4);
+
+        Button addItem = new Button("Add Item");
+        grid.add(addItem,0,6);
+
+        Button cancelItem = new Button("Cancel");
+        grid.add(cancelItem,1,6);
+
+        bidPrice.setToggleGroup(toggleGroup);
+        fixedPrice.setToggleGroup(toggleGroup);
+
         final FileChooser fileChooser = new FileChooser();
+
+        cancelItem.setOnAction((e -> {
+            main.getPrimaryStage().setScene(ordhomepage);
+            main.getPrimaryStage().setTitle("Sell New Item");
+            main.getPrimaryStage().show();
+        }));
 
         uploadImage.setOnAction(( e -> {
             File file = fileChooser.showOpenDialog(stage);
@@ -48,5 +83,39 @@ public class SellItems extends Scene {
 
         }));
 
+        toggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            public void changed(ObservableValue<? extends Toggle> ob, Toggle o, Toggle n)
+            {
+                RadioButton rb = (RadioButton)toggleGroup.getSelectedToggle();
+                    if (rb.getText() == "Bid Price") {
+                        totalPrice.setText("Total Price");
+                        grid.getChildren().remove(totalPriceField);
+                        grid.add(totalPriceField,1,5);
+
+                    }
+
+                    else if (rb.getText() == "Fixed Price") {
+                        totalPrice.setText("Starting Bid Price");
+                        grid.getChildren().remove(totalPriceField);
+                        grid.add(totalPriceField,1,5);
+
+                    }
+                }
+
+        });
+
+    }
+
+    public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
+        Node result = null;
+        ObservableList<Node> childrens = gridPane.getChildren();
+
+        for (Node node : childrens) {
+            if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
+        }
+        return result;
     }
 }

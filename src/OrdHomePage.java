@@ -106,7 +106,9 @@ public class OrdHomePage extends Scene{
         });
 
         editProfile.setOnAction(( e -> {
-            final Stage dialog = new Stage();
+            main.getPrimaryStage().setScene(editprofile);
+            main.getPrimaryStage().setTitle("Edit Profile");
+            main.getPrimaryStage().show();
         }));
 
         sellItem.setOnAction(( e -> {
