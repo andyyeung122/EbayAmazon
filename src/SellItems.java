@@ -17,6 +17,8 @@ import java.io.File;
 public class SellItems extends Scene {
     GridPane grid;
     Stage stage;
+    private static Main main = new Main();
+    private static OrdHomePage ordhomepage = new OrdHomePage();
 
 
     public SellItems() {
@@ -54,10 +56,22 @@ public class SellItems extends Scene {
         RadioButton fixedPrice = new RadioButton("Fixed Price");
         grid.add(fixedPrice,1,4);
 
+        Button addItem = new Button("Add Item");
+        grid.add(addItem,0,6);
+
+        Button cancelItem = new Button("Cancel");
+        grid.add(cancelItem,1,6);
+
         bidPrice.setToggleGroup(toggleGroup);
         fixedPrice.setToggleGroup(toggleGroup);
 
         final FileChooser fileChooser = new FileChooser();
+
+        cancelItem.setOnAction((e -> {
+            main.getPrimaryStage().setScene(ordhomepage);
+            main.getPrimaryStage().setTitle("Sell New Item");
+            main.getPrimaryStage().show();
+        }));
 
         uploadImage.setOnAction(( e -> {
             File file = fileChooser.showOpenDialog(stage);
@@ -77,7 +91,7 @@ public class SellItems extends Scene {
                         totalPrice.setText("Total Price");
                         grid.getChildren().remove(totalPriceField);
                         grid.add(totalPriceField,1,5);
-                        
+
                     }
 
                     else if (rb.getText() == "Fixed Price") {
