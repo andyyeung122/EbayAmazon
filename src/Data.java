@@ -125,11 +125,9 @@ public class Data{
     private static void createPurchaseTable(){
         String createPurchaseTable = "CREATE TABLE IF NOT EXISTS Purchase("
         + "itemID INT PRIMARY KEY,"
-        + "seller VARCHAR(128),"
         + "buyer VARCHAR(128),"
         + "price INT,"
         + "FOREIGN KEY(itemID) REFERENCES Item(id) ON UPDATE CASCADE ON DELETE CASCADE,"
-        + "FOREIGN KEY(seller) REFERENCES OrdinairyUser(username) ON UPDATE CASCADE ON DELETE CASCADE,"
         + "FOREIGN KEY(buyer) REFERENCES OrdinairyUser(username) ON UPDATE CASCADE ON DELETE CASCADE);";
 
         executeUpdate(createPurchaseTable);
@@ -139,13 +137,11 @@ public class Data{
         String createRatingTable = "CREATE TABLE IF NOT EXISTS Rating("
         + "itemID INT,"
         + "reviewer VARCHAR(128),"
-        + "seller VARCHAR(128),"
         + "rating INT,"
         + "review VARCHAR(128),"
         + "PRIMARY KEY(itemID,reviewer),"
         + "FOREIGN KEY(itemID) REFERENCES Item(id) ON UPDATE CASCADE ON DELETE CASCADE,"
-        + "FOREIGN KEY(reviewer) REFERENCES OrdinairyUser(username) ON UPDATE CASCADE ON DELETE CASCADE,"
-        + "FOREIGN KEY(seller) REFERENCES OrdinairyUser(username) ON UPDATE CASCADE ON DELETE CASCADE);";
+        + "FOREIGN KEY(reviewer) REFERENCES OrdinairyUser(username) ON UPDATE CASCADE ON DELETE CASCADE);";
 
         executeUpdate(createRatingTable);
     }
@@ -274,19 +270,97 @@ public class Data{
             expt.printStackTrace();
         }
     }
-/*
-Bid(itemID:int frgn key, bidder:str frgn key, amount:float) //primKey(itemID,bidder)
-*/
 
+    //TODO: Erase previous bid of associated user-item when adding a new bid
     public static void createBid(int itemID, String bidder, int amount){
         try{
             preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Bid VALUES(?,?,?);");
             preparedStatement.setInt(1,itemID);
             preparedStatement.setString(2,bidder);
             preparedStatement.setInt(3,amount);
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    public static void createPurchase(int itemID, String buyer, int price){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Purchase VALUES(?,?,?);");
+            preparedStatement.setInt(1,itemID);
+            preparedStatement.setString(2,buyer);
+            preparedStatement.setInt(3,price);
+            preparedStatement.executeUpdate();
 
         }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
 
+    public static void createRating(int itemID, String reviewer, int rating, String review){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Rating VALUES(?,?,?,?);");
+            preparedStatement.setInt(1,itemID);
+            preparedStatement.setString(2,reviewer);
+            preparedStatement.setInt(3,rating);
+            preparedStatement.setString(4,review);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    public static void createNotification(String title, String message, String receiver, boolean warning){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Notification(title,message,receiver,warning) VALUES(?,?,?,?);");
+            preparedStatement.setString(1,title);
+            preparedStatement.setString(2,message);
+            preparedStatement.setString(3,receiver);
+            preparedStatement.setBoolean(4,warning);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    public static void createComplaint(String title, String message, String sender){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Complaint(title,message,sender,handled) VALUES(?,?,?,?);");
+            preparedStatement.setString(1,title);
+            preparedStatement.setString(2,message);
+            preparedStatement.setString(3,sender);
+            preparedStatement.setBoolean(4,false);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    //TODO: User should not be able to add themselves as a friend
+    public static void createFriend(String user, String friend){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Friend VALUES(?,?);");
+            preparedStatement.setString(1,user);
+            preparedStatement.setString(2,friend);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    public static void createFriendRequest(String sender, String receiver){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO FriendRequest VALUES(?,?);");
+            preparedStatement.setString(1,sender);
+            preparedStatement.setString(2,receiver);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
         }
     }
 
@@ -327,14 +401,14 @@ schemas
 User(username:str primKey, password:str, name:str, superUser:boolean)
 OrdinaryUser(username:str primKey/frgn key, address:str, creidCard:str, phoneNumber:str, vip:bool, tempBlocked:bool,permBlocked:bool,desiredKeyWords:Str)
 
-Item(id:int primKey, name:str, registered:bool, imageURL/file:str, associatedKeywords:str) 
+Item(id:int primKey, name:str, registered:bool, imageURL/file:str, associatedKeywords:str)
 FixedItem(id:int primKey/frgn key, fixedPrice: int) //price is input as string, then converted to float
 BidItem(id:int primKey/frgn key, startOfBid:long)//default bid duration: 3 min; startOfBid -> timestamp in milliseconds
 Bid(itemID:int frgn key, bidder:str primKey frgn key, amount:float)
 
-Purchase(itemID: int primKey/frgn key, seller:str frgn key, buyer:str frgn key, price: int)
+Purchase(itemID: int primKey/frgn key, buyer:str frgn key, price: int)
+Rating(itemID: int frgn key, reviewer:str frgn key, rating:int, review:str) primKey(itemID,reviewer)
 Notification(id:int primKey, title:str, message:str, receiver:str frgn key, warning:bool) //when retrieving notifications, order them descendingly (so that the lastest notificcation comes first
-Notification(id:int primKey, title:str, message:str, receiver:str frgn key, timeStamp:long, warning:bool) //timestamp should be in milliseconds
 Complaint(id:int primKey, title:str, message:str, sender:str frgn key, handled:bool)
 
 Friend(user:str frgn key, friend:str frgn key)primKey(user,friend)
