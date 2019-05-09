@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.*;
 
 public class Data{
 
@@ -21,6 +22,7 @@ public class Data{
         createComplaintTable();
         createFriendTable();
         createFriendRequestTable();
+        createTabooWordTable();
     }
 
     private static void executeUpdate(String updateQuery){
@@ -36,7 +38,7 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
-            String password = "pringles";
+            String password = "209539352";
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 
             connection = DriverManager.getConnection(host,user,password);
@@ -194,7 +196,9 @@ public class Data{
 
     private static void createTabooWordTable(){
         String createTabooWordTable = "CREATE TABLE IF NOT EXISTS TabooWord("
-        + "word VARCHAR(128) PRIMARY KEY);"
+        + "word VARCHAR(128) PRIMARY KEY);";
+
+        executeUpdate(createTabooWordTable);
     }
 
     //database insertion functions
@@ -379,38 +383,163 @@ public class Data{
         }
     }
 
-    //validation functions
+    //VALIDATION FUNCTIONS
 
     //returns true if username corresponds to an ordinairy user, false otherwise
-    public static boolean isValidOrdinairyUser(String username){
+    public static boolean isOrdinairyUser(String username){
         return false;
     }
 
     //returns true if username corresponds to a superuser, false otherwise
-    public static boolean isValidSuperUser(String username){
+    public static boolean isSuperUser(String username){
         return false;
     }
 
-    //data retrieval functons
+    //true if itemID is found within the BidItem table
+    public static boolean isBidItem(int itemID){
+        return false;
+    }
+
+    //true if itemID is found within FixedItem
+    public static boolean isFixedItem(int itemID){
+        return false;
+    }
+
+    //if itemID is not in Purchase and registered in Item is true, then return true, and otherwise, return false
+    public static boolean isItemOnSale(int itemID){
+        return false;
+    }
+
+    //DATA RETRIEVAL FUNCTIONS
+
+    //returns [address, creditCard, phoneNumber, desireKeyWords, vip, tempBlocked, permBlocked] based on OrdinairyUser username
+    public static String[] getOrdinairyUserInfo(String username){
+        return null;
+    }
 
     //returns a String array with the bid item's: [item-name,seller,registered,image-location,associated-keywords]
-    public static String [] getBidItemInfo(int itemID){
+    public static String [] getItemInfo(int itemID){
         return null;
     }
 
-    public static String [] getFixedItemInfo(int itemID){
+    //finds the highest bid from the Bid table and returns it
+    public static int getHighestBid(int itemID){
+        return 0;
+    }
+
+    //returns the username of the winning bid
+    public static String getBidWinner(int itemID){
         return null;
     }
 
-    //data modification functions
+    //finds the price from the FixedItem table and returns it
+    public static int getFixedPrice(){
+        return 0;
+    }
 
+    //returns an ArrayList of itemIDs which have keywords that match with the supplied username's keywords in the OrdinairyUser table (items should not be in Purchase -> (!itemIsOnSale()))
+    public static ArrayList<Integer> getReccomendedItems(String username){
+        return null;
+    }
+
+    //returns a default ArrayList of itemIDs for guest users which are not included in the table Purchase (!itemIsOnSale())
+    public static ArrayList<Integer> getReccomendedItems(){
+        return null;
+    }
+
+    //searhes for Item.names and Item.KeyWords that match contents of search
+    public static ArrayList<Integer> seachForItems(String search){
+        return null;
+    }
+
+    //returns an ArrayList of itemIDs in Purchase where seller from table Item matches username
+    public static ArrayList<Integer> getItemsSoldBy(String username){
+        return null;
+    }
+
+    //returns an ArrayList of itemIDs in Purchase where buyer matches username
+    public static ArrayList<Integer> getItemsPurchasedBy(String username){
+        return null;
+    }
+
+    //finds ALL notifications with the associated username and returns an ArrayList containing them
+    public static ArrayList<Integer> getNotificationsFor(String username){
+        return null;
+    }
+
+    // returns [title,message] based on notificationID
+    public static String [] getNotificationInfo(int notificationID){
+        return null;
+    }
+
+    //returns an ArrayList list of friends for user with the specified username
+    public static ArrayList<String> getListOfFriends(String username){
+        return null;
+    }
+
+    //returns an ArrayList of friendRequests for user with the specified username
+    public static ArrayList<String> getListOfFriendRequests(String username){
+        return null;
+    }
+
+    //returns an ArrayList of itemIDs where registered = false in the Item table
+    public static ArrayList<Integer> getUnregisteredItems(){
+        return null;
+    }
+
+    //returns an ArrayList of complaintIDs from Complaint table where handled = false
+    public static ArrayList<Integer> getUnhandledComplaints(){
+        return null;
+    }
+
+    //DATA MODIFICATION FUNCTIONS
+
+    //sets registered to true in Item table
     public static void registerItem(int itemID){
 
     }
 
+    //removes item associated with itemID from Item table
     public static void removeItem(int itemID){
 
     }
+
+    //sets the keywords of associated username to keywords in User table
+    public static void editKeywords(String username, String keywords){
+
+    }
+
+    //creates notification(s) based on items found in Item that have keywords that match desiredKeywords for associated username in OrdinairyUser table 
+    public static void updateNotifications(String username){
+
+    }
+
+    //sends a notification (as a message) from one user to another (users should be friends)
+    public static void sendMessage(String sender, String receiver, String messageTitle, String messageContents){
+
+    }
+
+    //removes entry (user,friend) from table Friend
+    public static void deleteFriend(String user, String friend){
+
+    }
+
+    //removes entry from Purchase table where itemID matches supplied itemID
+    public static void canclePurchase(String itemID){
+
+    }
+    
+    //removes entry (sender,receiver) from table FriendRequest
+    public static void deleteFriendRequest(String sender, String receiver){
+
+    }
+
+    //sets handled to true for the associated complaintID in Complaint table
+    public static void handleComplaint(int complaintID){
+
+    }
+
+    //MISCELLANEOUS FUNCTIONS
 
     private static int getLastItemIndex(){
         int id = 0;
