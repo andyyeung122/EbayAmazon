@@ -39,7 +39,7 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
-            String password = "209539352";
+            String password = "Eque7400";
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 
             connection = DriverManager.getConnection(host,user,password);
@@ -419,6 +419,25 @@ public class Data{
 
     //returns true if username corresponds to an ordinairy user, false otherwise
     public static boolean isOrdinairyUser(String username){
+
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM `OrdinairyUser` WHERE `username`=? ");
+            preparedStatement.setString(1,username);
+
+            ResultSet r1=preparedStatement.executeQuery();
+            String name;
+            if(r1.next()) {
+                name =  r1.getString("username");
+                if(name.equals(username)) {
+                    return true;
+
+                }
+            }
+        }catch (Exception expt){
+
+            expt.printStackTrace();
+
+        }
         return false;
     }
 
@@ -449,11 +468,44 @@ public class Data{
 
     //true if itemID is found within the BidItem table
     public static boolean isBidItem(int itemID){
+
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM `BidItem` WHERE `itemID`=? ");
+            preparedStatement.setInt(1,itemID);
+            ResultSet r1=preparedStatement.executeQuery();
+            int id;
+            if(r1.next()) {
+                id =  r1.getInt("itemID");
+                if(id==itemID) {
+                    return true;
+                }
+            }
+        }catch (Exception expt){
+            expt.printStackTrace();
+        }
+
         return false;
     }
 
     //true if itemID is found within FixedItem
     public static boolean isFixedItem(int itemID){
+
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM `FixedItem` WHERE `itemID`=? ");
+            preparedStatement.setInt(1,itemID);
+            ResultSet r1=preparedStatement.executeQuery();
+            int id;
+            if(r1.next()) {
+                id =  r1.getInt("itemID");
+                if(id==itemID) {
+                    return true;
+                }
+            }
+        }catch (Exception expt){
+
+            expt.printStackTrace();
+
+        }
         return false;
     }
 
@@ -461,6 +513,21 @@ public class Data{
 
     //returns [address, creditCard, phoneNumber, desireKeyWords, blockMessage, registered, vip, outstandingUser, tempBlocked, permBlocked] based on OrdinairyUser username
     public static String[] getOrdinairyUserInfo(String username){
+
+        try{
+            preparedStatement = connection.prepareStatement("SELECT  address, creditCard, phoneNumber, desireKeyWords, vip, tempBlocked, permBlockedFROM `OrdinairyUser` WHERE `username`=? ");
+            preparedStatement.setString(1,username);
+
+            ResultSet r1=preparedStatement.executeQuery();
+            String name;
+            if(r1.next()) {
+                String add =  r1.getString("add");
+            }
+        }catch (Exception expt){
+
+            expt.printStackTrace();
+
+        }
         return null;
     }
 
@@ -749,6 +816,21 @@ TabooWords(word:str)
 
     //if itemID is not in Purchase and registered in Item is true, then return true, and otherwise, return false
     public static boolean isItemOnSale(int itemID){
+
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM `Item` WHERE `id`=? ");
+            preparedStatement.setInt(1,itemID);
+            ResultSet r1=preparedStatement.executeQuery();
+            int id;
+            if(r1.next()) {
+                id =  r1.getInt("itemID");
+                if(id==itemID) {
+                    return true;
+                }
+            }
+        }catch (Exception expt){
+            expt.printStackTrace();
+        }
         return false;
     }
 
