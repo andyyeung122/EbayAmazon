@@ -8,6 +8,7 @@ public class Data{
     private static PreparedStatement preparedStatement;
     private static ResultSet queryOutput;
 
+
     static{
         getConnection();
         createUserTable();
@@ -410,7 +411,11 @@ public class Data{
     }
 
     //returns true if username corresponds to a superuser, false otherwise
-    public static boolean isSuperUser(String username){
+    public static boolean isSuperUser(String username)
+    {
+
+
+
         return false;
     }
 
@@ -499,13 +504,23 @@ public class Data{
     public static String[] getOrdinairyUserInfo(String username){
 
         try{
-            preparedStatement = connection.prepareStatement("SELECT  address, creditCard, phoneNumber, desireKeyWords, vip, tempBlocked, permBlockedFROM `OrdinairyUser` WHERE `username`=? ");
+            preparedStatement = connection.prepareStatement("SELECT * FROM `OrdinairyUser` WHERE `username`=? ");
             preparedStatement.setString(1,username);
 
             ResultSet r1=preparedStatement.executeQuery();
-            String name;
+
             if(r1.next()) {
-                String add =  r1.getString("add");
+                String name=r1.getString("username");
+                String address=r1.getString("address");
+                String creditCard=r1.getString("creditCard");
+                String phoneNumber=r1.getString("phoneNumber");
+                String desireKeyWORDS=r1.getString("desireKeyWORDS");
+                int vip=r1.getInt("vip");
+                int tempBlocked=r1.getInt("tempBlocked");
+                int permBlock=r1.getInt("permBlock");
+
+
+               // return  info;
 
 
 
@@ -521,25 +536,128 @@ public class Data{
 
     //returns a String array with the bid item's: [item-name,seller,registered,image-location,associated-keywords]
     public static String [] getItemInfo(int itemID){
+
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM `Item` WHERE `id`=? ");
+            preparedStatement.setInt(1,itemID);
+
+            ResultSet r1=preparedStatement.executeQuery();
+
+            if(r1.next()) {
+                String name=r1.getString("name");
+                String seller=r1.getString("seller");
+                String imageLocation=r1.getString("imageLocation");
+                String associatedKeywords=r1.getString("associatedKeywords");
+                int registered=r1.getInt("registered");
+
+
+                // return  info;
+
+
+
+
+            }
+        }catch (Exception expt){
+
+            expt.printStackTrace();
+
+        }
+
+
         return null;
     }
 
     //finds the highest bid from the Bid table and returns it
     public static int getHighestBid(int itemID){
+
+        try{
+            preparedStatement = connection.prepareStatement("SELECT MAX(amount) FROM `Bid` WHERE `itemID`=? ");
+            preparedStatement.setInt(1,itemID);
+
+            ResultSet r1=preparedStatement.executeQuery();
+
+            if(r1.next()) {
+
+                int amount=r1.getInt("amount");
+
+
+
+                 return  amount;
+
+
+
+
+            }
+        }catch (Exception expt){
+
+            expt.printStackTrace();
+
+        }
+
+
         return 0;
     }
 
     //returns the username of the winning bid
-    public static String getBidWinner(int itemID){
-        return null;
+    public static String getBidWinner(int itemID) {
+
+        try {
+            preparedStatement = connection.prepareStatement("SELECT MAX(amount) FROM `Bid` WHERE `itemID`=? ");
+            preparedStatement.setInt(1, itemID);
+
+            ResultSet r1 = preparedStatement.executeQuery();
+
+            if (r1.next()) {
+
+                String winner = r1.getString("bidder");
+
+
+                return winner;
+
+
+            }
+        } catch (Exception expt) {
+            expt.printStackTrace();
+        }
+
+            return null;
+
     }
 
     //finds the price from the FixedItem table and returns it
-    public static int getFixedPrice(){
-        return 0;
-    }
+    public static int getFixedPrice(int itemID){
 
-    //returns an ArrayList of itemIDs which have keywords that match with the supplied username's keywords in the OrdinairyUser table (items should not be in Purchase -> (!itemIsOnSale()))
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM `FixedItem` WHERE `itemID`=? ");
+            preparedStatement.setInt(1,itemID);
+
+            ResultSet r1=preparedStatement.executeQuery();
+
+            if(r1.next()) {
+
+                int price=r1.getInt("price");
+
+
+
+                return  price;
+
+
+
+
+            }
+        }catch (Exception expt){
+
+            expt.printStackTrace();
+
+        }
+
+
+
+
+        return 0;
+        }
+
+        //returns an ArrayList of itemIDs which have keywords that match with the supplied username's keywords in the OrdinairyUser table (items should not be in Purchase -> (!itemIsOnSale()))
     public static ArrayList<Integer> getReccomendedItems(String username){
         return null;
     }
@@ -598,6 +716,31 @@ public class Data{
 
     //sets registered to true in Item table
     public static void registerItem(int itemID){
+
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM `Item` WHERE `id`=? ");
+            preparedStatement.setInt(1,itemID);
+
+            ResultSet r1=preparedStatement.executeQuery();
+
+            if(r1.next()) {
+
+                int rigistered=r1.getInt("regisrered");
+
+                    rigistered=1;
+
+
+
+
+
+
+            }
+        }catch (Exception expt){
+
+            expt.printStackTrace();
+
+        }
+
 
     }
 
