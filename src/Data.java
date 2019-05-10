@@ -17,6 +17,7 @@ public class Data{
         createBidItemTable();
         createBidTable();
         createPurchaseTable();
+        createCancellationRequestTable();
         createRatingTable();
         createNotificationTable();
         createComplaintTable();
@@ -54,7 +55,7 @@ public class Data{
         }
     }
 
-    //initializing database tables
+    //INITIALIZING DATABASE TABLES
 
     private static void createUserTable(){
         String createUserTable = "CREATE TABLE IF NOT EXISTS User("
@@ -73,7 +74,10 @@ public class Data{
         + "creditCard VARCHAR(128),"
         + "phoneNumber VARCHAR(128),"
         + "desiredKeyWords VARCHAR(128),"
+        + "blockMessage VARCHAR(128),"
+        + "registered BOOLEAN,"
         + "vip BOOLEAN,"
+        + "outstandingUser BOOLEAN,"
         + "tempBlocked BOOLEAN,"
         + "permBlocked BOOLEAN,"
         + "FOREIGN KEY(username) REFERENCES User(username) ON UPDATE CASCADE ON DELETE CASCADE);";
@@ -129,10 +133,20 @@ public class Data{
         + "itemID INT PRIMARY KEY,"
         + "buyer VARCHAR(128),"
         + "price INT,"
+        + "timeStamp LONG,"
         + "FOREIGN KEY(itemID) REFERENCES Item(id) ON UPDATE CASCADE ON DELETE CASCADE,"
         + "FOREIGN KEY(buyer) REFERENCES OrdinairyUser(username) ON UPDATE CASCADE ON DELETE CASCADE);";
 
         executeUpdate(createPurchaseTable);
+    }
+
+    private static void createCancellationRequestTable(){
+        String createCancellationRequestTable = "CREATE TABLE IF NOT EXISTS CancellationRequest("
+        + "itemID INT PRIMARY KEY,"
+        + "reason VARCHAR(128), "
+        + "FOREIGN KEY(itemID) REFERENCES Item(id) ON UPDATE CASCADE ON DELETE CASCADE);";
+
+        executeUpdate(createCancellationRequestTable);
     }
 
     private static void createRatingTable(){
@@ -201,7 +215,7 @@ public class Data{
         executeUpdate(createTabooWordTable);
     }
 
-    //database insertion functions
+    //DATABASE INSERTION FUNCTIONS
     //TODO: ADD AUTHENTIFICATION FOR INPUTS/PARAMETERS
 
     private static void createUser(String username, String password, String name, boolean superUser){
@@ -224,15 +238,18 @@ public class Data{
     public static void createOrdinairyUser(String username, String password, String name, String address, String creditCard, String phoneNumber){
         try{
             createUser(username,password,name,false);
-            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO OrdinairyUser VALUES(?,?,?,?,?,?,?,?);");
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO OrdinairyUser VALUES(?,?,?,?,?,?,?,?,?,?,?);");
             preparedStatement.setString(1,username);
             preparedStatement.setString(2,address);
             preparedStatement.setString(3,creditCard);
             preparedStatement.setString(4,phoneNumber);
-            preparedStatement.setBoolean(5,false);
-            preparedStatement.setBoolean(6,false);
+            preparedStatement.setString(5,"");
+            preparedStatement.setString(6,"");
             preparedStatement.setBoolean(7,false);
-            preparedStatement.setString(8,"");
+            preparedStatement.setBoolean(8,false);
+            preparedStatement.setBoolean(9,false);
+            preparedStatement.setBoolean(10,false);
+            preparedStatement.setBoolean(11,false);
             preparedStatement.executeUpdate();
 
         }catch(Exception expt){
@@ -293,12 +310,14 @@ public class Data{
         }
     }
 
+    //TODO: add automatic timeStamp (current time in miliseconds) to each purchase made
     public static void createPurchase(int itemID, String buyer, int price){
         try{
-            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Purchase VALUES(?,?,?);");
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Purchase VALUES(?,?,?,?);");
             preparedStatement.setInt(1,itemID);
             preparedStatement.setString(2,buyer);
             preparedStatement.setInt(3,price);
+            preparedStatement.setLong(4,0l);
             preparedStatement.executeUpdate();
 
         }catch(Exception expt){
@@ -306,6 +325,19 @@ public class Data{
         }
     }
 
+    public static void createCancellationRequest(int itemID,String reason){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO CancellationRequest VALUES(?,?);");
+            preparedStatement.setInt(1,itemID);
+            preparedStatement.setString(2,reason);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    //TODO: everytime a rating is created, if a seller from Item has 3 or more itemIDs with 2 or lower rating, set outstandingUser in OrdinairyUser table to true for the associated username
     public static void createRating(int itemID, String reviewer, int rating, String review){
         try{
             preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Rating VALUES(?,?,?,?);");
@@ -395,6 +427,26 @@ public class Data{
         return false;
     }
 
+    //returns vip from table OrdinairyUser for the associated username
+    public static boolean isVipUser(String username){
+        return false;
+    }
+
+    //returns registered from table OrdinairyUser for the associated username
+    public static boolean isRegisteredUser(String username){
+        return false;
+    }
+
+    //returns tempBlocked from table OrdinairyUser for the associated username
+    public static boolean isTempBlocked(String username){
+        return false;
+    }
+
+    //returns permBlocked from table OrdinairyUser for the associated username
+    public static boolean isPermBlocked(String username){
+        return false;
+    }
+
     //true if itemID is found within the BidItem table
     public static boolean isBidItem(int itemID){
         return false;
@@ -405,14 +457,9 @@ public class Data{
         return false;
     }
 
-    //if itemID is not in Purchase and registered in Item is true, then return true, and otherwise, return false
-    public static boolean isItemOnSale(int itemID){
-        return false;
-    }
-
     //DATA RETRIEVAL FUNCTIONS
 
-    //returns [address, creditCard, phoneNumber, desireKeyWords, vip, tempBlocked, permBlocked] based on OrdinairyUser username
+    //returns [address, creditCard, phoneNumber, desireKeyWords, blockMessage, registered, vip, outstandingUser, tempBlocked, permBlocked] based on OrdinairyUser username
     public static String[] getOrdinairyUserInfo(String username){
         return null;
     }
@@ -473,12 +520,12 @@ public class Data{
     }
 
     //returns an ArrayList list of friends for user with the specified username
-    public static ArrayList<String> getListOfFriends(String username){
+    public static ArrayList<String> getFriendsOf(String username){
         return null;
     }
 
     //returns an ArrayList of friendRequests for user with the specified username
-    public static ArrayList<String> getListOfFriendRequests(String username){
+    public static ArrayList<String> getFriendRequestsOf(String username){
         return null;
     }
 
@@ -487,10 +534,51 @@ public class Data{
         return null;
     }
 
+    //returns an ArrayList of usernames where registered = false in the OrdinairyUser table
+    public static ArrayList<String> getUnregisteredUsers(){
+        return null;
+    }
+
     //returns an ArrayList of complaintIDs from Complaint table where handled = false
     public static ArrayList<Integer> getUnhandledComplaints(){
         return null;
     }
+
+    //returns [title,message,sender] from Complaint table with the associated complaintID 
+    public static String [] getComplaintInfo(int complaintID){
+        return null;
+    }
+
+    //returns an ArrayList of itemIDs with timeStamps from Purchase within the range of startTime and endTime where buyer = Purchase.buyer
+    public static ArrayList<Integer> getPurchaseHistory(String buyer, long startTime, long endTime){
+        return null;
+    }
+
+    //returns an ArrayList of itemIDs with timeStamps from Purchase within the range of startTime and endTime where seller = Item.seller and Purchase.itemID = Item.id
+    public static ArrayList<Integer> getSaleHistory(String seller, long startTime, long endTime){
+        return null;
+    }
+
+    //returns an ArrayList of all usernames where outstandingUser = true
+    public static ArrayList<String> getOutstandingUsers(){
+        return null;
+    }
+
+    //returns an ArrayList of words from table TabooWord
+    public static ArrayList<String> getTabooWords(){
+        return null;
+    }
+
+    //returns an ArrayList of all itemIDs in CancellationRequest table 
+    public static ArrayList<Integer> getCancellationRequests(){
+        return null;
+    }
+
+    //returns an array of [usernameOfCancellationRequest,itemName,message/reasonForCancellation]
+    public static String [] getCancellationRequestInfo(int itemID){
+        return null;
+    }
+
 
     //DATA MODIFICATION FUNCTIONS
 
@@ -509,13 +597,23 @@ public class Data{
 
     }
 
-    //creates notification(s) based on items found in Item that have keywords that match desiredKeywords for associated username in OrdinairyUser table 
-    public static void updateNotifications(String username){
+    //creates notification(s) based on itemID's keyowrds in Item that match with the desiredKeywords of OrdinairyUsers (is called when an item is registered and put on sale)
+    public static void sendNotificationsForItem(String itemID){
 
     }
 
-    //sends a notification (as a message) from one user to another (users should be friends)
+    //sends a notification (as a message) from one user to another (users should be friends), place sender username in title
     public static void sendMessage(String sender, String receiver, String messageTitle, String messageContents){
+
+    }
+
+    //sends a notification (as a message) from a SuperUser to an Ordinairy user
+    public static void sendMessage(String receiver, String messageTitle, String messageContents){
+
+    }
+
+    //sends a notification (warning) to an OrdinairyUser
+    public static void sendWarning(String receiver, String warningTitle, String warningContents){
 
     }
 
@@ -525,7 +623,7 @@ public class Data{
     }
 
     //removes entry from Purchase table where itemID matches supplied itemID
-    public static void canclePurchase(String itemID){
+    public static void canclePurchase(int itemID){
 
     }
     
@@ -534,12 +632,47 @@ public class Data{
 
     }
 
+    //adds word into the TabooWord table if it doesn't already exist
+    public static void addTabooWord(String word){
+
+    }
+
+    //removes word from TabooWord table if it exists
+    public static void removeTabooWord(String word){
+
+    }
+
+    //calls cancled canclePurchase and removeItem function on itemID and removes the itemID's occurence from CancellationRequest table
+    public static void approveCancellation(int itemID){
+
+    }
+
+    //removes itemId's occurence form the CancellationRequest table
+    public static void rejectCancellation(int itemID){
+
+    }
+
     //sets handled to true for the associated complaintID in Complaint table
     public static void handleComplaint(int complaintID){
 
     }
 
+    //sets the blockTemp boolean to true and OrdinairyUser.blockMessage to blockMessage in table OrdinairyUser for the associate username (done automatically whenever a 2nd warning is sent)
+    public static void blockUserTemp(String username, String blockMessage){
+
+    }
+
+    //sets the blockPerm boolean in table OrdinairyUser to true for associated username
+    public static void blockUserPerm(String username){
+
+    }
+
     //MISCELLANEOUS FUNCTIONS
+
+    //converts a string in date format into a long value representing the date in miliseconds
+    public static long dateStringToLong(String dateString){
+        return 0l;
+    }
 
     private static int getLastItemIndex(){
         int id = 0;
@@ -572,18 +705,19 @@ public class Data{
     }
 }
 
-/*
-schemas
 
+//schemas
+/*
 User(username:str primKey, password:str, name:str, superUser:boolean)
-OrdinaryUser(username:str primKey/frgn key, address:str, creidCard:str, phoneNumber:str, vip:bool, tempBlocked:bool,permBlocked:bool,desiredKeyWords:Str)
+OrdinaryUser(username:str primKey/frgn key, address:str, creidCard:str, phoneNumber:str, desiredKeyWords:Str, blockMessage:str, vip:bool, outstandingUser:bool, tempBlocked:bool,permBlocked:bool,registered:bool)
 
 Item(id:int primKey, name:str, registered:bool, imageURL/file:str, associatedKeywords:str)
 FixedItem(id:int primKey/frgn key, fixedPrice: int) //price is input as string, then converted to float
 BidItem(id:int primKey/frgn key, startOfBid:long)//default bid duration: 3 min; startOfBid -> timestamp in milliseconds
 Bid(itemID:int frgn key, bidder:str primKey frgn key, amount:float)
 
-Purchase(itemID: int primKey/frgn key, buyer:str frgn key, price: int)
+Purchase(itemID: int primKey/frgn key, buyer:str frgn key, price: int, timeStamp:long)
+CancellationRequest(itemID:int, reason:str)
 Rating(itemID: int frgn key, reviewer:str frgn key, rating:int, review:str) primKey(itemID,reviewer)
 Notification(id:int primKey, title:str, message:str, receiver:str frgn key, warning:bool) //when retrieving notifications, order them descendingly (so that the lastest notificcation comes first
 Complaint(id:int primKey, title:str, message:str, sender:str frgn key, handled:bool)
@@ -607,6 +741,17 @@ TabooWords(word:str)
             expt.printStackTrace();
         }
     }
+    
+    //returns registered from Item table for associated itemID
+    public static boolean isRegisteredItem(int itemID){
+        return false;
+    }
+
+    //if itemID is not in Purchase and registered in Item is true, then return true, and otherwise, return false
+    public static boolean isItemOnSale(int itemID){
+        return false;
+    }
+
 */
 
 //repeated code

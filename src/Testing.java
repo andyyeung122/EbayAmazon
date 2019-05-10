@@ -13,6 +13,7 @@ public class Testing{
         Data.createFriend("dude55","dude55");
         Data.createFriendRequest("dude55","dude55");
         Data.createTabooWord("Fudge");
+        Data.createCancellationRequest(1,"I can't find it");
         Data.closeResources();
         
     }
