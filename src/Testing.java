@@ -4,6 +4,7 @@ public class Testing{
     public static void main(String [] args){
         Data testData = new Data();
         Data.createOrdinairyUser("dude55","1234","dude","123 your mum's house", "123456789", "347 123 45678");
+        Data.createOrdinairyUser("dude77","1234567","dudette","123 your dad's house", "123456789", "347 123 45678");
         Data.createSuperUser("dude66","1234","dudedude");
         Data.createFixedItem("Red Dress", "dude55","C:/location","keyowrd",1000);
         Data.createBidItem("Red Blouse","dude55","C:/location","keyword",0l);
@@ -40,6 +41,22 @@ public class Testing{
         Data.unblockUser("dude55");
         System.out.println("Is dude55 tempBlocked? " + Data.isTempBlocked("dude55"));
         System.out.println("Is dude55 permBlocked? " + Data.isPermBlocked("dude55"));
+
+        User currentUser = Data.getOrdinairyUser("dude55");
+        System.out.println("name: " + currentUser.getName() + "\naddress: " + currentUser.getAddress() + "\nphoneNumber: " + currentUser.getPhoneNumber() +  "\nblockMessage: " + currentUser.getBlockMessage());
+        
+        Item currentItem = Data.getItem(4);
+        System.out.println("itemName: " + currentItem.getItemName() + "\nseller: " + currentItem.getSeller() + "\nimageLocation: " + currentItem.getImageLocation());
+        
+        Data.createBid(4,"dude55",30);
+        Data.createBid(4,"dude55",40);
+        Data.createBid(4,"dude77",70);
+        
+        System.out.println("Highest bid: " + Data.getHighestBid(4));
+
+        System.out.println("Winning bidder: " + Data.getBidWinner(4));
+
+        System.out.println("Fixed price: " + Data.getFixedPrice(4));
         Data.closeResources();
         
     }

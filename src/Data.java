@@ -298,9 +298,13 @@ public class Data{
         }
     }
 
-    //TODO: Erase previous bid of associated user-item when adding a new bid
     public static void createBid(int itemID, String bidder, int amount){
         try{
+            preparedStatement = connection.prepareStatement("DELETE FROM Bid WHERE itemID=? AND bidder=?");
+            preparedStatement.setInt(1,itemID);
+            preparedStatement.setString(2,bidder);
+            preparedStatement.executeUpdate();
+            
             preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Bid VALUES(?,?,?);");
             preparedStatement.setInt(1,itemID);
             preparedStatement.setString(2,bidder);
@@ -564,62 +568,55 @@ public class Data{
 
     //DATA RETRIEVAL FUNCTIONS
 
-    //returns [name,address, creditCard, phoneNumber, desireKeyWords, blockMessage] based on OrdinairyUser username
-    public static String[] getOrdinairyUserInfo(String username){
-        String [] ordinairyUserInfo = new String[6];
+    //returns [name,address, creditCard, phoneNumber, desiredKeyWords, blockMessage] based on OrdinairyUser username (tested)
+    public static User getOrdinairyUser(String username){
         try{
-            preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser WHERE username=? ");
+            preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser join User on OrdinairyUser.username=User.username WHERE OrdinairyUser.username=?");
             preparedStatement.setString(1,username);
 
             queryOutput = preparedStatement.executeQuery();
 
             if(queryOutput.next()) {
-                String name = queryOutput.getString("username");
+                String name = queryOutput.getString("name");
                 String address = queryOutput.getString("address");
                 String creditCard = queryOutput.getString("creditCard");
                 String phoneNumber = queryOutput.getString("phoneNumber");
-                String desireKeyWORDS = queryOutput.getString("desireKeyWORDS");
-                int vip = queryOutput.getInt("vip");
-                int tempBlocked = queryOutput.getInt("tempBlocked");
-                int permBlock = queryOutput.getInt("permBlock");
+                String desiredKeyWords = queryOutput.getString("desiredKeyWords");
+                String blockMessage = queryOutput.getString("blockMessage");
 
-               // return  info;
+                return new User(username,name,address,creditCard,phoneNumber,desiredKeyWords,blockMessage);
             }
         }catch (Exception expt){
-
             expt.printStackTrace();
-
         }
-        return null;
+        return new User(username);
     }
 
-    //returns a String array with the bid item's: [item-name,seller,registered,image-location,associated-keywords]
-    public static String [] getItemInfo(int itemID){
-
+    //returns a String array with the bid item's: [item-name,seller,image-location,associated-keywords] (tested)
+    public static Item getItem(int itemID){
         try{
-            preparedStatement = connection.prepareStatement("SELECT * FROM `Item` WHERE `id`=? ");
+            preparedStatement = connection.prepareStatement("SELECT * FROM Item WHERE id=? ");
             preparedStatement.setInt(1,itemID);
 
-            ResultSet r1=preparedStatement.executeQuery();
+            queryOutput = preparedStatement.executeQuery();
 
-            if(r1.next()) {
-                String name=r1.getString("name");
-                String seller=r1.getString("seller");
-                String imageLocation=r1.getString("imageLocation");
-                String associatedKeywords=r1.getString("associatedKeywords");
-                int registered=r1.getInt("registered");
-                // return  info;
+            if(queryOutput.next()) {
+                String name = queryOutput.getString("name");
+                String seller = queryOutput.getString("seller");
+                String imageLocation = queryOutput.getString("imageLocation");
+                String associatedKeywords = queryOutput.getString("associatedKeywords");
+
+                return new Item(itemID,name,seller,imageLocation,associatedKeywords);
             }
         }catch (Exception expt){
-
             expt.printStackTrace();
-
         }
-        return null;
+        return new Item(itemID);
     }
 
-    //finds the highest bid from the Bid table and returns it
+    //finds the highest bid from the Bid table and returns it (tested)
     public static int getHighestBid(int itemID){
+        int amount = 0;
         try{
             preparedStatement = connection.prepareStatement("SELECT MAX(amount) FROM Bid WHERE itemID=? ");
             preparedStatement.setInt(1,itemID);
@@ -627,46 +624,37 @@ public class Data{
             ResultSet r1=preparedStatement.executeQuery();
 
             if(r1.next()) {
-
-                int amount=r1.getInt("amount");
-                 return  amount;
-
+                amount=r1.getInt("MAX(amount)");
             }
         }catch (Exception expt){
-
             expt.printStackTrace();
-
         }
-
-
-        return 0;
+        return amount;
     }
 
-    //returns the username of the winning bid
+    //returns the username of the winning bid (tested)
     public static String getBidWinner(int itemID) {
-
+        String winner = "";
         try {
-            preparedStatement = connection.prepareStatement("SELECT MAX(amount) FROM Bid WHERE itemID=? ");
+            preparedStatement = connection.prepareStatement("SELECT bidder FROM Bid WHERE itemID=? ORDER BY amount DESC");
             preparedStatement.setInt(1, itemID);
 
-            ResultSet r1 = preparedStatement.executeQuery();
+            queryOutput = preparedStatement.executeQuery();
 
-            if (r1.next()) {
-
-                String winner = r1.getString("bidder");
-                return winner;
+            if (queryOutput.next()) {
+                winner = queryOutput.getString("bidder");
             }
-        } catch (Exception expt) {
+            if(queryOutput.next()){
+                winner = queryOutput.getString("bidder");
+            }
+        }catch(Exception expt){
             expt.printStackTrace();
         }
-
-            return null;
-
+            return winner;
     }
 
-    //finds the price from the FixedItem table and returns it
+    //finds the price from the FixedItem table and returns it (tested)
     public static int getFixedPrice(int itemID){
-
         try{
             preparedStatement = connection.prepareStatement("SELECT * FROM `FixedItem` WHERE `itemID`=? ");
             preparedStatement.setInt(1,itemID);
@@ -674,27 +662,17 @@ public class Data{
             ResultSet r1=preparedStatement.executeQuery();
 
             if(r1.next()) {
-
                 int price=r1.getInt("price");
                 return  price;
-
             }
         }catch (Exception expt){
-
             expt.printStackTrace();
-
         }
-
         return 0;
-        }
-
-        //returns an ArrayList of itemIDs which have keywords that match with the supplied username's keywords in the OrdinairyUser table (items should not be in Purchase -> (!itemIsOnSale()))
-    public static ArrayList<Integer> getReccomendedItems(String username){
-        return null;
     }
 
     //returns a default ArrayList of itemIDs for guest users which are not included in the table Purchase (!itemIsOnSale())
-    public static ArrayList<Integer> getReccomendedItems(){
+    public static ArrayList<Integer> getItemsOnSale(){
         return null;
     }
 
