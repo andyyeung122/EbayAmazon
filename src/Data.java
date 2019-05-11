@@ -13,9 +13,11 @@ public class Data{
         getConnection();
         createUserTable();
         createOrdinairyUserTable();
+        createUserKeywordTable();
         createItemTable();
         createFixedItemTable();
         createBidItemTable();
+        createItemKeywordsTable();
         createBidTable();
         createPurchaseTable();
         createCancellationRequestTable();
@@ -86,6 +88,16 @@ public class Data{
         executeUpdate(createOrdinairyUserTable);
     }
 
+    private static void createUserKeywordTable(){
+        String createUserKeywordTable = "CREATE TABLE IF NOT EXISTS UserKeyword("
+        + "user VARCHAR(128),"
+        + "keyword VARCHAR(128),"
+        + "PRIMARY KEY(user,keyword),"
+        + "FOREIGN KEY(user) REFERENCES OrdinairyUser(username) ON UPDATE CASCADE ON DELETE CASCADE)";
+
+        executeUpdate(createUserKeywordTable);
+    }
+
     private static void createItemTable(){
         String createItemTable = "CREATE TABLE IF NOT EXISTS Item("
         + "id INT AUTO_INCREMENT PRIMARY KEY,"
@@ -115,6 +127,16 @@ public class Data{
         + "FOREIGN KEY(itemID) REFERENCES Item(id));";
 
         executeUpdate(createBidItemTable);
+    }
+
+    private static void createItemKeywordsTable(){
+        String createItemKeywordsTable = "CREATE TABLE IF NOT EXISTS ItemKeyword("
+        + "itemID INT,"
+        + "keyword VARCHAR(128),"
+        + "PRIMARY KEY(itemID,keyword),"
+        + "FOREIGN KEY(itemID) REFERENCES Item(id) ON UPDATE CASCADE ON DELETE CASCADE)";
+
+        executeUpdate(createItemKeywordsTable);
     }
 
     private static void createBidTable(){
@@ -258,6 +280,18 @@ public class Data{
         }
     }
 
+    public static void createUserKeyword(String user, String keyword){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO UserKeyword VALUES(?,?)");
+            preparedStatement.setString(1,user);
+            preparedStatement.setString(2,keyword);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
     private static void createItem(String itemName, String sellerUsername, String imageLocation, String associatedKeywords){
         try{
             preparedStatement = connection.prepareStatement("INSERT IGNORE INTO Item(name,seller,registered,imageLocation,associatedKeywords) VALUES(?,?,?,?,?);");
@@ -267,6 +301,11 @@ public class Data{
             preparedStatement.setString(4,imageLocation);
             preparedStatement.setString(5,associatedKeywords);
             preparedStatement.executeUpdate();
+
+            int itemID = getLastItemIndex();
+            String [] keywords = associatedKeywords.split("[ ,]");
+            for(String keyword : keywords)
+                createItemKeyword(itemID,keyword);
 
         }catch(Exception expt){
             expt.printStackTrace();
@@ -293,6 +332,18 @@ public class Data{
             preparedStatement.setInt(1,getLastItemIndex());
             preparedStatement.setLong(2,startOfBid);
             preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    public static void createItemKeyword(int itemID, String keyword){
+        try{
+            preparedStatement = connection.prepareStatement("INSERT IGNORE INTO ItemKeyword VALUES(?,?)");
+            preparedStatement.setInt(1,itemID);
+            preparedStatement.setString(2,keyword);
+            preparedStatement.executeUpdate();
+
         }catch(Exception expt){
             expt.printStackTrace();
         }
@@ -568,7 +619,7 @@ public class Data{
 
     //DATA RETRIEVAL FUNCTIONS
 
-    //returns [name,address, creditCard, phoneNumber, desiredKeyWords, blockMessage] based on OrdinairyUser username (tested)
+    //returns User object storing the information of the user corresponding to username tested)
     public static User getOrdinairyUser(String username){
         try{
             preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser join User on OrdinairyUser.username=User.username WHERE OrdinairyUser.username=?");
@@ -592,7 +643,7 @@ public class Data{
         return new User(username);
     }
 
-    //returns a String array with the bid item's: [item-name,seller,image-location,associated-keywords] (tested)
+    //returns an Item object with the qualities associated with itemID (tested)
     public static Item getItem(int itemID){
         try{
             preparedStatement = connection.prepareStatement("SELECT * FROM Item WHERE id=? ");
@@ -671,24 +722,79 @@ public class Data{
         return 0;
     }
 
-    //returns a default ArrayList of itemIDs for guest users which are not included in the table Purchase (!itemIsOnSale())
-    public static ArrayList<Integer> getItemsOnSale(){
-        return null;
+    //returns a default ArrayList of itemIDs for guest users which are not included in the table Purchase (tested)
+    public static ArrayList<Item> getItemsOnSale(){
+        ArrayList<Integer> listOfItems = new ArrayList<>();
+        try{
+            preparedStatement = connection.prepareStatement(" SELECT id FROM Item WHERE id NOT IN (SELECT itemID FROM Purchase) AND registered=true ORDER BY id DESC");
+            queryOutput = preparedStatement.executeQuery();
+
+            while(queryOutput.next())
+                listOfItems.add(queryOutput.getInt("id"));
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return toItemList(listOfItems);
     }
 
-    //searhes for Item.names and Item.KeyWords that match contents of search
-    public static ArrayList<Integer> seachForItems(String search){
-        return null;
+    //searhes for Item.names and Item.KeyWords that match contents of search (tested)
+    public static ArrayList<Item> searchForItems(String search){
+        ArrayList<Integer> listOfItems = new ArrayList<>();
+        try{
+            preparedStatement = connection.prepareStatement("SELECT id FROM Item WHERE name=? " 
+            + "AND registered=true "
+            + "AND id NOT IN (SELECT itemID FROM Purchase) "
+            + "UNION "
+            + "SELECT DISTINCT itemID AS id FROM ItemKeyword WHERE keyword=? ORDER BY id DESC");
+
+            preparedStatement.setString(1,search);
+            preparedStatement.setString(2,search);
+            queryOutput = preparedStatement.executeQuery();
+
+            while(queryOutput.next())
+                listOfItems.add(queryOutput.getInt("id"));
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return toItemList(listOfItems);
     }
 
-    //returns an ArrayList of itemIDs in Purchase where seller from table Item matches username
-    public static ArrayList<Integer> getItemsSoldBy(String username){
-        return null;
+    //returns an ArrayList of itemIDs in Purchase where seller from table Item matches username (tested)
+    public static ArrayList<Item> getItemsSoldBy(String username){
+        ArrayList<Integer> listOfItems = new ArrayList<>();
+        try{
+            preparedStatement = connection.prepareStatement("SELECT Item.id FROM Item INNER JOIN Purchase ON Item.id=Purchase.itemID WHERE Item.seller=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            while(queryOutput.next())
+                listOfItems.add(queryOutput.getInt("id"));            
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+
+        return toItemList(listOfItems);
     }
 
-    //returns an ArrayList of itemIDs in Purchase where buyer matches username
-    public static ArrayList<Integer> getItemsPurchasedBy(String username){
-        return null;
+    //returns an ArrayList of itemIDs in Purchase where buyer matches username (tested)
+    public static ArrayList<Item> getItemsPurchasedBy(String username){
+        ArrayList<Integer> listOfItems = new ArrayList<>();
+        try{
+            preparedStatement = connection.prepareStatement("SELECT itemID FROM Purchase WHERE buyer=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            while(queryOutput.next())
+                listOfItems.add(queryOutput.getInt("itemID"));
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+
+        return toItemList(listOfItems);
     }
 
     //finds ALL notifications with the associated username and returns an ArrayList containing them
@@ -769,24 +875,15 @@ public class Data{
 
     //DATA MODIFICATION FUNCTIONS
 
-    //sets registered to true in Item table
+    //sets registered to true in Item table (tested)
     public static void registerItem(int itemID){
-
         try{
-            preparedStatement = connection.prepareStatement("SELECT * FROM `Item` WHERE `id`=? ");
+            preparedStatement = connection.prepareStatement("UPDATE Item SET registered=true WHERE id=?");
             preparedStatement.setInt(1,itemID);
+            preparedStatement.executeUpdate();
 
-            ResultSet r1=preparedStatement.executeQuery();
-
-            if(r1.next()) {
-
-                int rigistered=r1.getInt("regisrered");
-                    rigistered=1;
-            }
         }catch (Exception expt){
-
             expt.printStackTrace();
-
         }
     }
 
@@ -834,6 +931,7 @@ public class Data{
 
     }
 
+    //TODO:update UserKeyword table automatically
     //sets the keywords of associated username to keywords in User table
     public static void editKeywords(String username, String keywords){
 
@@ -940,6 +1038,14 @@ public class Data{
     //converts a string in date format into a long value representing the date in miliseconds
     public static long dateStringToLong(String dateString){
         return 0l;
+    }
+
+    public static ArrayList<Item> toItemList(ArrayList<Integer> itemIDList){
+        ArrayList<Item> itemList = new ArrayList<>();
+        for(int itemID : itemIDList)
+            itemList.add(getItem(itemID));
+        
+        return itemList;
     }
 
     private static int getLastItemIndex(){

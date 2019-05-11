@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Testing{
 
@@ -6,9 +7,11 @@ public class Testing{
         Data.createOrdinairyUser("dude55","1234","dude","123 your mum's house", "123456789", "347 123 45678");
         Data.createOrdinairyUser("dude77","1234567","dudette","123 your dad's house", "123456789", "347 123 45678");
         Data.createSuperUser("dude66","1234","dudedude");
-        Data.createFixedItem("Red Dress", "dude55","C:/location","keyowrd",1000);
-        Data.createBidItem("Red Blouse","dude55","C:/location","keyword",0l);
+        Data.createFixedItem("Red Dress", "dude55","C:/location","keyword,dress",1000);
+        Data.createBidItem("Red Blouse","dude55","C:/location","keyword,red",0l);
         Data.createPurchase(1,"dude55",12345);
+        Data.createPurchase(3,"dude55",12345);
+        Data.createPurchase(5,"dude77",12345);
         Data.createRating(1,"dude55",3,"I hate this item");
         Data.createNotification("Stop Sending Nudes!", "Please stop sending nudes!", "dude55", true);
         Data.createComplaint("Title", "Message Message", "dude55");
@@ -53,10 +56,35 @@ public class Testing{
         Data.createBid(4,"dude77",70);
         
         System.out.println("Highest bid: " + Data.getHighestBid(4));
-
         System.out.println("Winning bidder: " + Data.getBidWinner(4));
-
         System.out.println("Fixed price: " + Data.getFixedPrice(4));
+
+        Data.registerItem(1);
+        Data.registerItem(2);
+        Data.registerItem(3);
+
+        ArrayList<Item> itemsOnSale = Data.getItemsOnSale();
+        
+        for(Item item : itemsOnSale)
+            System.out.println("Item on sale: " + item.getItemID());
+
+        ArrayList<Item> searchItems = Data.searchForItems("Red");
+
+        for(Item item : searchItems)
+            System.out.println("Search results\nitemID: " + item.getItemID() + " \nname: " +  item.getItemName());
+        
+        Data.createUserKeyword("dude55","dudes");
+
+        ArrayList<Item> itemsSoldBy = Data.getItemsSoldBy("dude55");
+
+        for(Item item : itemsSoldBy)
+            System.out.println("Items sold\nitemID: " + item.getItemID() + "\nitemName: " + item.getItemName());
+
+        ArrayList<Item> itemsPurchasedBy = Data.getItemsPurchasedBy("dude77");
+
+        for(Item item : itemsPurchasedBy)
+            System.out.println("Items Purchased\nitemID: " + item.getItemID() + "\nitemName: " + item.getItemName());
+
         Data.closeResources();
         
     }
