@@ -876,8 +876,19 @@ public class Data{
     }
 
     //returns an ArrayList of itemIDs where registered = false in the Item table
-    public static ArrayList<Integer> getUnregisteredItems(){
-        return null;
+    public static ArrayList<Item> getUnregisteredItems(){
+        ArrayList<Item> listOfItems = new ArrayList<>();
+        try{
+            preparedStatement = connection.prepareStatement("SELECT id FROM Item WHERE registered=false");
+            queryOutput = preparedStatement.executeQuery();
+
+            while(queryOutput.next())
+                listOfItems.add(getItem(queryOutput.getInt("id")));
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return listOfItems;
     }
 
     //returns an ArrayList of usernames where registered = false in the OrdinairyUser table

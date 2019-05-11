@@ -102,6 +102,11 @@ public class Testing{
         
         System.out.println(Data.getAverageRating("dude55"));
 
+        ArrayList<Item> unregisteredItems = Data.getUnregisteredItems();
+
+        for(Item item : unregisteredItems)
+            System.out.println("itemID: " + item.getItemID() + " itemName: " + item.getItemName());
+
         Data.closeResources();
         
     }
