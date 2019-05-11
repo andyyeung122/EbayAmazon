@@ -13,10 +13,10 @@ public class Testing{
         Data.createPurchase(3,"dude55",12345);
         Data.createPurchase(5,"dude77",12345);
         Data.createRating(1,"dude55",3,"I hate this item");
-        Data.createNotification("Stop Sending Nudes!", "Please stop sending nudes!", "dude55", true);
+        Data.createNotification("Stop Sending Nudes!", "Please stop sending nudes!", "dude77", true);
         Data.createComplaint("Title", "Message Message", "dude55");
-        Data.createFriend("dude55","dude55");
-        Data.createFriendRequest("dude55","dude55");
+        Data.createFriend("dude55","dude77");
+        Data.createFriendRequest("dude55","dude77");
         Data.createTabooWord("Fudge");
         Data.createCancellationRequest(1,"I can't find it");
         System.out.println(Data.isOrdinairyUser("dude55"));
@@ -85,8 +85,24 @@ public class Testing{
         for(Item item : itemsPurchasedBy)
             System.out.println("Items Purchased\nitemID: " + item.getItemID() + "\nitemName: " + item.getItemName());
 
+        ArrayList<Notification> listOfNotifications = Data.getNotificationsFor("dude77");
+
+        for(Notification note : listOfNotifications)
+            System.out.println("Notes\ntitle " + note.getTitle() + "\nmessage: " + note.getMessage());
+
+        ArrayList<String> listOfFriends = Data.getFriendsOf("dude55");
+
+        for(String friend : listOfFriends)
+            System.out.println(friend);
+        
+        ArrayList<String> listOfFriendRequests = Data.getFriendRequestsOf("dude55");
+
+        for(String friendRequestSender : listOfFriendRequests)
+            System.out.println("Firned Request: " + friendRequestSender);
+        
+        System.out.println(Data.getAverageRating("dude55"));
+
         Data.closeResources();
         
     }
-
 }

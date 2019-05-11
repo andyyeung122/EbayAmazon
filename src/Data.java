@@ -797,29 +797,82 @@ public class Data{
         return toItemList(listOfItems);
     }
 
-    //finds ALL notifications with the associated username and returns an ArrayList containing them
-    public static ArrayList<Integer> getNotificationsFor(String username){
-        return null;
+    //finds ALL notifications with the associated username and returns an ArrayList containing them (tested)
+    public static ArrayList<Notification> getNotificationsFor(String username){
+        ArrayList<Notification> listOfNotifications = new ArrayList<>();
+        int id;
+        String title;
+        String message;
+        boolean warning;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM Notification WHERE receiver=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            while(queryOutput.next()){
+                id = queryOutput.getInt("id");
+                title = queryOutput.getString("title");
+                message = queryOutput.getString("message");
+                warning = queryOutput.getBoolean("warning");
+                listOfNotifications.add(new Notification(id,title,message,username,warning));
+            }
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return listOfNotifications;
     }
 
-    // returns [title,message] based on notificationID
-    public static String [] getNotificationInfo(int notificationID){
-        return null;
-    }
-
-    //returns an ArrayList list of friends for user with the specified username
+    //returns an ArrayList list of friends for user with the specified username (tested)
     public static ArrayList<String> getFriendsOf(String username){
-        return null;
+        ArrayList<String> listOfFriends = new ArrayList<>();
+        try{
+            preparedStatement = connection.prepareStatement("SELECT friend FROM Friend WHERE user=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            while(queryOutput.next())
+                listOfFriends.add(queryOutput.getString("friend"));
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return listOfFriends;
     }
 
-    //returns an ArrayList of friendRequests for user with the specified username
+    //returns an ArrayList of friendRequests for user with the specified username (tested)
     public static ArrayList<String> getFriendRequestsOf(String username){
-        return null;
+        ArrayList<String> listOfFriendRequests = new ArrayList<>();
+        try{
+            preparedStatement = connection.prepareStatement("SELECT sender FROM FriendRequest WHERE receiver=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            while(queryOutput.next()){
+                listOfFriendRequests.add(queryOutput.getString("sender"));
+            }
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return listOfFriendRequests;
     }
 
-    //returns the avg of ratings from table Rating of all itemIds where seller = username in table Item
+    //returns the avg of ratings from table Rating of all itemIds where seller = username in table Item (tested)
     public static int getAverageRating(String username){
-        return 0;
+        int avg = 0;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT AVG(rating) FROM Rating INNER JOIN Item ON Item.id=Rating.itemID WHERE Item.seller=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+            
+            if(queryOutput.next())
+                avg = queryOutput.getInt("AVG(rating)");
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return avg;
     }
 
     //returns an ArrayList of itemIDs where registered = false in the Item table
