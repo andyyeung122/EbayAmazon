@@ -40,7 +40,7 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
-            String password = "Eque7400";
+            String password = "209539352";
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 
             connection = DriverManager.getConnection(host,user,password);
@@ -418,61 +418,116 @@ public class Data{
 
     //VALIDATION FUNCTIONS
 
-    //returns true if username corresponds to an ordinairy user, false otherwise
+    //returns true if username corresponds to an ordinairy user, false otherwise (tested)
     public static boolean isOrdinairyUser(String username){
-
         try{
-            preparedStatement = connection.prepareStatement("SELECT * FROM `OrdinairyUser` WHERE `username`=? ");
+            preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser WHERE username=? ");
             preparedStatement.setString(1,username);
 
-            ResultSet r1=preparedStatement.executeQuery();
+            ResultSet r1 = preparedStatement.executeQuery();
             String name;
-            if(r1.next()) {
+            if(r1.next()){
                 name =  r1.getString("username");
                 if(name.equals(username)) {
                     return true;
-
                 }
             }
         }catch (Exception expt){
-
             expt.printStackTrace();
-
         }
         return false;
     }
 
-    //returns true if username corresponds to a superuser, false otherwise
-    public static boolean isSuperUser(String username)
-    {
-        return false;
+    //returns true if username corresponds to a superuser, false otherwise (tested)
+    public static boolean isSuperUser(String username){
+        boolean userIsSuperUser = false;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT superUser FROM User WHERE username=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            if(queryOutput.next())
+                userIsSuperUser = queryOutput.getBoolean("superUser");
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return userIsSuperUser;
     }
 
-    //returns vip from table OrdinairyUser for the associated username
-    public static boolean isVipUser(String username){
-        return false;
+    //returns vip from table OrdinairyUser for the associated username (tested)
+    public static boolean isUserVip(String username){
+        boolean userIsVip = false;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT vip FROM OrdinairyUser WHERE username=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            if(queryOutput.next())
+                userIsVip = queryOutput.getBoolean("vip");
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+
+        return userIsVip;
     }
 
-    //returns registered from table OrdinairyUser for the associated username
+    //returns registered from table OrdinairyUser for the associated username (tested)
     public static boolean isRegisteredUser(String username){
-        return false;
-    }
-
-    //returns tempBlocked from table OrdinairyUser for the associated username
-    public static boolean isTempBlocked(String username){
-        return false;
-    }
-
-    //returns permBlocked from table OrdinairyUser for the associated username
-    public static boolean isPermBlocked(String username){
-        return false;
-    }
-
-    //true if itemID is found within the BidItem table
-    public static boolean isBidItem(int itemID){
-
+        boolean userIsRegistered = false;
         try{
-            preparedStatement = connection.prepareStatement("SELECT * FROM `BidItem` WHERE `itemID`=? ");
+            preparedStatement = connection.prepareStatement("SELECT registered FROM OrdinairyUser WHERE username=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            if(queryOutput.next())
+                userIsRegistered = queryOutput.getBoolean("registered");
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return userIsRegistered;
+    }
+
+    //returns tempBlocked from table OrdinairyUser for the associated username (tested)
+    public static boolean isTempBlocked(String username){
+        boolean userIsTempBlocked = false;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT tempBlocked FROM OrdinairyUser WHERE username=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            if(queryOutput.next())
+                userIsTempBlocked = queryOutput.getBoolean("tempBlocked");
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return userIsTempBlocked;
+    }
+
+    //returns permBlocked from table OrdinairyUser for the associated username (tested)
+    public static boolean isPermBlocked(String username){
+        boolean userIsPermBlocked = false;
+        try{
+            preparedStatement = connection.prepareStatement("SELECT permBlocked FROM OrdinairyUser WHERE username=?");
+            preparedStatement.setString(1,username);
+            queryOutput = preparedStatement.executeQuery();
+
+            if(queryOutput.next())
+                userIsPermBlocked = queryOutput.getBoolean("permBlocked");
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return userIsPermBlocked;
+    }
+
+    //true if itemID is found within the BidItem table (tested)
+    public static boolean isBidItem(int itemID){
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM BidItem WHERE itemID=? ");
             preparedStatement.setInt(1,itemID);
             ResultSet r1=preparedStatement.executeQuery();
             int id;
@@ -485,15 +540,13 @@ public class Data{
         }catch (Exception expt){
             expt.printStackTrace();
         }
-
         return false;
     }
 
-    //true if itemID is found within FixedItem
+    //true if itemID is found within FixedItem (tested)
     public static boolean isFixedItem(int itemID){
-
         try{
-            preparedStatement = connection.prepareStatement("SELECT * FROM `FixedItem` WHERE `itemID`=? ");
+            preparedStatement = connection.prepareStatement("SELECT * FROM FixedItem WHERE itemID=? ");
             preparedStatement.setInt(1,itemID);
             ResultSet r1=preparedStatement.executeQuery();
             int id;
@@ -504,33 +557,31 @@ public class Data{
                 }
             }
         }catch (Exception expt){
-
             expt.printStackTrace();
-
         }
         return false;
     }
 
     //DATA RETRIEVAL FUNCTIONS
 
-    //returns [address, creditCard, phoneNumber, desireKeyWords, blockMessage, registered, vip, outstandingUser, tempBlocked, permBlocked] based on OrdinairyUser username
+    //returns [name,address, creditCard, phoneNumber, desireKeyWords, blockMessage] based on OrdinairyUser username
     public static String[] getOrdinairyUserInfo(String username){
-
+        String [] ordinairyUserInfo = new String[6];
         try{
-            preparedStatement = connection.prepareStatement("SELECT * FROM `OrdinairyUser` WHERE `username`=? ");
+            preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser WHERE username=? ");
             preparedStatement.setString(1,username);
 
-            ResultSet r1=preparedStatement.executeQuery();
+            queryOutput = preparedStatement.executeQuery();
 
-            if(r1.next()) {
-                String name=r1.getString("username");
-                String address=r1.getString("address");
-                String creditCard=r1.getString("creditCard");
-                String phoneNumber=r1.getString("phoneNumber");
-                String desireKeyWORDS=r1.getString("desireKeyWORDS");
-                int vip=r1.getInt("vip");
-                int tempBlocked=r1.getInt("tempBlocked");
-                int permBlock=r1.getInt("permBlock");
+            if(queryOutput.next()) {
+                String name = queryOutput.getString("username");
+                String address = queryOutput.getString("address");
+                String creditCard = queryOutput.getString("creditCard");
+                String phoneNumber = queryOutput.getString("phoneNumber");
+                String desireKeyWORDS = queryOutput.getString("desireKeyWORDS");
+                int vip = queryOutput.getInt("vip");
+                int tempBlocked = queryOutput.getInt("tempBlocked");
+                int permBlock = queryOutput.getInt("permBlock");
 
                // return  info;
             }
@@ -564,16 +615,13 @@ public class Data{
             expt.printStackTrace();
 
         }
-
-
         return null;
     }
 
     //finds the highest bid from the Bid table and returns it
     public static int getHighestBid(int itemID){
-
         try{
-            preparedStatement = connection.prepareStatement("SELECT MAX(amount) FROM `Bid` WHERE `itemID`=? ");
+            preparedStatement = connection.prepareStatement("SELECT MAX(amount) FROM Bid WHERE itemID=? ");
             preparedStatement.setInt(1,itemID);
 
             ResultSet r1=preparedStatement.executeQuery();
@@ -598,7 +646,7 @@ public class Data{
     public static String getBidWinner(int itemID) {
 
         try {
-            preparedStatement = connection.prepareStatement("SELECT MAX(amount) FROM `Bid` WHERE `itemID`=? ");
+            preparedStatement = connection.prepareStatement("SELECT MAX(amount) FROM Bid WHERE itemID=? ");
             preparedStatement.setInt(1, itemID);
 
             ResultSet r1 = preparedStatement.executeQuery();
@@ -685,6 +733,11 @@ public class Data{
         return null;
     }
 
+    //returns the avg of ratings from table Rating of all itemIds where seller = username in table Item
+    public static int getAverageRating(String username){
+        return 0;
+    }
+
     //returns an ArrayList of itemIDs where registered = false in the Item table
     public static ArrayList<Integer> getUnregisteredItems(){
         return null;
@@ -759,8 +812,47 @@ public class Data{
         }
     }
 
+    //sets registered to true in OrdinairyUser table where OrdinairyUser.username = username (tested)
+    public static void registerUser(String username){
+        try{
+            preparedStatement = connection.prepareStatement("UPDATE OrdinairyUser SET registered=true WHERE username=?");
+            preparedStatement.setString(1,username);
+            preparedStatement.executeUpdate();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
     //removes item associated with itemID from Item table
     public static void removeItem(int itemID){
+
+    }
+
+    //sets vip in OrdinairyUser to true for the associated username (tested)
+    public static void makeUserVip(String username){
+        try{
+            preparedStatement = connection.prepareStatement("UPDATE OrdinairyUser SET vip=true WHERE username=?");
+            preparedStatement.setString(1,username);
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    //sets vip in OrdinairyUser to false for the associated username (tested)
+    public static void makeUserNotVip(String username){
+        try{
+            preparedStatement = connection.prepareStatement("UPDATE OrdinairyUser SET vip=false WHERE username=?");
+            preparedStatement.setString(1,username);
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+
+    //updates vip statues to true/false based on ratings/spending vip rules- function is called upon every purchase and rating created
+    public static void updateUserVipStatus(String username){
 
     }
 
@@ -828,15 +920,41 @@ public class Data{
     public static void handleComplaint(int complaintID){
 
     }
-
-    //sets the blockTemp boolean to true and OrdinairyUser.blockMessage to blockMessage in table OrdinairyUser for the associate username (done automatically whenever a 2nd warning is sent)
+    
+    //TODO:(done automatically whenever a 2nd warning is sent)
+    //sets the tempBlocked boolean to true and OrdinairyUser.blockMessage to blockMessage in table OrdinairyUser for the associate username (tested)
     public static void blockUserTemp(String username, String blockMessage){
-
+        try{
+            preparedStatement = connection.prepareStatement("UPDATE OrdinairyUser SET tempBlocked=true, blockMessage=? WHERE username=?");
+            preparedStatement.setString(1,blockMessage);
+            preparedStatement.setString(2,username);
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
 
-    //sets the blockPerm boolean in table OrdinairyUser to true for associated username
+    //sets the blockPerm boolean in table OrdinairyUser to true for associated username (tested)
     public static void blockUserPerm(String username){
+        try{
+            preparedStatement = connection.prepareStatement("UPDATE OrdinairyUser SET permBlocked=true WHERE username=?");
+            preparedStatement.setString(1,username);
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
 
+    //sets both tempBlocked and permBlocked to false in OrdinairyUser table for the associated username (tested)
+    public static void unblockUser(String username){
+        try{
+            preparedStatement = connection.prepareStatement("UPDATE OrdinairyUser SET tempBlocked=false, permBlocked=false, blockMessage=? WHERE username=?");
+            preparedStatement.setString(1,"");
+            preparedStatement.setString(2,username);
+            preparedStatement.executeUpdate();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
 
     //MISCELLANEOUS FUNCTIONS
