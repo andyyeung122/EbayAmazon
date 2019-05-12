@@ -21,6 +21,7 @@ public class OrdHomePage extends Scene{
     private static Main main = new Main();
     private static EditProfile editprofile = new EditProfile();
     private static SellItems sellitems = new SellItems();
+    private static ManageItemsPage manageitems = new ManageItemsPage();
 
     public OrdHomePage() {
         super(new GridPane(),600,550);
@@ -114,6 +115,12 @@ public class OrdHomePage extends Scene{
         sellItem.setOnAction(( e -> {
             main.getPrimaryStage().setScene(sellitems);
             main.getPrimaryStage().setTitle("Sell New Item");
+            main.getPrimaryStage().show();
+        }));
+
+        manage.setOnAction(( e-> {
+            main.getPrimaryStage().setScene(manageitems);
+            main.getPrimaryStage().setTitle("Manage Items");
             main.getPrimaryStage().show();
         }));
 
