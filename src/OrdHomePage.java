@@ -21,8 +21,8 @@ public class OrdHomePage extends Scene{
     private List<Items> itemList = new ArrayList<>();
     private static Main main = new Main();
     private static EditProfile editprofile = new EditProfile();
-    private static SellItems sellitems = new SellItems();
     private static ManageItemsPage manageitems = new ManageItemsPage();
+    private static FriendsPage friendspage = new FriendsPage();
 
 
     public OrdHomePage() {
@@ -80,7 +80,7 @@ public class OrdHomePage extends Scene{
         editProfileBtn.getChildren().add(editProfile);
         grid.add(editProfileBtn, 4, 1);
 
-        Button friends = new Button("Friends");
+        Button friends = new Button("FriendsPage");
         HBox friendsBtn = new HBox(10);
         friendsBtn.setAlignment(Pos.TOP_RIGHT);
         friendsBtn.getChildren().add(friends);
@@ -136,7 +136,12 @@ public class OrdHomePage extends Scene{
             window.setWidth(300);
             window.setScene(submitcomplaintpage);
             window.show();
+        }));
 
+        friends.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(friendspage);
+            main.getPrimaryStage().setTitle("Friends");
+            main.getPrimaryStage().show();
         }));
 
     }
