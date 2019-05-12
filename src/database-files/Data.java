@@ -875,25 +875,36 @@ public class Data{
         return avg;
     }
 
-    //returns an ArrayList of itemIDs where registered = false in the Item table
+    //returns an ArrayList of itemIDs where registered = false in the Item table (tested)
     public static ArrayList<Item> getUnregisteredItems(){
-        ArrayList<Item> listOfItems = new ArrayList<>();
+        ArrayList<Integer> listOfItems = new ArrayList<>();
         try{
-            preparedStatement = connection.prepareStatement("SELECT id FROM Item WHERE registered=false");
+            preparedStatement = connection.prepareStatement("SELECT id FROM Item WHERE registered=false ORDER BY id DESC");
             queryOutput = preparedStatement.executeQuery();
 
             while(queryOutput.next())
-                listOfItems.add(getItem(queryOutput.getInt("id")));
+                listOfItems.add(queryOutput.getInt("id"));
 
         }catch(Exception expt){
             expt.printStackTrace();
         }
-        return listOfItems;
+        return toItemList(listOfItems);
     }
 
-    //returns an ArrayList of usernames where registered = false in the OrdinairyUser table
-    public static ArrayList<String> getUnregisteredUsers(){
-        return null;
+    //returns an ArrayList of usernames where registered = false in the OrdinairyUser table (tested)
+    public static ArrayList<User> getUnregisteredUsers(){
+        ArrayList<String> listOfUsers = new ArrayList<>();
+        try{
+            preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser WHERE registered=false");
+            queryOutput = preparedStatement.executeQuery();
+
+            while(queryOutput.next())
+                listOfUsers.add(queryOutput.getString("username"));
+            
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return toUserList(listOfUsers);
     }
 
     //returns an ArrayList of complaintIDs from Complaint table where handled = false
@@ -1102,6 +1113,14 @@ public class Data{
     //converts a string in date format into a long value representing the date in miliseconds
     public static long dateStringToLong(String dateString){
         return 0l;
+    }
+
+    public static ArrayList<User> toUserList(ArrayList<String> usernames ){
+        ArrayList<User> userList = new ArrayList<>();
+        for(String username : usernames)
+            userList.add(getOrdinairyUser(username));
+        
+        return userList;
     }
 
     public static ArrayList<Item> toItemList(ArrayList<Integer> itemIDList){

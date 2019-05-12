@@ -107,6 +107,11 @@ public class Testing{
         for(Item item : unregisteredItems)
             System.out.println("itemID: " + item.getItemID() + " itemName: " + item.getItemName());
 
+        ArrayList<User> unregisteredUsers = Data.getUnregisteredUsers();
+
+        for(User user : unregisteredUsers)
+            System.out.println("username: " + user.getUsername() + " name: " + user.getName() + " address: " + user.getAddress());
+
         Data.closeResources();
         
     }
