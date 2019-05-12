@@ -1109,7 +1109,6 @@ public class Data{
             ResultSet queryOutput = preparedStatement.executeQuery();
 
             while(queryOutput.next()){
-                System.out.println(1);
                 itemID = queryOutput.getInt("itemID");
                 reason = queryOutput.getString("reason");
                 item = getItem(itemID);
