@@ -18,7 +18,7 @@ public class Testing{
         Data.createFriend("dude55","dude77");
         Data.createFriendRequest("dude55","dude77");
         Data.createTabooWord("Fudge");
-        Data.createCancellationRequest(1,"I can't find it");
+        Data.createCancellationRequest(3,"I can't find it");
         System.out.println(Data.isOrdinairyUser("dude55"));
         System.out.println(Data.isOrdinairyUser("dude66"));
         System.out.println(Data.isBidItem(13));
@@ -142,6 +142,17 @@ public class Testing{
         for(CancellationRequest request : listOfRequests)
             System.out.println("itemID: " + request.getItem().getItemID() + " itemName: " + request.getItem().getItemName() + " reason: " + request.getReason() );
 
+        Data.removeItem(2);
+        Data.deleteFriend("dude55","dude77");
+        Data.removeTabooWord("Fudge");
+        Data.sendMessage("dude77","Stop sending spam!","Please stop spamming users. It's not nice");
+        Data.sendWarning("dude77","Stop sending spam!","This is a warning to stop samming");
+        Data.sendFriendMessage("dude55","dude77","Send more nudes","I need 'em man. Need more nudes");
+        Data.handleComplaint(17);
+        Data.deleteFriendRequest("dude55","dude77");
+        Data.approveCancellation(3);
+
+        System.out.println(Data.getBuyer(5));
         Data.closeResources();
         
     }

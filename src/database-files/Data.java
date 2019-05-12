@@ -115,7 +115,7 @@ public class Data{
         String createFixedItemTable = "CREATE TABLE IF NOT EXISTS FixedItem("
         + "itemID INT PRIMARY KEY,"
         + "price INT,"
-        + "FOREIGN KEY(itemID) REFERENCES Item(id));";
+        + "FOREIGN KEY(itemID) REFERENCES Item(id) ON UPDATE CASCADE ON DELETE CASCADE);";
 
         executeUpdate(createFixedItemTable);
     }
@@ -124,7 +124,7 @@ public class Data{
         String createBidItemTable = "CREATE TABLE IF NOT EXISTS BidItem("
         + "itemID INT PRIMARY KEY,"
         + "startOfBid LONG,"
-        + "FOREIGN KEY(itemID) REFERENCES Item(id));";
+        + "FOREIGN KEY(itemID) REFERENCES Item(id) ON UPDATE CASCADE ON DELETE CASCADE);";
 
         executeUpdate(createBidItemTable);
     }
@@ -792,6 +792,24 @@ public class Data{
         return toItemList(listOfItems);
     }
 
+    //retrieves buyer from Purchase where Purchase.itemID = itemID
+    public static String getBuyer(int itemID){
+        String buyer = "";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT buyer FROM Purchase WHERE itemID=?");
+            preparedStatement.setInt(1,itemID);
+            ResultSet queryOutput = preparedStatement.executeQuery();
+            if(queryOutput.next())
+                buyer = queryOutput.getString("buyer");
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return buyer;
+
+    }
+
     //searhes for Item.names and Item.KeyWords that match contents of search (tested)
     public static ArrayList<Item> searchForItems(String search){
         ArrayList<Integer> listOfItems = new ArrayList<>();
@@ -1124,6 +1142,7 @@ public class Data{
 
     //DATA MODIFICATION FUNCTIONS
 
+    //NOTE: Call function when purchase is canceled
     //sets registered to true in Item table (tested)
     public static void registerItem(int itemID){
         try{
@@ -1150,9 +1169,17 @@ public class Data{
         }
     }
 
-    //removes item associated with itemID from Item table
+    //NOTE: Call this function where a purchase is canceled
+    //removes item associated with itemID from Item table (tested)
     public static void removeItem(int itemID){
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Item WHERE id=?");
+            preparedStatement.setInt(1,itemID);
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
 
     //sets vip in OrdinairyUser to true for the associated username (tested)
@@ -1179,75 +1206,133 @@ public class Data{
         }
     }
 
-    //updates vip statues to true/false based on ratings/spending vip rules- function is called upon every purchase and rating created
+    //TODO: function is called upon every purchase and rating created
+    //updates vip statues to true/false based on ratings/spending vip rules
     public static void updateUserVipStatus(String username){
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("");
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
 
     }
 
     //TODO:update UserKeyword table automatically
     //sets the keywords of associated username to keywords in User table
     public static void editKeywords(String username, String keywords){
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("");
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
 
     //creates notification(s) based on itemID's keyowrds in Item that match with the desiredKeywords of OrdinairyUsers (is called when an item is registered and put on sale)
     public static void sendNotificationsForItem(String itemID){
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("");
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
 
-    //sends a notification (as a message) from one user to another (users should be friends), place sender username in title
-    public static void sendMessage(String sender, String receiver, String messageTitle, String messageContents){
-
+    //NOTE: change friend message page and remove Title
+    //sends a notification (as a message) from one user to another (users should be friends), place sender username in title (tested)
+    public static void sendFriendMessage(String sender, String receiver, String messageTitle, String messageContents){
+        String newTitle = "Message From " + sender;
+        createNotification(newTitle,messageContents,receiver,false);
     }
 
-    //sends a notification (as a message) from a SuperUser to an Ordinairy user
+    //sends a notification (as a message) from a SuperUser to an Ordinairy user (tested)
     public static void sendMessage(String receiver, String messageTitle, String messageContents){
-
+        createNotification(messageTitle, messageContents, receiver,false);
     }
 
-    //sends a notification (warning) to an OrdinairyUser
-    public static void sendWarning(String receiver, String warningTitle, String warningContents){
-
+    //sends a notification (warning) to an OrdinairyUser (tested)
+    public static void sendWarning(String receiver, String title, String messageContents){
+        String warningTitle = "Warning! " + title;
+        createNotification(warningTitle,messageContents,receiver,true);
     }
 
-    //removes entry (user,friend) from table Friend
+    //removes entry (user,friend) from table Friend (tested)
     public static void deleteFriend(String user, String friend){
-
-    }
-
-    //removes entry from Purchase table where itemID matches supplied itemID
-    public static void canclePurchase(int itemID){
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Friend WHERE user=? AND friend=?");
+            preparedStatement.setString(1,user);
+            preparedStatement.setString(2,friend);
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
     
-    //removes entry (sender,receiver) from table FriendRequest
+    //removes entry (sender,receiver) from table FriendRequest (tested)
     public static void deleteFriendRequest(String sender, String receiver){
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM FriendRequest WHERE sender=? AND receiver=?");
+            preparedStatement.setString(1,sender);
+            preparedStatement.setString(2,receiver);
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
 
-    //adds word into the TabooWord table if it doesn't already exist
-    public static void addTabooWord(String word){
-
-    }
-
-    //removes word from TabooWord table if it exists
+    //removes word from TabooWord table if it exists (tested)
     public static void removeTabooWord(String word){
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM TabooWord WHERE word=?");
+            preparedStatement.setString(1,word);
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
 
-    //calls cancled canclePurchase and removeItem function on itemID and removes the itemID's occurence from CancellationRequest table
+    //calls cancled canclePurchase and removeItem function on itemID and removes the itemID's occurence from CancellationRequest table (tested)
     public static void approveCancellation(int itemID){
-
+        Item item = getItem(itemID);
+        String buyer = getBuyer(itemID);
+        String seller = item.getSeller();
+        String messageTitle = "Purchase has been canceled";
+        String messageContent = "The item " + item.getItemName() + " has been removed from the sale board, with Item-ID " + item.getItemID()
+        + ". Any purchases made associated with this item have also been canceled.";
+        removeItem(itemID);
+        sendMessage(buyer,messageTitle,messageContent);
+        sendMessage(seller,messageTitle,messageContent);
     }
 
-    //removes itemId's occurence form the CancellationRequest table
+    //removes itemId's occurence form the CancellationRequest table (tested)
     public static void rejectCancellation(int itemID){
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM CancellationRequest WHERE itemID=?");
+            preparedStatement.setInt(1,itemID);
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
 
-    //sets handled to true for the associated complaintID in Complaint table
+    //sets handled to true for the associated complaintID in Complaint table (tested)
     public static void handleComplaint(int complaintID){
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Complaint SET handled=true WHERE id=?");
+            preparedStatement.setInt(1,complaintID);
+            preparedStatement.executeUpdate();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
     }
     
     //TODO:(done automatically whenever a 2nd warning is sent)
