@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class OrdHomePage extends Scene{
     private static EditProfile editprofile = new EditProfile();
     private static SellItems sellitems = new SellItems();
     private static ManageItemsPage manageitems = new ManageItemsPage();
+
 
     public OrdHomePage() {
         super(new GridPane(),600,550);
@@ -113,15 +115,28 @@ public class OrdHomePage extends Scene{
         }));
 
         sellItem.setOnAction(( e -> {
-            main.getPrimaryStage().setScene(sellitems);
-            main.getPrimaryStage().setTitle("Sell New Item");
-            main.getPrimaryStage().show();
+            SellItems sellitems = new SellItems();
+            Stage window = sellitems.setWindow();
+            window.setTitle("Sell Item");
+            window.setWidth(390);
+            window.setScene(sellitems);
+            window.show();
         }));
 
         manage.setOnAction(( e-> {
             main.getPrimaryStage().setScene(manageitems);
             main.getPrimaryStage().setTitle("Manage Items");
             main.getPrimaryStage().show();
+        }));
+
+        submitComplaint.setOnAction(( e -> {
+            SubmitComplaintPage submitcomplaintpage = new SubmitComplaintPage();
+            Stage window = submitcomplaintpage.setWindow();
+            window.setTitle("Submit Complaint");
+            window.setWidth(300);
+            window.setScene(submitcomplaintpage);
+            window.show();
+
         }));
 
     }

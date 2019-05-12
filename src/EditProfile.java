@@ -67,13 +67,13 @@ public class EditProfile extends Scene {
         HBox backbtn = new HBox(10);
         backbtn.setAlignment(Pos.BOTTOM_LEFT);
         backbtn.getChildren().add(backtologin);
-        grid.add(backtologin, 0, 7);
+        grid.add(backtologin, 1, 7);
 
         Button update = new Button("Update");
         HBox updatebtn = new HBox(10);
         updatebtn.setAlignment(Pos.BASELINE_RIGHT);
         updatebtn.getChildren().add(update);
-        grid.add(update, 1, 7);
+        grid.add(update, 0, 7);
 
         // Connect to database, add new user
         update.setOnAction( e -> {

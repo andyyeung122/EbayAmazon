@@ -6,12 +6,14 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class Items extends VBox{
-    VBox vbox = new VBox();
-    Pane pane = new Pane();
-    String cssLayout = "-fx-border-color: black;\n" +
+    public VBox vbox = new VBox();
+    public Pane pane = new Pane();
+    public String cssLayout = "-fx-border-color: black;\n" +
             "-fx-border-insets: 5;\n" +
             "-fx-border-width: 3;\n";
 
+    public boolean isFixed = false;
+    public boolean isBid = false;
 
     public Items() {
         //Image pic = new Image();
@@ -40,5 +42,13 @@ public class Items extends VBox{
 
     private void setPrice() {
 
+    }
+
+    private void setIsFixed() {
+        isFixed = !isFixed;
+    }
+
+    private void setIsBid() {
+        isBid = !isBid;
     }
 }
