@@ -1,5 +1,5 @@
 
-public class Notification{
+public class Notification extends Message{
 
     private int id;
     private String title;
@@ -12,25 +12,11 @@ public class Notification{
     }
 
     public Notification(int id, String title,String message,String receiver,boolean warning){
-        this.id = id;
-        this.title = title;
-        this.message = message;
+        super(id,title,message);
         this.receiver = receiver;
         this.warning = warning;
     }
-
-    public int getID(){
-        return id;
-    }
-
-    public String getTitle(){
-        return title;
-    }
-
-    public String getMessage(){
-        return message;
-    }
-
+    
     public String getReceiver(){
         return receiver;
     }

@@ -111,6 +111,36 @@ public class Testing{
 
         for(User user : unregisteredUsers)
             System.out.println("username: " + user.getUsername() + " name: " + user.getName() + " address: " + user.getAddress());
+        
+        ArrayList<Complaint> listOfComplaints = Data.getUnhandledComplaints();
+
+        for(Complaint complnt : listOfComplaints)
+            System.out.println("title: " + complnt.getTitle() + " mssg: " + complnt.getMessage() + " sender: " + complnt.getSender() );
+
+        ArrayList<Item> purchaseHistory = Data.getPurchaseHistory("dude77",1000l,5000l);
+
+        for(Item item : purchaseHistory)
+            System.out.println("itemID: " + item.getItemID() + " itemName: " + item.getItemName() + " seller: " + item.getSeller());
+        
+        ArrayList<Item> saleHistory = Data.getSaleHistory("dude55",1000l,5000l);
+
+        for(Item item : saleHistory)
+            System.out.println("itemID: " + item.getItemID() + " itemName: " + item.getItemName() + " seller: " + item.getSeller());
+        
+        ArrayList<User> outstandingUsers = Data.getOutstandingUsers();
+
+        for(User user : outstandingUsers)
+            System.out.println("username: " + user.getUsername() + " name:" + user.getName() + " address: " + user.getAddress());
+
+        ArrayList<String> tabooWords = Data.getTabooWords();
+
+        for(String word : tabooWords)
+            System.out.println("Taboo word: " + word);
+        
+        ArrayList<CancellationRequest> listOfRequests = Data.getCancellationRequests();
+
+        for(CancellationRequest request : listOfRequests)
+            System.out.println("itemID: " + request.getItem().getItemID() + " itemName: " + request.getItem().getItemName() + " reason: " + request.getReason() );
 
         Data.closeResources();
         
