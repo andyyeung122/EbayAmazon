@@ -62,8 +62,6 @@ public class ViewTransactionHistory extends Application {
 
             secondaryLayout.add(transactionTable,1,1);
 
-
-
             secondStage.show();
         });
         HBox viewIteMButton = new HBox(10.0D);

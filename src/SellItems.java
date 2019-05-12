@@ -17,6 +17,7 @@ import java.io.File;
 public class SellItems extends Scene {
     GridPane grid;
     Stage stage;
+    private static Stage window = new Stage();
     private static Main main = new Main();
     private static OrdHomePage ordhomepage = new OrdHomePage();
 
@@ -68,9 +69,7 @@ public class SellItems extends Scene {
         final FileChooser fileChooser = new FileChooser();
 
         cancelItem.setOnAction((e -> {
-            main.getPrimaryStage().setScene(ordhomepage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            window.close();
         }));
 
         uploadImage.setOnAction(( e -> {
@@ -117,5 +116,8 @@ public class SellItems extends Scene {
             }
         }
         return result;
+    }
+    public static Stage setWindow() {
+        return window;
     }
 }
