@@ -27,7 +27,7 @@ public class SellItems extends Scene {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        Text findItem = new Text("Enter Item Detail:");
+        Text findItem = new Text("Enter Item Details:");
         grid.add(findItem, 0,0);
 
         Button uploadImage = new Button("Upload Image");
@@ -69,7 +69,7 @@ public class SellItems extends Scene {
 
         cancelItem.setOnAction((e -> {
             main.getPrimaryStage().setScene(ordhomepage);
-            main.getPrimaryStage().setTitle("Sell New Item");
+            main.getPrimaryStage().setTitle("Home Page");
             main.getPrimaryStage().show();
         }));
 
