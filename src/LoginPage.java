@@ -1,3 +1,4 @@
+import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -65,10 +66,14 @@ public class LoginPage extends Scene {
 
         // Connect to Database
         login.setOnAction( e -> {
-            if(!data.isSuperUser(userNameTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText())) {
+            if(!data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())) {
                 main.getPrimaryStage().setScene(ordhomepage);
                 main.getPrimaryStage().setTitle("Home Page");
                 main.getPrimaryStage().show();
+            }
+            else{
+
+
             }
 
 

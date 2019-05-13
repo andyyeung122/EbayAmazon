@@ -489,15 +489,16 @@ public class Data{
     //VALIDATION FUNCTIONS
 
     //returns true if username corresponds to an ordinairy user, false otherwise (tested)
-    public static boolean isOrdinairyUser(String username){
+    public static boolean isOrdinairyUser(String username, String password){
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser WHERE username=? ");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser INNER JOIN User ON OrdinairyUser.username=User.username WHERE OrdinairyUser.username=? AND password=? ");
             preparedStatement.setString(1,username);
+            preparedStatement.setString(2,password);
 
             ResultSet r1 = preparedStatement.executeQuery();
             String name;
             if(r1.next()){
-                name =  r1.getString("username");
+                name =  r1.getString("OrdinairyUser.username");
                 if(name.equals(username)) {
                     return true;
                 }
@@ -511,11 +512,12 @@ public class Data{
     }
 
     //returns true if username corresponds to a superuser, false otherwise (tested)
-    public static boolean isSuperUser(String username){
+    public static boolean isSuperUser(String username, String password){
         boolean userIsSuperUser = false;
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT superUser FROM User WHERE username=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT superUser FROM User WHERE username=? AND password=?");
             preparedStatement.setString(1,username);
+            preparedStatement.setString(2,password);
             ResultSet queryOutput = preparedStatement.executeQuery();
 
             if(queryOutput.next())
