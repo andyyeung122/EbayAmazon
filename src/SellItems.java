@@ -18,8 +18,6 @@ public class SellItems extends Scene {
     GridPane grid;
     Stage stage;
     private static Stage window = new Stage();
-    private static Main main = new Main();
-    private static OrdHomePage ordhomepage = new OrdHomePage();
 
 
     public SellItems() {
