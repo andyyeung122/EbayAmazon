@@ -160,7 +160,7 @@ public class Testing{
         Data.sendNotificationsFor(63);
         Data.sendNotificationsFor(64);
 
-        System.out.println(Calendar.getInstance().getTime());
+        System.out.println(Calendar.getInstance().getTimeInMillis());
         Data.closeResources();
         
     }

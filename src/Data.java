@@ -1239,6 +1239,8 @@ public class Data{
     //checks if bid time is up, and if it is, sells the item to getBidWinner()
     public static void updateBidItems(){
         try{
+            long currentTime = Calendar.getInstance().getTimeInMillis();
+            long bidDuration = 180000;//3 minutes
             PreparedStatement preparedStatement = connection.prepareStatement("");
             preparedStatement.executeUpdate();
             preparedStatement.close(); 
