@@ -12,7 +12,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
 public class LoginPage extends Scene {
     Data data=new Data();
     GridPane grid;
@@ -20,6 +19,7 @@ public class LoginPage extends Scene {
     private  SuperHomePage superHomePage=new SuperHomePage();
     private static SignUpPage signuppage = new SignUpPage();
     private static OrdHomePage ordhomepage = new OrdHomePage();
+    private static GuestHomePage guesthomepage = new GuestHomePage();
 
     public LoginPage() {
 
@@ -57,6 +57,12 @@ public class LoginPage extends Scene {
         signupbtn.getChildren().add(signup);
         grid.add(signup, 0, 4);
 
+        Button back = new Button("Back");
+        HBox backbtn = new HBox(10);
+        backbtn.setAlignment(Pos.BOTTOM_RIGHT);
+        backbtn.getChildren().add(back);
+        grid.add(backbtn, 1, 5);
+
         // Connect to Database
         signup.setOnAction( e -> {
             main.getPrimaryStage().setScene(signuppage);
@@ -71,16 +77,22 @@ public class LoginPage extends Scene {
                 main.getPrimaryStage().setTitle("Home Page");
                 main.getPrimaryStage().show();
             }
-            else{
+            else if(data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())){
 
+                main.getPrimaryStage().setScene(superHomePage);
+                main.getPrimaryStage().setTitle("Home Page");
+                main.getPrimaryStage().show();
 
             }
 
 
-
-
-
         });
+
+        back.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(guesthomepage);
+            main.getPrimaryStage().setTitle("Guest Home Page");
+            main.getPrimaryStage().show();
+        }));
 
     }
 

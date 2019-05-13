@@ -10,23 +10,31 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class SuperHomePage extends Application {
-    public SuperHomePage() {
-    }
+public class SuperHomePage extends Scene {
+          GridPane grid;
 
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle(" Welcome Super User!");
-        HBox topLabel = new HBox();
-        Label label = new Label("EbayAmazon");
-        label.setFont(Font.font("Verdana", 20.0D));
-        label.setTextFill(Color.web("Black"));
-        topLabel.getChildren().add(label);
-        GridPane userFunction = new GridPane();
-        userFunction.setAlignment(Pos.CENTER);
-        userFunction.setHgap(10.0D);
-        userFunction.setVgap(10.D);
+
+    public SuperHomePage() {
+
+
+        super(new GridPane(),600,550);
+        grid = (GridPane)this.getRoot();
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        Text scenetitle = new Text(" Welcome Super User!");
+        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        grid.add(scenetitle, 0, 0, 2, 1);
+
+
+
+
+
+
         Button viewApplication = new Button("View Application");
         Button ViewProcessingItem = new Button("View Processing Items");
         Button sendMessage = new Button(" Send Message");
@@ -36,22 +44,21 @@ public class SuperHomePage extends Application {
         Button outstandingUser = new Button("Outstanding User");
         Button viewComplaints = new Button("View Complaints");
 
-        userFunction.add(viewApplication,1,0);
-        userFunction.add(ViewProcessingItem,1,1);
-        userFunction.add(sendMessage,1,2);
-        userFunction.add(viewHistory,1,3);
-        userFunction.add(tabooWord,1,4);
-        userFunction.add(deleteUser,1,5);
-        userFunction.add(outstandingUser,1,6);
-        userFunction.add(viewComplaints,1,7);
+        grid.add(viewApplication,2,1);
+        grid.add(ViewProcessingItem,2,2);
+        grid.add(sendMessage,2,3);
+        grid.add(viewHistory,2,4);
+        grid.add(tabooWord,2,5);
+        grid.add(deleteUser,2,6);
+        grid.add(outstandingUser,2,7);
+        grid.add(viewComplaints,2,8);
 
-        BorderPane borderPane = new BorderPane();
-        borderPane.setTop(topLabel);
-        borderPane.setRight(userFunction);
-        Scene scene = new Scene(borderPane, 500.0D, 500.0D);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
     }
+
+
+
+
 
 
 }

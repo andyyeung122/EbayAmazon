@@ -40,7 +40,11 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
+
             String password = "Eque7400";
+
+
+
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 
             connection = DriverManager.getConnection(host,user,password);
@@ -1235,7 +1239,6 @@ public class Data{
         }catch(Exception expt){
             expt.printStackTrace();
         }
-
     }
 
     //checks if bid time is up, and if it is, sells the item to getBidWinner()

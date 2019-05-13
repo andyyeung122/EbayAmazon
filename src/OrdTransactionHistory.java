@@ -25,8 +25,8 @@ public class OrdTransactionHistory extends Scene {
         super(new GridPane(),390,300);
         grid = (GridPane)this.getRoot();
         grid.setAlignment(Pos.CENTER);
-        grid.setHgap(20);
-        grid.setVgap(20);
+        grid.setHgap(15);
+        grid.setVgap(15);
 
         Text scenetitle = new Text("Transaction History");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
