@@ -23,6 +23,7 @@ public class OrdHomePage extends Scene{
     private static EditProfile editprofile = new EditProfile();
     private static ManageItemsPage manageitems = new ManageItemsPage();
     private static FriendsPage friendspage = new FriendsPage();
+    private static OrdTransactionHistory ordtranshist = new OrdTransactionHistory();
 
 
     public OrdHomePage() {
@@ -92,7 +93,7 @@ public class OrdHomePage extends Scene{
         historyBtn.getChildren().add(history);
         grid.add(historyBtn, 4, 4);
 
-        Button inbox = new Button("Inbox");
+        Button inbox = new Button("InboxPage");
         HBox inboxBtn = new HBox(10);
         inboxBtn.setAlignment(Pos.TOP_RIGHT);
         inboxBtn.getChildren().add(inbox);
@@ -144,5 +145,10 @@ public class OrdHomePage extends Scene{
             main.getPrimaryStage().show();
         }));
 
+        history.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(ordtranshist);
+            main.getPrimaryStage().setTitle("Transaction History");
+            main.getPrimaryStage().show();
+        }));
     }
 }
