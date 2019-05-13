@@ -17,8 +17,7 @@ import java.io.File;
 public class SellItems extends Scene {
     GridPane grid;
     Stage stage;
-    private static Main main = new Main();
-    private static OrdHomePage ordhomepage = new OrdHomePage();
+    private static Stage window = new Stage();
 
 
     public SellItems() {
@@ -27,7 +26,7 @@ public class SellItems extends Scene {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        Text findItem = new Text("Enter Item Detail:");
+        Text findItem = new Text("Enter Item Details:");
         grid.add(findItem, 0,0);
 
         Button uploadImage = new Button("Upload Image");
@@ -68,9 +67,7 @@ public class SellItems extends Scene {
         final FileChooser fileChooser = new FileChooser();
 
         cancelItem.setOnAction((e -> {
-            main.getPrimaryStage().setScene(ordhomepage);
-            main.getPrimaryStage().setTitle("Sell New Item");
-            main.getPrimaryStage().show();
+            window.close();
         }));
 
         uploadImage.setOnAction(( e -> {
@@ -117,5 +114,8 @@ public class SellItems extends Scene {
             }
         }
         return result;
+    }
+    public static Stage setWindow() {
+        return window;
     }
 }
