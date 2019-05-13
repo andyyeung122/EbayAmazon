@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df2828fb-ba0e-4344-b899-fad4c0440d4b" name="Default Changelist" comment="" />
+    <list default="true" id="df2828fb-ba0e-4344-b899-fad4c0440d4b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/EbayAmazon2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EbayAmazon2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/Data.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/Testing.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4293">
-              <caret line="567" column="21" lean-forward="true" selection-start-line="567" selection-start-column="21" selection-end-line="567" selection-end-column="21" />
+              <caret line="621" column="21" lean-forward="true" selection-start-line="621" selection-start-column="21" selection-end-line="621" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -57,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+            <state relative-caret-position="300">
+              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -177,7 +181,6 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="60" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -226,7 +229,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557529480049" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557529609262" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -538,14 +541,14 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4293">
-          <caret line="567" column="21" lean-forward="true" selection-start-line="567" selection-start-column="21" selection-end-line="567" selection-end-column="21" />
+          <caret line="621" column="21" lean-forward="true" selection-start-line="621" selection-start-column="21" selection-end-line="621" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        <state relative-caret-position="300">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
         </state>
       </provider>
     </entry>
