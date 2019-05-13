@@ -20,11 +20,11 @@ public class Testing{
         Data.createFriendRequest("dude55","dude77");
         Data.createTabooWord("Fudge");
         Data.createCancellationRequest(3,"I can't find it");
-        System.out.println(Data.isOrdinairyUser("dude55"));
-        System.out.println(Data.isOrdinairyUser("dude66"));
+        System.out.println("dude55 is an ordinairy user? " + Data.isOrdinairyUser("dude55","1234"));
+        System.out.println("dude66 is an ordinairy user? " + Data.isOrdinairyUser("dude66","1234"));
         System.out.println(Data.isBidItem(13));
         System.out.println(Data.isFixedItem(12));
-        System.out.println(Data.isSuperUser("dude66"));
+        System.out.println("dude66 is a super user?" + Data.isSuperUser("dude66","1234"));
         System.out.println("Is dude55 vip?: " + Data.isUserVip("dude55"));
         Data.makeUserVip("dude55");
         System.out.println("Is dude55 vip?: " + Data.isUserVip("dude55"));
