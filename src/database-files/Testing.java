@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Testing{
 
@@ -158,6 +159,8 @@ public class Testing{
         Data.editKeywords("dude55","he,wants,red,nudes,too");
         Data.sendNotificationsFor(63);
         Data.sendNotificationsFor(64);
+
+        System.out.println(Calendar.getInstance().getTime());
         Data.closeResources();
         
     }

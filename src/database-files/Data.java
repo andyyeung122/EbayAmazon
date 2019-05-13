@@ -1524,14 +1524,3 @@ TabooWords(word:str)
     }
 
 */
-
-//repeated code
-/*
-        try{
-            preparedStatement = connection.prepareStatement("");
-
-            preparedStatement.executeUpdate();
-        }catch(Exception expt){
-            expt.printStackTrace();
-        }
-*/
