@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="df2828fb-ba0e-4344-b899-fad4c0440d4b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/Inbox.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/OrdHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/OrdHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/THistory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InboxPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OrdHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/THistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdTransactionHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrdTransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdTransactionHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SubmitComplaintPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubmitComplaintPage.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,12 +64,12 @@
         <counts>
           <entry key="dummy" value="47" />
           <entry key="fxml" value="7" />
-          <entry key="java" value="3477" />
+          <entry key="java" value="3564" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3477" />
+          <entry key="JAVA" value="3564" />
           <entry key="PLAIN_TEXT" value="47" />
           <entry key="XML" value="7" />
         </counts>
@@ -112,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/OrdTransactionHistory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="65" column="57" lean-forward="true" selection-start-line="65" selection-start-column="57" selection-end-line="65" selection-end-column="57" />
+            <state relative-caret-position="144">
+              <caret line="83" column="54" selection-start-line="83" selection-start-column="54" selection-end-line="83" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -124,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SubmitComplaintPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="28" selection-start-line="28" selection-end-line="30" selection-end-column="41" />
+            <state relative-caret-position="221">
+              <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2259#2260#0" expanded="true" />
@@ -144,11 +141,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
+            <state relative-caret-position="76">
+              <caret line="95" column="40" lean-forward="true" selection-start-line="95" selection-start-column="40" selection-end-line="95" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -201,8 +198,8 @@
         <option value="$PROJECT_DIR$/src/FriendsPage.java" />
         <option value="$PROJECT_DIR$/src/InboxPage.java" />
         <option value="$PROJECT_DIR$/src/SubmitComplaintPage.java" />
-        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
         <option value="$PROJECT_DIR$/src/OrdTransactionHistory.java" />
+        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
       </list>
     </option>
   </component>
@@ -249,7 +246,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557712222643" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557712493468" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -618,18 +615,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SubmitComplaintPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="28" selection-start-line="28" selection-end-line="30" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2259#2260#0" expanded="true" />
-            <element signature="e#2288#2289#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SellItems.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -648,13 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ViewTransactionHistory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -664,8 +642,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrdTransactionHistory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="65" column="57" lean-forward="true" selection-start-line="65" selection-start-column="57" selection-end-line="65" selection-end-column="57" />
+        <state relative-caret-position="144">
+          <caret line="83" column="54" selection-start-line="83" selection-start-column="54" selection-end-line="83" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SubmitComplaintPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2259#2260#0" expanded="true" />
+            <element signature="e#2288#2289#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="95" column="40" lean-forward="true" selection-start-line="95" selection-start-column="40" selection-end-line="95" selection-end-column="40" />
         </state>
       </provider>
     </entry>

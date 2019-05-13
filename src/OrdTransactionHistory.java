@@ -17,6 +17,8 @@ public class OrdTransactionHistory extends Scene {
     GridPane grid;
     private List<Items> soldItems = new ArrayList<>();
     private List<Items> purchasedItems = new ArrayList<>();
+    private Main main = new Main();
+    private static OrdHomePage ordhomepage = new OrdHomePage();
 
 
     public OrdTransactionHistory() {
@@ -35,6 +37,9 @@ public class OrdTransactionHistory extends Scene {
 
         Button viewPurchasedItems = new Button("View Purchased Items");
         grid.add(viewPurchasedItems,1,1);
+
+        Button back = new Button("Back");
+        grid.add(back,0,3);
 
         viewSoldItems.setOnAction(( e -> {
             GridPane secondaryLayout = new GridPane();
@@ -72,6 +77,12 @@ public class OrdTransactionHistory extends Scene {
 
             thirdLayout.add(transactionTable,1,1);
             thirdStage.show();
+        }));
+
+        back.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(ordhomepage);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
         }));
     }
 }

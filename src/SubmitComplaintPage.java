@@ -17,8 +17,6 @@ public class SubmitComplaintPage extends Scene {
 
     GridPane grid;
     private static Stage window = new Stage();
-    private Main main = new Main();
-    private static OrdHomePage ordhomepage = new OrdHomePage();
 
     public SubmitComplaintPage() {
         super(new GridPane(),600,300);

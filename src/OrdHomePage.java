@@ -81,7 +81,7 @@ public class OrdHomePage extends Scene{
         editProfileBtn.getChildren().add(editProfile);
         grid.add(editProfileBtn, 4, 1);
 
-        Button friends = new Button("FriendsPage");
+        Button friends = new Button("Friends");
         HBox friendsBtn = new HBox(10);
         friendsBtn.setAlignment(Pos.TOP_RIGHT);
         friendsBtn.getChildren().add(friends);
@@ -93,7 +93,7 @@ public class OrdHomePage extends Scene{
         historyBtn.getChildren().add(history);
         grid.add(historyBtn, 4, 4);
 
-        Button inbox = new Button("InboxPage");
+        Button inbox = new Button("Inbox");
         HBox inboxBtn = new HBox(10);
         inboxBtn.setAlignment(Pos.TOP_RIGHT);
         inboxBtn.getChildren().add(inbox);
