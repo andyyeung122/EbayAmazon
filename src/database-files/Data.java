@@ -491,14 +491,14 @@ public class Data{
     //returns true if username corresponds to an ordinairy user, false otherwise (tested)
     public static boolean isOrdinairyUser(String username, String password){
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser INNER JOIN User ON OrdinairyUser.username=User.username WHERE OrdinairyUser.username=? AND password=? ");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM OrdinairyUser WHERE username=? AND password=? ");
             preparedStatement.setString(1,username);
             preparedStatement.setString(2,password);
 
             ResultSet r1 = preparedStatement.executeQuery();
             String name;
             if(r1.next()){
-                name =  r1.getString("OrdinairyUser.username");
+                name =  r1.getString("username");
                 if(name.equals(username)) {
                     return true;
                 }
