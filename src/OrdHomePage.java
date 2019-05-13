@@ -8,7 +8,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -24,7 +23,8 @@ public class OrdHomePage extends Scene{
     private static ManageItemsPage manageitems = new ManageItemsPage();
     private static FriendsPage friendspage = new FriendsPage();
     private static OrdTransactionHistory ordtranshist = new OrdTransactionHistory();
-
+    private static GuestHomePage guesthomepage = new GuestHomePage();
+    private static NotificationsPage notificationspage = new NotificationsPage();
 
     public OrdHomePage() {
         super(new GridPane(),600,550);
@@ -35,8 +35,6 @@ public class OrdHomePage extends Scene{
         Text scenetitle = new Text("Ebay-Amazon");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
-
-
 
         if (isVIP) {
             Text VIP = new Text("VIP");
@@ -51,6 +49,12 @@ public class OrdHomePage extends Scene{
         TextField searchTextField = new TextField();
         searchTextField.setPromptText("Search Item");
         grid.add(searchTextField, 0, 2);
+
+        Button logout = new Button("Log out");
+        HBox logoutBtn = new HBox(10);
+        logoutBtn.setAlignment(Pos.TOP_RIGHT);
+        logoutBtn.getChildren().add(logout);
+        grid.add(logoutBtn, 4, 0);
 
         Button search = new Button("Search");
         HBox searchBtn = new HBox(10);
@@ -93,7 +97,7 @@ public class OrdHomePage extends Scene{
         historyBtn.getChildren().add(history);
         grid.add(historyBtn, 4, 4);
 
-        Button inbox = new Button("Inbox");
+        Button inbox = new Button("NotificationsPage");
         HBox inboxBtn = new HBox(10);
         inboxBtn.setAlignment(Pos.TOP_RIGHT);
         inboxBtn.getChildren().add(inbox);
@@ -103,7 +107,6 @@ public class OrdHomePage extends Scene{
 //        itemList.add(new Items());
 //        itemList.add(new Items());
         grid.add(itemList.get(0), 1,1);
-
 
         manage.setOnAction( e -> {
 
@@ -150,5 +153,22 @@ public class OrdHomePage extends Scene{
             main.getPrimaryStage().setTitle("Transaction History");
             main.getPrimaryStage().show();
         }));
+
+        logout.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(guesthomepage);
+            main.getPrimaryStage().setTitle("Guest Home Page");
+            main.getPrimaryStage().show();
+                })
+        );
+
+        inbox.setOnAction(( e -> {
+            NotificationsPage notificationpage = new NotificationsPage();
+            Stage window = notificationpage.setWindow();
+            window.setTitle("Submit Complaint");
+            window.setScene(notificationpage);
+            window.show();
+        }));
+
+
     }
 }
