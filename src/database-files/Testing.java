@@ -153,6 +153,11 @@ public class Testing{
         Data.approveCancellation(3);
 
         System.out.println(Data.getBuyer(5));
+
+        Data.editKeywords("dude77","i,want,nudes");
+        Data.editKeywords("dude55","he,wants,red,nudes,too");
+        Data.sendNotificationsFor(63);
+        Data.sendNotificationsFor(64);
         Data.closeResources();
         
     }

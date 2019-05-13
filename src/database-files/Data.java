@@ -773,6 +773,23 @@ public class Data{
         return 0;
     }
 
+    //returns an ArrayList of users where item keywords match user keywords for the specified itemID (tested)
+    public static ArrayList<String> getUsersWithMatchingKeywords(int itemID){
+        ArrayList<String> listOfUsers = new ArrayList<>();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT DISTINCT user FROM UserKeyword INNER JOIN ItemKeyword ON UserKeyword.keyword=ItemKeyword.keyword WHERE itemID=?");
+            preparedStatement.setInt(1,itemID);
+            ResultSet queryOutput = preparedStatement.executeQuery();
+            while(queryOutput.next())
+                listOfUsers.add(queryOutput.getString("user"));
+            queryOutput.close();
+            preparedStatement.close(); 
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return listOfUsers;
+    }
+
     //returns a default ArrayList of itemIDs for guest users which are not included in the table Purchase (tested)
     public static ArrayList<Item> getItemsOnSale(){
         ArrayList<Integer> listOfItems = new ArrayList<>();
@@ -792,7 +809,7 @@ public class Data{
         return toItemList(listOfItems);
     }
 
-    //retrieves buyer from Purchase where Purchase.itemID = itemID
+    //retrieves buyer from Purchase where Purchase.itemID = itemID (tested)
     public static String getBuyer(int itemID){
         String buyer = "";
         try{
@@ -1219,9 +1236,8 @@ public class Data{
 
     }
 
-    //TODO:update UserKeyword table automatically
-    //sets the keywords of associated username to keywords in User table
-    public static void editKeywords(String username, String keywords){
+    //checks if bid time is up, and if it is, sells the item to getBidWinner()
+    public static void updateBidItems(){
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("");
             preparedStatement.executeUpdate();
@@ -1231,15 +1247,34 @@ public class Data{
         }
     }
 
-    //creates notification(s) based on itemID's keyowrds in Item that match with the desiredKeywords of OrdinairyUsers (is called when an item is registered and put on sale)
-    public static void sendNotificationsForItem(String itemID){
+    //TODO:update UserKeyword table automatically
+    //sets the keywords of associated username to keywords in User table (tested)
+    public static void editKeywords(String username, String keywords){
+        String [] words = keywords.split("[ ,]");
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM UserKeyword WHERE user=?");
+            preparedStatement.setString(1,username);
             preparedStatement.executeUpdate();
-            preparedStatement.close(); 
+            preparedStatement = connection.prepareStatement("UPDATE OrdinairyUser SET desiredKeyWords=? WHERE username=?");
+            preparedStatement.setString(1,keywords);
+            preparedStatement.setString(2,username);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            for(String word : words)
+                createUserKeyword(username,word);
         }catch(Exception expt){
             expt.printStackTrace();
         }
+    }
+
+    //creates notification(s) based on itemID's keyowrds in Item that match with the desiredKeywords of OrdinairyUsers (is called when an item is registered and put on sale) (tested)
+    public static void sendNotificationsFor(int itemID){
+        ArrayList<String> listOfUsers = getUsersWithMatchingKeywords(itemID);
+        Item itemOnSale = getItem(itemID);
+        String messageTitle = "Item is on sale!";
+        String messageContents = itemOnSale.getItemName() + " is on sale! If you wish to buy it, simply search for it on the homepage.";
+        for(String user : listOfUsers)
+            sendMessage(user,messageTitle,messageContents);
     }
 
     //NOTE: change friend message page and remove Title
