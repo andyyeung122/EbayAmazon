@@ -13,9 +13,10 @@ import javafx.stage.Stage;
 
 
 public class LoginPage extends Scene {
-
+    Data data=new Data();
     GridPane grid;
     private Main main = new Main();
+    private  SuperHomePage superHomePage=new SuperHomePage();
     private static SignUpPage signuppage = new SignUpPage();
     private static OrdHomePage ordhomepage = new OrdHomePage();
 
@@ -64,9 +65,16 @@ public class LoginPage extends Scene {
 
         // Connect to Database
         login.setOnAction( e -> {
-            main.getPrimaryStage().setScene(ordhomepage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            if(!data.isSuperUser(userNameTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText())) {
+                main.getPrimaryStage().setScene(ordhomepage);
+                main.getPrimaryStage().setTitle("Home Page");
+                main.getPrimaryStage().show();
+            }
+
+
+
+
+
         });
 
     }
