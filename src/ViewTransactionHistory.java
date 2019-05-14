@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,22 +10,23 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.time.LocalDate;
+//import java.time.LocalDate;
 
 
 public class ViewTransactionHistory extends Application {
+
 
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Super User");
         GridPane historyGrid = new GridPane();
         historyGrid.setAlignment(Pos.CENTER);
-        historyGrid.setHgap(10.0D);
-        historyGrid.setVgap(10.D);
-        historyGrid.setPadding(new Insets(25.0D, 25.0D, 25.0D, 25.0D));
+        historyGrid.setHgap(10);
+        historyGrid.setVgap(10);
+        historyGrid.setPadding(new Insets(25, 25, 25, 25));
         Scene historyScene = new Scene(historyGrid,470,470);
         Text title1 = new Text("View Transaction History");
         historyGrid.add(title1,0,0,2,1);
-        title1.setFont(Font.font("Verdana", 15.0D));
+        title1.setFont(Font.font("Verdana", 15));
         Label UserName = new Label("User Name");
         historyGrid.add(UserName, 0, 1);
         ComboBox userID = new ComboBox();
@@ -45,14 +48,13 @@ public class ViewTransactionHistory extends Application {
 
         Button viewItem = new Button(" View Items");
         viewItem.setOnAction(action ->{
-            LocalDate startDate = start.getValue();
-            LocalDate endDate   = start.getValue();
+            //   LocalDate startDate = start.getValue();
+            // LocalDate endDate   = start.getValue();
             GridPane secondaryLayout = new GridPane();
             Scene secondScene = new Scene(secondaryLayout, 300, 300);
             Stage secondStage = new Stage();
-            secondStage.setTitle("History");
+            secondStage.setTitle("Transaction History");
             secondStage.setScene(secondScene);
-            Label historyLabel = new Label("Transaction History");
             TableView transactionTable = new TableView();
             TableColumn userName = new TableColumn("User Name");
             TableColumn itemName = new TableColumn("Item Name");
@@ -60,16 +62,25 @@ public class ViewTransactionHistory extends Application {
             transactionTable.getColumns().addAll(userName,itemName,soldPurchase);
             transactionTable.prefHeightProperty().bind(secondStage.heightProperty());
             transactionTable.prefWidthProperty().bind(secondStage.widthProperty());
-            // secondaryLayout.add(historyLabel, 1,1);
+
             secondaryLayout.add(transactionTable,1,1);
 
-
-
             secondStage.show();
+        });
+
+        Button back = new Button("Back");
+        back.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                SuperHomePage sh = new SuperHomePage();
+                sh.start(primaryStage);
+
+            }
         });
         HBox viewIteMButton = new HBox(10.0D);
         viewIteMButton.setAlignment(Pos.BOTTOM_LEFT);
         viewIteMButton.getChildren().add(viewItem);
+        viewIteMButton.getChildren().add(back);
         historyGrid.add(viewIteMButton, 1, 4);
         primaryStage.setScene(historyScene);
         primaryStage.show();
