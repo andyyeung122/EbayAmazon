@@ -41,7 +41,7 @@ public class Data{
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
 
-            String password = "pringles";
+            String password = "Eque7400";
 
 
 
