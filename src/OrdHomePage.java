@@ -21,7 +21,7 @@ public class OrdHomePage extends Scene{
     private static Main main = new Main();
     private Stage primaryStage;
     private String username;
-    private static EditProfile editprofile = new EditProfile();
+    private static EditProfile editProfile;
     private static ManageItemsPage manageitems = new ManageItemsPage();
     private static FriendsPage friendspage = new FriendsPage();
     private static OrdTransactionHistory ordtranshist = new OrdTransactionHistory();
@@ -95,10 +95,10 @@ public class OrdHomePage extends Scene{
         submitComplaintBtn.getChildren().add(submitComplaint);
         grid.add(submitComplaintBtn, 4, 5);
 
-        Button editProfile = new Button("Edit Profile");
+        Button editProfileBttn = new Button("Edit Profile");
         HBox editProfileBtn = new HBox(10);
         editProfileBtn.setAlignment(Pos.TOP_RIGHT);
-        editProfileBtn.getChildren().add(editProfile);
+        editProfileBtn.getChildren().add(editProfileBttn);
         grid.add(editProfileBtn, 4, 1);
 
         Button friends = new Button("Friends");
@@ -128,14 +128,18 @@ public class OrdHomePage extends Scene{
 
         });
 
-        editProfile.setOnAction(( e -> {
-            main.getPrimaryStage().setScene(editprofile);
-            main.getPrimaryStage().setTitle("Edit Profile");
-            main.getPrimaryStage().show();
+        editProfileBttn.setOnAction(( e -> {
+            editProfile = new EditProfile();
+            editProfile.setUsername(username);
+            editProfile.setPrimaryStage(primaryStage);
+            primaryStage.setScene(editProfile);
+            primaryStage.setTitle("Edit Profile");
+            primaryStage.show();
         }));
 
         sellItem.setOnAction(( e -> {
             SellItems sellitems = new SellItems();
+            sellitems.setUsername(username);
             Stage window = sellitems.setWindow();
             window.setTitle("Sell Item");
             window.setWidth(390);

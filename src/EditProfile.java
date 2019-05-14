@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class EditProfile extends Scene {
 
@@ -15,6 +16,16 @@ public class EditProfile extends Scene {
     private Main main = new Main();
     private static OrdHomePage ordhomepage = new OrdHomePage();
     private static AlertBox alertbox = new AlertBox();
+    private String username;
+    private Stage primaryStage;
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public void setPrimaryStage(Stage primaryStage){
+        this.primaryStage = primaryStage;
+    }
 
     public EditProfile() {
         super(new GridPane(),390,300);
@@ -75,18 +86,32 @@ public class EditProfile extends Scene {
         updatebtn.setAlignment(Pos.BASELINE_RIGHT);
         updatebtn.getChildren().add(update);
         grid.add(update, 0, 7);
-
+//String oldUsername, String newUsername, String password, String name,String address, String creditCard, String phoneNumber
         // Connect to database, add new user
         update.setOnAction( e -> {
-
-
+            String newName = fullNameTextField.getText();
+            String newUsername = userNameTextField.getText();
+            String newPassword = passWordTextField.getText();
+            String newAddress = addressTextField.getText();
+            String newPhone = phoneNuTextField.getText();
+            String newCard = creditCardTextField.getText();
+            if(!newName.equals("") && !newUsername.equals("") && !newPassword.equals("") && !newAddress.equals("") && !newPhone.equals("") && !newCard.equals("")){
+                Data.updateOrdinairyUserInfo(username,newUsername,newPassword,newName,newAddress,newCard, newPhone);
+                ordhomepage = new OrdHomePage();
+                ordhomepage.setPrimaryStage(primaryStage);
+                ordhomepage.setUsername(newUsername);
+                primaryStage.setTitle("Home Page");
+                primaryStage.setScene(ordhomepage);
+            }
         });
 
         // Leave alone
         backtologin.setOnAction( e -> {
-            main.getPrimaryStage().setScene(ordhomepage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            ordhomepage = new OrdHomePage();
+            ordhomepage.setPrimaryStage(primaryStage);
+            ordhomepage.setUsername(username);
+            primaryStage.setTitle("Home Page");
+            primaryStage.setScene(ordhomepage);
         });
 
     }

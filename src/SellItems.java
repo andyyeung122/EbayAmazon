@@ -11,17 +11,24 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import java.util.Calendar;
 
 import java.io.File;
 
 public class SellItems extends Scene {
     GridPane grid;
     Stage stage;
+    File file;
+    RadioButton rb;
+    String username;
     private static Stage window = new Stage();
 
+    public void setUsername(String username){
+        this.username = username;
+    }
 
     public SellItems() {
-        super(new GridPane(),390,300);
+        super(new GridPane(),390,400);
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
@@ -47,6 +54,14 @@ public class SellItems extends Scene {
         Text totalPrice = new Text("");
         grid.add(totalPrice, 0,5);
 
+
+        TextField keywordField = new TextField();
+        totalPriceField.setPromptText("Keywords");
+        grid.add(keywordField,1,6);
+
+        Text keywordText = new Text("Keyword: ");
+        grid.add(keywordText, 0,6);
+
         ToggleGroup toggleGroup = new ToggleGroup();
 
         RadioButton bidPrice = new RadioButton("Bid Price");
@@ -56,22 +71,36 @@ public class SellItems extends Scene {
         grid.add(fixedPrice,1,4);
 
         Button addItem = new Button("Add Item");
-        grid.add(addItem,0,6);
+        grid.add(addItem,0,7);
 
         Button cancelItem = new Button("Cancel");
-        grid.add(cancelItem,1,6);
+        grid.add(cancelItem,1,7);
 
         bidPrice.setToggleGroup(toggleGroup);
         fixedPrice.setToggleGroup(toggleGroup);
 
         final FileChooser fileChooser = new FileChooser();
+//String itemName, String sellerUsername, String imageLocation, String associatedKeywords, int fixedPrice
+        addItem.setOnAction(e -> {
+            String itemNameString = itemNameField.getText();
+            String filePathString = file.toString();
+            String keywordString = keywordField.getText(); 
+            if(rb.getText() == "Bid Price"){
+                long currentTime = Calendar.getInstance().getTimeInMillis();
+                Data.createBidItem(itemNameString,username,filePathString,keywordString,currentTime);
+            }else if(rb.getText() == "Fixed Price"){
+                int price = (int)(Double.parseDouble(totalPriceField.getText()) * 100);
+                Data.createFixedItem(itemNameString,username,filePathString,keywordString,price);
+            }
+            window.close();
+        });
 
         cancelItem.setOnAction((e -> {
             window.close();
         }));
 
         uploadImage.setOnAction(( e -> {
-            File file = fileChooser.showOpenDialog(stage);
+            file = fileChooser.showOpenDialog(stage);
             if (file != null) {
                 Image image = new Image(file.toURI().toString(), 140, 212, true, true);
                 ImageView imageView = new ImageView(image);
@@ -83,16 +112,14 @@ public class SellItems extends Scene {
         toggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             public void changed(ObservableValue<? extends Toggle> ob, Toggle o, Toggle n)
             {
-                RadioButton rb = (RadioButton)toggleGroup.getSelectedToggle();
+                rb = (RadioButton)toggleGroup.getSelectedToggle();
                     if (rb.getText() == "Bid Price") {
-                        totalPrice.setText("Total Price");
                         grid.getChildren().remove(totalPriceField);
-                        grid.add(totalPriceField,1,5);
 
                     }
 
                     else if (rb.getText() == "Fixed Price") {
-                        totalPrice.setText("Starting Bid Price");
+                        totalPrice.setText("Total Price");
                         grid.getChildren().remove(totalPriceField);
                         grid.add(totalPriceField,1,5);
 

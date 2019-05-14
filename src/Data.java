@@ -40,7 +40,7 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
-            String password = "pringles";
+            String password = "209539352";
 
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 
@@ -1172,6 +1172,28 @@ public class Data{
             preparedStatement.close();
 
         }catch (Exception expt){
+            expt.printStackTrace();
+        }
+    }
+//address,creditCard,phoneNumber, desiredKeyWords
+    public static void updateOrdinairyUserInfo(String oldUsername, String newUsername, String password, String name,String address, String creditCard, String phoneNumber){
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE User SET username=?, password=?, name=? WHERE username=? ");
+            preparedStatement.setString(1,newUsername);
+            preparedStatement.setString(2,password);
+            preparedStatement.setString(3,name);
+            preparedStatement.setString(4,oldUsername);
+            preparedStatement.executeQuery();
+
+            preparedStatement = connection.prepareStatement("UPDATE OrdinairyUser SET address=?, creditCard=?, phoneNumber=?  WHERE username=?");
+            preparedStatement.setString(1,address);
+            preparedStatement.setString(2,creditCard);
+            preparedStatement.setString(3,phoneNumber);
+            preparedStatement.setString(4,newUsername);
+            preparedStatement.executeQuery();
+
+            preparedStatement.close();
+        }catch(Exception expt){
             expt.printStackTrace();
         }
     }
