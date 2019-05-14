@@ -11,20 +11,24 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ViewProcessingItem extends Application{
+public class ViewProcessingItem extends Scene{
+
+    GridPane grid;
+    private Main main = new Main();
+    private  SuperHomePage superHomePage=new SuperHomePage();
+
+    public ViewProcessingItem() {
+
+        super(new GridPane(),390,300);
+        grid = (GridPane)this.getRoot();
 
 
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25. , 25.));
 
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Super User!");
-        GridPane itemGrid = new GridPane();
-        itemGrid.setAlignment(Pos.CENTER);
-        itemGrid.setHgap(10);
-        itemGrid.setVgap(10);
-        itemGrid.setPadding(new Insets(25, 25, 25. , 25.0D));
-        Scene scene = new Scene(itemGrid, 400.0, 400);
         Text title1 = new Text("View Processing Item");
-        itemGrid.add(title1,0,0,2,1);
+        grid.add(title1,0,0,2,1);
         title1.setFont(Font.font("Verdana", 20));
 
 
@@ -37,7 +41,7 @@ public class ViewProcessingItem extends Application{
         processingItem.getColumns().add(itemName);
         processingItem.getColumns().add(seller);
 
-        itemGrid.add(processingItem, 1,2);
+        grid.add(processingItem, 1,2);
 
         //send message to ordinary user
         Button accept = new Button("Accept");
@@ -50,22 +54,19 @@ public class ViewProcessingItem extends Application{
 
 
         Button goBack =new Button("Back");
-        goBack.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                SuperHomePage hg = new SuperHomePage();
+       goBack.setOnAction(e-> {
+             main.getPrimaryStage().setScene(superHomePage);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
 
-
-            }
         });
 
         HBox allButton = new HBox(10.0);
         allButton.setAlignment(Pos.BOTTOM_LEFT);
         allButton.getChildren().addAll(accept,reject, goBack);
-        itemGrid.add(allButton,1,3);
+        grid.add(allButton,1,3);
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
     }
 
 }

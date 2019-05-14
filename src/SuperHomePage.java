@@ -19,8 +19,11 @@ public class SuperHomePage extends Scene {
     GridPane grid;
     private String username;
     private Main main = new Main();
-    private GuestHomePage guestHomePage=new GuestHomePage();
+    private  GuestHomePage guestHomePage=new GuestHomePage();
     private static ViewTransactionHistory viewTransactionHistory = new ViewTransactionHistory();
+    private static ViewProcessingItem viewProcessingItems = new ViewProcessingItem();
+
+
 
     public void setUsername(String username){
         this.username = username;
@@ -40,7 +43,7 @@ public class SuperHomePage extends Scene {
 
 
         Button viewApplication = new Button("View Application");
-        Button ViewProcessingItem = new Button("View Processing Items");
+        Button viewProcessingItem = new Button("View Processing Items");
         Button sendMessage = new Button(" Send Message");
         Button viewHistory = new Button(" View History");
         Button tabooWord = new Button(" Taboo Word");
@@ -50,7 +53,7 @@ public class SuperHomePage extends Scene {
         Button logout=new Button("Logout");
 
         grid.add(viewApplication, 2, 1);
-        grid.add(ViewProcessingItem, 2, 2);
+        grid.add(viewProcessingItem, 2, 2);
         grid.add(sendMessage, 2, 3);
         grid.add(viewHistory, 2, 4);
         grid.add(tabooWord, 2, 5);
@@ -70,6 +73,14 @@ public class SuperHomePage extends Scene {
             main.getPrimaryStage().setScene(guestHomePage);
             main.getPrimaryStage().setTitle("Home Page");
             main.getPrimaryStage().show();
+        });
+
+        viewProcessingItem.setOnAction(e->{
+            main.getPrimaryStage().setScene(viewProcessingItems);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
+
+
         });
 
 
