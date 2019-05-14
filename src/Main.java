@@ -2,6 +2,7 @@ import javafx.application.*;
 import javafx.stage.*;
 
 
+
 public class Main extends Application{
 
     private GuestHomePage guesthomepage;
@@ -34,6 +35,8 @@ public class Main extends Application{
         stage.setScene(guesthomepage);
         stage.setTitle("Guest Home Page");
         stage.show();
+
+
         
     }
 
