@@ -1,3 +1,4 @@
+import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,13 +12,16 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
 public class LoginPage extends Scene {
+    Data data=new Data();
 
     GridPane grid;
     private Main main = new Main();
+    private static AlertBox alertbox = new AlertBox();
+    private  SuperHomePage superHomePage=new SuperHomePage();
     private static SignUpPage signuppage = new SignUpPage();
     private static OrdHomePage ordhomepage = new OrdHomePage();
+    private static GuestHomePage guesthomepage = new GuestHomePage();
 
     public LoginPage() {
 
@@ -26,6 +30,8 @@ public class LoginPage extends Scene {
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
+
+
 
         Text scenetitle = new Text("Login Page");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -55,6 +61,12 @@ public class LoginPage extends Scene {
         signupbtn.getChildren().add(signup);
         grid.add(signup, 0, 4);
 
+        Button back = new Button("Back");
+        HBox backbtn = new HBox(10);
+        backbtn.setAlignment(Pos.BOTTOM_RIGHT);
+        backbtn.getChildren().add(back);
+        grid.add(backbtn, 1, 5);
+
         // Connect to Database
         signup.setOnAction( e -> {
             main.getPrimaryStage().setScene(signuppage);
@@ -64,10 +76,36 @@ public class LoginPage extends Scene {
 
         // Connect to Database
         login.setOnAction( e -> {
-            main.getPrimaryStage().setScene(ordhomepage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+<<<<<<< HEAD
+            if(!data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())) {
+                main.setUsername(userNameTextField.getText());
+=======
+            if(!data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())&&data.isRegisteredUser(userNameTextField.getText())==true) {
+>>>>>>> 77b5efe132bcced2e5fe90ab6bd3d01442c09b44
+                main.getPrimaryStage().setScene(ordhomepage);
+                main.getPrimaryStage().setTitle("Home Page");
+                main.getPrimaryStage().show();
+            }
+            else if(data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())){
+                main.setUsername(userNameTextField.getText());
+                main.getPrimaryStage().setScene(superHomePage);
+                main.getPrimaryStage().setTitle("Home Page");
+                main.getPrimaryStage().show();
+            }
+
+            else{
+                alertbox.display("Signup Popup", "User doesn't exist or password is wrong!");
+            }
+
+
+
         });
+
+        back.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(guesthomepage);
+            main.getPrimaryStage().setTitle("Guest Home Page");
+            main.getPrimaryStage().show();
+        }));
 
     }
 

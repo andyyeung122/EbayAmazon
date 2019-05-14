@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -15,27 +16,39 @@ import java.util.ArrayList;
 public class OrdHomePage extends Scene{
 
     GridPane grid;
-    private boolean isVIP = true;
-    private List<Items> itemList = new ArrayList<>();
+    private Data data = new Data();
+    private List<ItemsBox> itemList = new ArrayList<>();
+    private static Main main = new Main();
+    private static EditProfile editprofile = new EditProfile();
+    private static ManageItemsPage manageitems = new ManageItemsPage();
+    private static FriendsPage friendspage = new FriendsPage();
+    private static OrdTransactionHistory ordtranshist = new OrdTransactionHistory();
+    private static GuestHomePage guesthomepage = new GuestHomePage();
+    private static NotificationsPage notificationspage = new NotificationsPage();
+
+    private String ordUsername;
+
+
 
     public OrdHomePage() {
         super(new GridPane(),600,550);
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
+        ordUsername = main.getUsername();
+        System.out.println(ordUsername);
+
+//                data.makeUserVip(username);
+//                Text VIP = new Text("VIP");
+//                VIP.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+//                VIP.setFill(Color.RED);
+//                grid.add(VIP, 1, 0, 2,1);
+
 
         Text scenetitle = new Text("Ebay-Amazon");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
-
-
-        if (isVIP) {
-            Text VIP = new Text("VIP");
-            VIP.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-            VIP.setFill(Color.RED);
-            grid.add(VIP, 1, 0, 2,1);
-        }
 
         Text finditem = new Text("Find an Item:");
         grid.add(finditem, 0,1);
@@ -43,6 +56,12 @@ public class OrdHomePage extends Scene{
         TextField searchTextField = new TextField();
         searchTextField.setPromptText("Search Item");
         grid.add(searchTextField, 0, 2);
+
+        Button logout = new Button("Log out");
+        HBox logoutBtn = new HBox(10);
+        logoutBtn.setAlignment(Pos.TOP_RIGHT);
+        logoutBtn.getChildren().add(logout);
+        grid.add(logoutBtn, 4, 0);
 
         Button search = new Button("Search");
         HBox searchBtn = new HBox(10);
@@ -85,21 +104,78 @@ public class OrdHomePage extends Scene{
         historyBtn.getChildren().add(history);
         grid.add(historyBtn, 4, 4);
 
-        Button inbox = new Button("Inbox");
+        Button inbox = new Button("NotificationsPage");
         HBox inboxBtn = new HBox(10);
         inboxBtn.setAlignment(Pos.TOP_RIGHT);
         inboxBtn.getChildren().add(inbox);
         grid.add(inboxBtn, 4, 7);
 
-        itemList.add(new Items());
-//        itemList.add(new Items());
-//        itemList.add(new Items());
+        itemList.add(new ItemsBox());
+//        itemList.add(new ItemsBox());
+//        itemList.add(new ItemsBox());
         grid.add(itemList.get(0), 1,1);
-
 
         manage.setOnAction( e -> {
 
         });
+
+        editProfile.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(editprofile);
+            main.getPrimaryStage().setTitle("Edit Profile");
+            main.getPrimaryStage().show();
+        }));
+
+        sellItem.setOnAction(( e -> {
+            SellItems sellitems = new SellItems();
+            Stage window = sellitems.setWindow();
+            window.setTitle("Sell Item");
+            window.setWidth(390);
+            window.setScene(sellitems);
+            window.show();
+        }));
+
+        manage.setOnAction(( e-> {
+            main.getPrimaryStage().setScene(manageitems);
+            main.getPrimaryStage().setTitle("Manage ItemsBox");
+            main.getPrimaryStage().show();
+        }));
+
+        submitComplaint.setOnAction(( e -> {
+            SubmitComplaintPage submitcomplaintpage = new SubmitComplaintPage();
+            Stage window = submitcomplaintpage.setWindow();
+            window.setTitle("Submit Complaint");
+            window.setWidth(300);
+            window.setScene(submitcomplaintpage);
+            window.show();
+        }));
+
+        friends.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(friendspage);
+            main.getPrimaryStage().setTitle("Friends");
+            main.getPrimaryStage().show();
+        }));
+
+        history.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(ordtranshist);
+            main.getPrimaryStage().setTitle("Transaction History");
+            main.getPrimaryStage().show();
+        }));
+
+        logout.setOnAction(( e -> {
+            main.getPrimaryStage().setScene(guesthomepage);
+            main.getPrimaryStage().setTitle("Guest Home Page");
+            main.getPrimaryStage().show();
+                })
+        );
+
+        inbox.setOnAction(( e -> {
+            NotificationsPage notificationpage = new NotificationsPage();
+            Stage window = notificationpage.setWindow();
+            window.setTitle("Submit Complaint");
+            window.setScene(notificationpage);
+            window.show();
+        }));
+
 
     }
 }
