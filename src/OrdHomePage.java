@@ -25,7 +25,7 @@ public class OrdHomePage extends Scene{
     private static ManageItemsPage manageitems = new ManageItemsPage();
     private static FriendsPage friendspage = new FriendsPage();
     private static OrdTransactionHistory ordtranshist = new OrdTransactionHistory();
-    private static GuestHomePage guesthomepage = new GuestHomePage();
+    private static GuestHomePage guesthomepage;
     private static NotificationsPage notificationspage = new NotificationsPage();
 
 
@@ -176,9 +176,11 @@ public class OrdHomePage extends Scene{
 
         logout.setOnAction(( e -> {
             System.out.println(username);
-            main.getPrimaryStage().setScene(guesthomepage);
-            main.getPrimaryStage().setTitle("Guest Home Page");
-            main.getPrimaryStage().show();
+            guesthomepage = new GuestHomePage();
+            guesthomepage.setPrimaryStage(primaryStage);
+            primaryStage.setScene(guesthomepage);
+            primaryStage.setTitle("Guest Home Page");
+            primaryStage.show();
         })
         );
 
