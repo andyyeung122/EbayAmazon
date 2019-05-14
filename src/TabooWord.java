@@ -20,24 +20,24 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class TabooWord extends Application {
+public class TabooWord extends Scene {
     private final ObservableList<TabooWord.WordList> WordsList = FXCollections.observableArrayList(new TabooWord.WordList[]{new TabooWord.WordList("CCNY"), new TabooWord.WordList("New York"), new TabooWord.WordList("Computer Science")});
     private int selectedIndex = -1;
+    GridPane grid;
+    private Main main = new Main();
+    private  SuperHomePage superHomePage=new SuperHomePage();
 
     public TabooWord() {
-    }
+        super(new GridPane(),390,300);
+        grid = (GridPane)this.getRoot();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25, 25));
 
-    public void start(Stage primaryStage) {
 
-        primaryStage.setTitle("Ebay Amazon");
-        GridPane tabooGrid = new GridPane();
-        tabooGrid.setAlignment(Pos.CENTER);
-        tabooGrid.setHgap(10);
-        tabooGrid.setVgap(10.D);
-        tabooGrid.setPadding(new Insets(25.0D, 25.0D, 25.0D, 25.0D));
-        Scene scene = new Scene(tabooGrid, 400, 400);
         Text title = new Text("Taboo Words");
-        tabooGrid.add(title,0,0,2,1);
+        grid.add(title,0,0,2,1);
         title.setFont(Font.font("Verdana", 20.0D));
         Label nameLabel = new Label("Taboo Words");
         nameLabel.setFont(new Font("Roman", 20));
@@ -50,7 +50,7 @@ public class TabooWord extends Application {
 
         });
 
-        tabooGrid.add(myListView, 1,2);
+        grid.add(myListView, 1,2);
 
         Button add = new Button("Add");
         add.setOnAction((e) -> {
@@ -64,20 +64,18 @@ public class TabooWord extends Application {
         });
 
         Button back = new Button("Back");
-        back.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-
-            }
+        back.setOnAction(e-> {
+                main.getPrimaryStage().setScene(superHomePage);
+                main.getPrimaryStage().setTitle("Home Page");
+                main.getPrimaryStage().show();
         });
 
         HBox allButton = new HBox(10);
         allButton.setAlignment(Pos.BOTTOM_LEFT);
         allButton.getChildren().addAll(add,delete,back);
-        tabooGrid.add(allButton,1,4);
+        grid.add(allButton,1,4);
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
     }
 
 

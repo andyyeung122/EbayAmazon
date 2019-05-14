@@ -23,7 +23,8 @@ public class SuperHomePage extends Scene {
     private static ViewTransactionHistory viewTransactionHistory = new ViewTransactionHistory();
     private static ViewProcessingItem viewProcessingItems = new ViewProcessingItem();
     private static ViewApplication viewApplications = new ViewApplication();
-
+    private static TabooWord tabooWords=new TabooWord();
+    private static SendMessage sendMessages=new SendMessage();
 
 
     public void setUsername(String username){
@@ -86,6 +87,22 @@ public class SuperHomePage extends Scene {
 
         viewApplication.setOnAction(e->{
             main.getPrimaryStage().setScene(viewApplications);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
+
+
+        });
+
+        tabooWord.setOnAction(e->{
+            main.getPrimaryStage().setScene(tabooWords);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
+
+
+        });
+
+        sendMessage.setOnAction(e->{
+            main.getPrimaryStage().setScene(sendMessages);
             main.getPrimaryStage().setTitle("Home Page");
             main.getPrimaryStage().show();
 
