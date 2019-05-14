@@ -22,6 +22,7 @@ public class SuperHomePage extends Scene {
     private  GuestHomePage guestHomePage=new GuestHomePage();
     private static ViewTransactionHistory viewTransactionHistory = new ViewTransactionHistory();
     private static ViewProcessingItem viewProcessingItems = new ViewProcessingItem();
+    private static ViewApplication viewApplications = new ViewApplication();
 
 
 
@@ -77,6 +78,14 @@ public class SuperHomePage extends Scene {
 
         viewProcessingItem.setOnAction(e->{
             main.getPrimaryStage().setScene(viewProcessingItems);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
+
+
+        });
+
+        viewApplication.setOnAction(e->{
+            main.getPrimaryStage().setScene(viewApplications);
             main.getPrimaryStage().setTitle("Home Page");
             main.getPrimaryStage().show();
 
