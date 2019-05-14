@@ -33,7 +33,7 @@ public class ViewApplication extends Application{
         TableColumn name = new TableColumn("Name");
         TableColumn address = new TableColumn(" Address");
         TableColumn phone = new TableColumn("Phone Number");
-        TableColumn creditCard = new TableColumn("Phone Number");
+        TableColumn creditCard = new TableColumn("Credit Card");
 
 
 
