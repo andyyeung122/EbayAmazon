@@ -5,19 +5,29 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class Items extends Pane{
+public class Items extends VBox{
     VBox vbox = new VBox();
-    Button btn = new Button("Details");
-    Label label = new Label("Ordinary User");
     Pane pane = new Pane();
+    String cssLayout = "-fx-border-color: black;\n" +
+            "-fx-border-insets: 5;\n" +
+            "-fx-border-width: 3;\n";
+
 
     public Items() {
         //Image pic = new Image();
         setName();
         setSeller();
         setPrice();
-        vbox.getChildren().addAll(label, pane, btn );
-        vbox.setVgrow(pane, Priority.ALWAYS);
+        Button btn = new Button("Details");
+        Label label = new Label("Ordinary User");
+        vbox.setStyle(cssLayout);
+        vbox.setPrefWidth(10);
+        vbox.setPrefHeight(40);
+        vbox.getChildren().addAll(label, btn );
+    }
+
+    public VBox getVbox() {
+        return vbox;
     }
 
     private void setName() {
