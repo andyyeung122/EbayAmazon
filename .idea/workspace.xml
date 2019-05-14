@@ -11,24 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="af98651d-4bc9-47f2-bc12-8e198c13edc5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/EditProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/EditProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/LoginPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/SendMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/SendMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/SuperHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/SuperHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord$WordList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord$WordList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewComplaints.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewComplaints.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewProcessingItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewProcessingItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewTransactionHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewTransactionHistory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SendMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SendMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SuperHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SuperHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TabooWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TabooWord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewComplaints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewComplaints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewProcessingItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewProcessingItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewTransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewTransactionHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EbayAmazon2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EbayAmazon2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/Data.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,12 +32,12 @@
     <session id="-892741290">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7" />
+          <entry key="java" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7" />
+          <entry key="JAVA" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -74,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="31" selection-start-line="31" selection-end-line="33" selection-end-column="5" />
+            <state relative-caret-position="1241">
+              <caret line="171" selection-start-line="171" selection-end-line="171" />
               <folding>
                 <element signature="e#1152#1153#0" expanded="true" />
                 <element signature="e#1192#1193#0" expanded="true" />
@@ -87,10 +72,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/EditProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-459">
-              <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+            <state relative-caret-position="82">
+              <caret line="86" column="73" selection-start-line="86" selection-start-column="73" selection-end-line="86" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1005#1006#0" expanded="true" />
@@ -101,31 +95,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SignUpPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/sql/DriverManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="95" column="7" lean-forward="true" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
+              <caret line="95" column="7" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ViewTransactionHistory.java">
+        <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ViewApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="935">
+              <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,31 +125,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SendMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="60" column="51" lean-forward="true" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Data.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="50" column="48" lean-forward="true" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
+            <state relative-caret-position="765">
+              <caret line="46" column="61" lean-forward="true" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -166,12 +136,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-326">
+            <state relative-caret-position="187">
               <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#552#553#0" expanded="true" />
-                <element signature="e#592#593#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -231,6 +199,7 @@
         <option value="$PROJECT_DIR$/src/ViewProcessingItem.java" />
         <option value="$PROJECT_DIR$/src/ViewTransactionHistory.java" />
         <option value="$PROJECT_DIR$/src/ViewApplication.java" />
+        <option value="$PROJECT_DIR$/src/Data.java" />
       </list>
     </option>
   </component>
@@ -265,6 +234,12 @@
               <item name="EbayAmazon2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="EbayAmazon2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EbayAmazon2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="drivers" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -278,9 +253,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557858783868" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557860154344" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/drivers/mariadb-java-client-2.4.1.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -305,6 +280,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Testing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Testing" />
+      <module name="EbayAmazon2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ViewProcessingItem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ViewProcessingItem" />
       <module name="EbayAmazon2" />
@@ -315,9 +297,11 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.ViewProcessingItem" />
+      <item itemvalue="Application.Testing" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Testing" />
         <item itemvalue="Application.ViewProcessingItem" />
       </list>
     </recent_temporary>
@@ -428,7 +412,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19919029" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -512,8 +495,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SignUpPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="26" column="2" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+        <state relative-caret-position="119">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -548,8 +531,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="31" selection-start-line="31" selection-end-line="33" selection-end-column="5" />
+        <state relative-caret-position="1241">
+          <caret line="171" selection-start-line="171" selection-end-line="171" />
           <folding>
             <element signature="e#1152#1153#0" expanded="true" />
             <element signature="e#1192#1193#0" expanded="true" />
@@ -561,12 +544,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-326">
+        <state relative-caret-position="187">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-            <element signature="e#592#593#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -649,17 +630,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="50" column="48" lean-forward="true" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+        <state relative-caret-position="935">
+          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -668,8 +642,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459">
-          <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+        <state relative-caret-position="82">
+          <caret line="86" column="73" selection-start-line="86" selection-start-column="73" selection-end-line="86" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1005#1006#0" expanded="true" />
@@ -681,7 +655,7 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/sql/DriverManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="95" column="7" lean-forward="true" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
+          <caret line="95" column="7" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -689,6 +663,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="60" column="51" lean-forward="true" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="46" column="61" lean-forward="true" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -749,6 +730,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
