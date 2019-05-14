@@ -85,14 +85,13 @@ public class LoginPage extends Scene {
                 main.getPrimaryStage().show();
 
             }
-<<<<<<< HEAD
+
             else{
                 alertbox.display("Signup Popup", "User doesn't exist or password is wrong!");
             }
 
 
-=======
->>>>>>> 85586f7c9f0813be478fda26772afb46865457b6
+
         });
 
         back.setOnAction(( e -> {
