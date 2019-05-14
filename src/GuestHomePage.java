@@ -62,6 +62,8 @@ public class GuestHomePage extends Scene {
         });
 
         search.setOnAction( e -> {
+
+
 //            main.getPrimaryStage().setScene(loginpage2);
 //            main.getPrimaryStage().setTitle("Home Page");
 //            main.getPrimaryStage().show();
