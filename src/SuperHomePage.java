@@ -36,7 +36,7 @@ public class SuperHomePage extends Scene {
 
 
         Button viewApplication = new Button("View Application");
-        Button ViewProcessingItem = new Button("View Processing Items");
+        Button ViewProcessingItem = new Button("View Processing ItemsBox");
         Button sendMessage = new Button(" Send Message");
         Button viewHistory = new Button(" View History");
         Button tabooWord = new Button(" Taboo Word");

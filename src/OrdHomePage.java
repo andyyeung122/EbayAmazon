@@ -16,8 +16,8 @@ import java.util.ArrayList;
 public class OrdHomePage extends Scene{
 
     GridPane grid;
-    private boolean isVIP = true;
-    private List<Items> itemList = new ArrayList<>();
+    private Data data = new Data();
+    private List<ItemsBox> itemList = new ArrayList<>();
     private static Main main = new Main();
     private static EditProfile editprofile = new EditProfile();
     private static ManageItemsPage manageitems = new ManageItemsPage();
@@ -26,22 +26,29 @@ public class OrdHomePage extends Scene{
     private static GuestHomePage guesthomepage = new GuestHomePage();
     private static NotificationsPage notificationspage = new NotificationsPage();
 
+    private String ordUsername;
+
+
+
     public OrdHomePage() {
         super(new GridPane(),600,550);
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
+        ordUsername = main.getUsername();
+        System.out.println(ordUsername);
+
+//                data.makeUserVip(username);
+//                Text VIP = new Text("VIP");
+//                VIP.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+//                VIP.setFill(Color.RED);
+//                grid.add(VIP, 1, 0, 2,1);
+
 
         Text scenetitle = new Text("Ebay-Amazon");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
-        if (isVIP) {
-            Text VIP = new Text("VIP");
-            VIP.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-            VIP.setFill(Color.RED);
-            grid.add(VIP, 1, 0, 2,1);
-        }
 
         Text finditem = new Text("Find an Item:");
         grid.add(finditem, 0,1);
@@ -103,9 +110,9 @@ public class OrdHomePage extends Scene{
         inboxBtn.getChildren().add(inbox);
         grid.add(inboxBtn, 4, 7);
 
-        itemList.add(new Items());
-//        itemList.add(new Items());
-//        itemList.add(new Items());
+        itemList.add(new ItemsBox());
+//        itemList.add(new ItemsBox());
+//        itemList.add(new ItemsBox());
         grid.add(itemList.get(0), 1,1);
 
         manage.setOnAction( e -> {
@@ -129,7 +136,7 @@ public class OrdHomePage extends Scene{
 
         manage.setOnAction(( e-> {
             main.getPrimaryStage().setScene(manageitems);
-            main.getPrimaryStage().setTitle("Manage Items");
+            main.getPrimaryStage().setTitle("Manage ItemsBox");
             main.getPrimaryStage().show();
         }));
 

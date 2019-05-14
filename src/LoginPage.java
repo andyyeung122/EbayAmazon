@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 public class LoginPage extends Scene {
     Data data=new Data();
+
     GridPane grid;
     private Main main = new Main();
     private  SuperHomePage superHomePage=new SuperHomePage();
@@ -28,6 +29,8 @@ public class LoginPage extends Scene {
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
+
+
 
         Text scenetitle = new Text("Login Page");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -73,16 +76,16 @@ public class LoginPage extends Scene {
         // Connect to Database
         login.setOnAction( e -> {
             if(!data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())) {
+                main.setUsername(userNameTextField.getText());
                 main.getPrimaryStage().setScene(ordhomepage);
                 main.getPrimaryStage().setTitle("Home Page");
                 main.getPrimaryStage().show();
             }
             else if(data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())){
-
+                main.setUsername(userNameTextField.getText());
                 main.getPrimaryStage().setScene(superHomePage);
                 main.getPrimaryStage().setTitle("Home Page");
                 main.getPrimaryStage().show();
-
             }
         });
 

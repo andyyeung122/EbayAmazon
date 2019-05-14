@@ -43,7 +43,7 @@ public class ViewTransactionHistory extends Application {
         DatePicker end = new DatePicker();
         historyGrid.add(end, 1,3);
 
-        Button viewItem = new Button(" View Items");
+        Button viewItem = new Button(" View ItemsBox");
         viewItem.setOnAction(action ->{
             //   LocalDate startDate = start.getValue();
             // LocalDate endDate   = start.getValue();

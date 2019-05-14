@@ -15,8 +15,8 @@ import java.util.List;
 public class OrdTransactionHistory extends Scene {
 
     GridPane grid;
-    private List<Items> soldItems = new ArrayList<>();
-    private List<Items> purchasedItems = new ArrayList<>();
+    private List<ItemsBox> soldItems = new ArrayList<>();
+    private List<ItemsBox> purchasedItems = new ArrayList<>();
     private Main main = new Main();
     private static OrdHomePage ordhomepage = new OrdHomePage();
 
@@ -32,10 +32,10 @@ public class OrdTransactionHistory extends Scene {
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
-        Button viewSoldItems = new Button("View Sold Items");
+        Button viewSoldItems = new Button("View Sold ItemsBox");
         grid.add(viewSoldItems,0,1);
 
-        Button viewPurchasedItems = new Button("View Purchased Items");
+        Button viewPurchasedItems = new Button("View Purchased ItemsBox");
         grid.add(viewPurchasedItems,1,1);
 
         Button back = new Button("Back");
