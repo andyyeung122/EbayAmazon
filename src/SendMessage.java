@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,6 +15,8 @@ import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 
 public class SendMessage extends Application{
+
+
 
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Super User");
@@ -36,11 +40,26 @@ public class SendMessage extends Application{
         messageGrid.add(sendMessage, 0, 2);
         TextField deleteMessage = new TextField();
         messageGrid.add(deleteMessage, 1, 2);
+
+
+        //send message to ordinary user
         Button send = new Button("Send");
-        HBox sendButton = new HBox(10.0D);
-        sendButton.setAlignment(Pos.BOTTOM_LEFT);
-        sendButton.getChildren().add(send);
-        messageGrid.add(sendButton,1,3);
+
+
+        Button back1 = new Button("Back");
+        back1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                SuperHomePage sh = new SuperHomePage();
+
+
+            }
+        });
+
+        HBox buttonbox = new HBox(10.0D);
+        buttonbox.setAlignment(Pos.BOTTOM_LEFT);
+        buttonbox.getChildren().addAll(send,back1);
+        messageGrid.add(buttonbox,1,3);
 
         primaryStage.setScene(scene);
         primaryStage.show();

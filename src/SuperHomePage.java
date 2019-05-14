@@ -1,4 +1,5 @@
 
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,6 +17,14 @@ public class SuperHomePage extends Scene {
 
 
     GridPane grid;
+    private String username;
+    private Main main = new Main();
+    private GuestHomePage guestHomePage=new GuestHomePage();
+    private static ViewTransactionHistory viewTransactionHistory = new ViewTransactionHistory();
+
+    public void setUsername(String username){
+        this.username = username;
+    }
 
     public SuperHomePage() {
 
@@ -38,6 +47,7 @@ public class SuperHomePage extends Scene {
         Button deleteUser = new Button("Delete User");
         Button outstandingUser = new Button("Outstanding User");
         Button viewComplaints = new Button("View Complaints");
+        Button logout=new Button("Logout");
 
         grid.add(viewApplication, 2, 1);
         grid.add(ViewProcessingItem, 2, 2);
@@ -47,9 +57,22 @@ public class SuperHomePage extends Scene {
         grid.add(deleteUser, 2, 6);
         grid.add(outstandingUser, 2, 7);
         grid.add(viewComplaints, 2, 8);
+        grid.add(logout, 2, 9);
 
 
+        viewHistory.setOnAction( e -> {
+            main.getPrimaryStage().setScene(viewTransactionHistory);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
+        });
+
+        logout.setOnAction( e -> {
+            main.getPrimaryStage().setScene(guestHomePage);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
+        });
 
 
     }
+
 }

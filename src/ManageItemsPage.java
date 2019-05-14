@@ -12,7 +12,7 @@ import java.util.List;
 public class ManageItemsPage extends Scene {
 
     GridPane grid;
-    private List<Items> currentSellingItemsList = new ArrayList<>();
+    private List<ItemsBox> currentSellingItemsList = new ArrayList<>();
     private static Main main = new Main();
     private static OrdHomePage ordhomepage = new OrdHomePage();
 
@@ -23,7 +23,7 @@ public class ManageItemsPage extends Scene {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        Text scenetitle = new Text("Manage Items");
+        Text scenetitle = new Text("Manage ItemsBox");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
@@ -48,8 +48,8 @@ public class ManageItemsPage extends Scene {
 
         itemGrid.getColumnConstraints().add(colConstraint);
 
-        currentSellingItemsList.add(new Items());
-        currentSellingItemsList.add(new Items());
+        currentSellingItemsList.add(new ItemsBox());
+        currentSellingItemsList.add(new ItemsBox());
         itemGrid.add(currentSellingItemsList.get(0).getVbox(), 0,0);
         itemGrid.add(currentSellingItemsList.get(1).getVbox(), 0,1);
 

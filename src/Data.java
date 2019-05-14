@@ -40,10 +40,7 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
-
             String password = "Eque7400";
-
-
 
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 

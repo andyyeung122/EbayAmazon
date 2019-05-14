@@ -5,11 +5,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontSmoothingType;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +17,14 @@ public class GuestHomePage extends Scene {
 
     GridPane grid;
 
-    private static LoginPage loginpage2 = new LoginPage();
+    public LoginPage loginpage;
     private static Main main = new Main();
-    private List<Items> itemList = new ArrayList<>();
+    private Stage primaryStage;
+    private List<ItemsBox> itemList = new ArrayList<>();
 
-
+    public void setPrimaryStage(Stage primaryStage){
+        this.primaryStage = primaryStage;
+    }
 
     public GuestHomePage() {
         super(new GridPane(),400,600);
@@ -56,17 +58,25 @@ public class GuestHomePage extends Scene {
 
         // Link to DB
         login.setOnAction( e -> {
-            main.getPrimaryStage().setScene(loginpage2);
-            main.getPrimaryStage().setTitle("Login");
-            main.getPrimaryStage().show();
+            loginpage = new LoginPage();
+            loginpage.setPrimaryStage(primaryStage);
+            primaryStage.setScene(loginpage);
+            primaryStage.setTitle("Login");
+            primaryStage.show();
         });
 
         search.setOnAction( e -> {
 
 
+
 //            main.getPrimaryStage().setScene(loginpage2);
 //            main.getPrimaryStage().setTitle("Home Page");
 //            main.getPrimaryStage().show();
+
+//            primaryStage.setScene(loginpage2);
+//            primaryStage.setTitle("Home Page");
+//            primaryStage.show();
+
         });
     }
 
@@ -76,8 +86,8 @@ public class GuestHomePage extends Scene {
 
         itemGrid.getColumnConstraints().add(colConstraint);
 
-        itemList.add(new Items());
-        itemList.add(new Items());
+        itemList.add(new ItemsBox());
+        itemList.add(new ItemsBox());
         itemGrid.add(itemList.get(0).getVbox(), 0,0);
         itemGrid.add(itemList.get(1).getVbox(), 0,1);
 
