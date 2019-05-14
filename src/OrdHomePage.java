@@ -19,6 +19,8 @@ public class OrdHomePage extends Scene{
     private Data data = new Data();
     private List<ItemsBox> itemList = new ArrayList<>();
     private static Main main = new Main();
+    private Stage primaryStage;
+    private String username;
     private static EditProfile editprofile = new EditProfile();
     private static ManageItemsPage manageitems = new ManageItemsPage();
     private static FriendsPage friendspage = new FriendsPage();
@@ -26,23 +28,30 @@ public class OrdHomePage extends Scene{
     private static GuestHomePage guesthomepage = new GuestHomePage();
     private static NotificationsPage notificationspage = new NotificationsPage();
 
-    private String ordUsername;
 
+    public void setUsername(String username){
+        this.username = username;
+    }
 
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
     public OrdHomePage() {
-        super(new GridPane(),600,550);
+        super(new GridPane(),400,550);
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
-        ordUsername = main.getUsername();
-        System.out.println(ordUsername);
 
-//                data.makeUserVip(username);
-//                Text VIP = new Text("VIP");
-//                VIP.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
-//                VIP.setFill(Color.RED);
-//                grid.add(VIP, 1, 0, 2,1);
+
+        data.makeUserVip(username);
+        if(data.isUserVip(username)) {
+            data.makeUserVip(username);
+            Text VIP = new Text("VIP");
+            VIP.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+            VIP.setFill(Color.RED);
+            grid.add(VIP, 1, 0, 2, 1);
+        }
 
 
         Text scenetitle = new Text("Ebay-Amazon");
@@ -162,10 +171,11 @@ public class OrdHomePage extends Scene{
         }));
 
         logout.setOnAction(( e -> {
+            System.out.println(username);
             main.getPrimaryStage().setScene(guesthomepage);
             main.getPrimaryStage().setTitle("Guest Home Page");
             main.getPrimaryStage().show();
-                })
+        })
         );
 
         inbox.setOnAction(( e -> {

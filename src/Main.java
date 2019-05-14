@@ -7,6 +7,8 @@ public class Main extends Application{
     private GuestHomePage guesthomepage;
     private static Stage primaryStage;
 
+
+
     public String getUsername() {
         return username;
     }
@@ -25,9 +27,11 @@ public class Main extends Application{
     @Override
     public void start(Stage stage){
         primaryStage = stage;
+        Stage window = stage;
         guesthomepage = new GuestHomePage();
-        stage.setScene(guesthomepage);
+        guesthomepage.setPrimaryStage(window);
 
+        stage.setScene(guesthomepage);
         stage.setTitle("Guest Home Page");
         stage.show();
         
