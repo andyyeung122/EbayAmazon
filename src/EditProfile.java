@@ -37,6 +37,7 @@ public class EditProfile extends Scene {
         grid.add(userName, 0, 2);
 
         TextField userNameTextField = new TextField();
+
         grid.add(userNameTextField, 1, 2);
 
         Label passWord = new Label("Password:");
