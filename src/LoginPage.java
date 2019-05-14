@@ -84,8 +84,6 @@ public class LoginPage extends Scene {
                 main.getPrimaryStage().show();
 
             }
-
-
         });
 
         back.setOnAction(( e -> {
