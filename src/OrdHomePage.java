@@ -134,7 +134,6 @@ public class OrdHomePage extends Scene{
             editProfile.setPrimaryStage(primaryStage);
             primaryStage.setScene(editProfile);
             primaryStage.setTitle("Edit Profile");
-            primaryStage.show();
         }));
 
         sellItem.setOnAction(( e -> {
