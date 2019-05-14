@@ -10,7 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af98651d-4bc9-47f2-bc12-8e198c13edc5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TabooWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TabooWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SuperHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SuperHomePage.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -102,23 +102,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="344">
+              <caret line="123" column="1" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TabooWord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="102" selection-start-line="102" selection-end-line="102" />
+            <state relative-caret-position="89">
+              <caret line="81" column="28" lean-forward="true" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,13 +147,13 @@
         <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
         <option value="$PROJECT_DIR$/src/Items.java" />
         <option value="$PROJECT_DIR$/src/DeleteUser.java" />
-        <option value="$PROJECT_DIR$/src/SuperHomePage.java" />
         <option value="$PROJECT_DIR$/src/ViewApplication.java" />
         <option value="$PROJECT_DIR$/src/ViewProcessingItem.java" />
         <option value="$PROJECT_DIR$/src/LoginPage.java" />
         <option value="$PROJECT_DIR$/src/ViewComplaints.java" />
         <option value="$PROJECT_DIR$/src/ViewTransactionHistory.java" />
         <option value="$PROJECT_DIR$/src/TabooWord.java" />
+        <option value="$PROJECT_DIR$/src/SuperHomePage.java" />
       </list>
     </option>
   </component>
@@ -335,11 +332,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557855963852</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="application">
+      <created>1557856098856</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1557856098856</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15427000" />
+    <option name="totallyTimeSpent" value="15565000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -482,16 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
@@ -538,11 +532,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TabooWord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="89">
+          <caret line="81" column="28" lean-forward="true" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="123" column="1" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
         </state>
       </provider>
     </entry>
