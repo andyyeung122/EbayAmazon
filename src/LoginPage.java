@@ -76,12 +76,12 @@ public class LoginPage extends Scene {
 
         // Connect to Database
         login.setOnAction( e -> {
-<<<<<<< HEAD
+
             if(!data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())) {
                 main.setUsername(userNameTextField.getText());
-=======
+
             if(!data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())&&data.isRegisteredUser(userNameTextField.getText())==true) {
->>>>>>> 77b5efe132bcced2e5fe90ab6bd3d01442c09b44
+
                 main.getPrimaryStage().setScene(ordhomepage);
                 main.getPrimaryStage().setTitle("Home Page");
                 main.getPrimaryStage().show();
@@ -99,7 +99,7 @@ public class LoginPage extends Scene {
 
 
 
-        });
+        );
 
         back.setOnAction(( e -> {
             main.getPrimaryStage().setScene(guesthomepage);
