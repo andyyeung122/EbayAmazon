@@ -16,12 +16,17 @@ public class LoginPage extends Scene {
     Data data=new Data();
 
     GridPane grid;
-    private Main main = new Main();
+    public Stage primaryStage;
     private static AlertBox alertbox = new AlertBox();
-    private  SuperHomePage superHomePage=new SuperHomePage();
-    private static SignUpPage signuppage = new SignUpPage();
-    private static OrdHomePage ordhomepage = new OrdHomePage();
-    private static GuestHomePage guesthomepage = new GuestHomePage();
+    private  SuperHomePage superHomePage;
+    private static SignUpPage signuppage;
+    private static OrdHomePage ordhomepage;
+    private static GuestHomePage guesthomepage;
+    public String accusername = "";
+
+    public void setPrimaryStage(Stage primaryStage){
+        this.primaryStage = primaryStage;
+    }
 
     public LoginPage() {
 
@@ -69,40 +74,56 @@ public class LoginPage extends Scene {
 
         // Connect to Database
         signup.setOnAction( e -> {
-            main.getPrimaryStage().setScene(signuppage);
-            main.getPrimaryStage().setTitle("SignUp Page");
-            main.getPrimaryStage().show();
+            signuppage = new SignUpPage();
+            primaryStage.setScene(signuppage);
+            primaryStage.setTitle("SignUp Page");
+            primaryStage.show();
         });
 
         // Connect to Database
         login.setOnAction( e -> {
-            if(!data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())) {
-                main.setUsername(userNameTextField.getText());
-                main.getPrimaryStage().setScene(ordhomepage);
-                main.getPrimaryStage().setTitle("Home Page");
-                main.getPrimaryStage().show();
-            }
-            else if(data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())){
-                main.setUsername(userNameTextField.getText());
-                main.getPrimaryStage().setScene(superHomePage);
-                main.getPrimaryStage().setTitle("Home Page");
-                main.getPrimaryStage().show();
-            }
 
-            else{
-                alertbox.display("Signup Popup", "User doesn't exist or password is wrong!");
-            }
+                    accusername = userNameTextField.getText();
+                    String accuserpassword = passWordTextField.getText();
+                    if (data.isSuperUser(accusername, accuserpassword)) {
+                        superHomePage = new SuperHomePage();
+                        superHomePage.setUsername(accusername);
+                        primaryStage.setScene(superHomePage);
+                        primaryStage.setTitle("Home Page");
+                        primaryStage.show();
+                    } else if (data.isOrdinairyUser(accusername, accuserpassword)) {
+                        ordhomepage = new OrdHomePage();
+                        ordhomepage.setUsername(accusername);
+                        ordhomepage.setPrimaryStage(primaryStage);
+                        primaryStage.setScene(ordhomepage);
+                        primaryStage.setTitle("Home Page");
+                        primaryStage.show();
+                    }
+
+//            if(!data.isSuperUser(accusername,accuserpassword)&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())&&data.isRegisteredUser(userNameTextField.getText())==true) {
+//                ordhomepage.setUsername(accusername);
+//                main.getPrimaryStage().setScene(ordhomepage);
+//                main.getPrimaryStage().setTitle("Home Page");
+//                main.getPrimaryStage().show();
+//            }
+
+                    else {
+                        alertbox.display("Signup Popup", "User doesn't exist or password is wrong!");
+                    }
+                }
 
 
 
-        });
+        );
 
         back.setOnAction(( e -> {
-            main.getPrimaryStage().setScene(guesthomepage);
-            main.getPrimaryStage().setTitle("Guest Home Page");
-            main.getPrimaryStage().show();
+            guesthomepage = new GuestHomePage();
+            primaryStage.setScene(guesthomepage);
+            primaryStage.setTitle("Guest Home Page");
+            primaryStage.show();
         }));
 
     }
+
 
 }
