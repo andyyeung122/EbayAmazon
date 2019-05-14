@@ -79,12 +79,12 @@ public class Testing{
         ArrayList<Item> itemsSoldBy = Data.getItemsSoldBy("dude55");
 
         for(Item item : itemsSoldBy)
-            System.out.println("Items sold\nitemID: " + item.getItemID() + "\nitemName: " + item.getItemName());
+            System.out.println("ItemsBox sold\nitemID: " + item.getItemID() + "\nitemName: " + item.getItemName());
 
         ArrayList<Item> itemsPurchasedBy = Data.getItemsPurchasedBy("dude77");
 
         for(Item item : itemsPurchasedBy)
-            System.out.println("Items Purchased\nitemID: " + item.getItemID() + "\nitemName: " + item.getItemName());
+            System.out.println("ItemsBox Purchased\nitemID: " + item.getItemID() + "\nitemName: " + item.getItemName());
 
         ArrayList<Notification> listOfNotifications = Data.getNotificationsFor("dude77");
 
