@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,6 +14,7 @@ import javafx.stage.Stage;
 
 
 public class ViewTransactionHistory extends Application {
+
 
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Super User");
@@ -43,7 +46,7 @@ public class ViewTransactionHistory extends Application {
         DatePicker end = new DatePicker();
         historyGrid.add(end, 1,3);
 
-        Button viewItem = new Button(" View ItemsBox");
+        Button viewItem = new Button(" View Items");
         viewItem.setOnAction(action ->{
             //   LocalDate startDate = start.getValue();
             // LocalDate endDate   = start.getValue();
@@ -64,9 +67,20 @@ public class ViewTransactionHistory extends Application {
 
             secondStage.show();
         });
+
+        Button back = new Button("Back");
+        back.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                SuperHomePage sh = new SuperHomePage();
+                sh.start(primaryStage);
+
+            }
+        });
         HBox viewIteMButton = new HBox(10.0D);
         viewIteMButton.setAlignment(Pos.BOTTOM_LEFT);
         viewIteMButton.getChildren().add(viewItem);
+        viewIteMButton.getChildren().add(back);
         historyGrid.add(viewIteMButton, 1, 4);
         primaryStage.setScene(historyScene);
         primaryStage.show();

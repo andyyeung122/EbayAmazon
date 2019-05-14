@@ -82,24 +82,23 @@ public class LoginPage extends Scene {
 
         // Connect to Database
         login.setOnAction( e -> {
-            accusername = userNameTextField.getText();
-            String accuserpassword = passWordTextField.getText();
-            if(data.isSuperUser(accusername,accuserpassword)){
-                superHomePage = new SuperHomePage();
-                superHomePage.setUsername(accusername);
-                primaryStage.setScene(superHomePage);
-                primaryStage.setTitle("Home Page");
-                primaryStage.show();
-            }
 
-            else if (data.isOrdinairyUser(accusername,accuserpassword)) {
-                ordhomepage = new OrdHomePage();
-                ordhomepage.setUsername(accusername);
-                ordhomepage.setPrimaryStage(primaryStage);
-                primaryStage.setScene(ordhomepage);
-                primaryStage.setTitle("Home Page");
-                primaryStage.show();
-            }
+                    accusername = userNameTextField.getText();
+                    String accuserpassword = passWordTextField.getText();
+                    if (data.isSuperUser(accusername, accuserpassword)) {
+                        superHomePage = new SuperHomePage();
+                        superHomePage.setUsername(accusername);
+                        primaryStage.setScene(superHomePage);
+                        primaryStage.setTitle("Home Page");
+                        primaryStage.show();
+                    } else if (data.isOrdinairyUser(accusername, accuserpassword)) {
+                        ordhomepage = new OrdHomePage();
+                        ordhomepage.setUsername(accusername);
+                        ordhomepage.setPrimaryStage(primaryStage);
+                        primaryStage.setScene(ordhomepage);
+                        primaryStage.setTitle("Home Page");
+                        primaryStage.show();
+                    }
 
 //            if(!data.isSuperUser(accusername,accuserpassword)&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())&&data.isRegisteredUser(userNameTextField.getText())==true) {
 //                ordhomepage.setUsername(accusername);
@@ -108,13 +107,14 @@ public class LoginPage extends Scene {
 //                main.getPrimaryStage().show();
 //            }
 
-            else{
-                alertbox.display("Signup Popup", "User doesn't exist or password is wrong!");
-            }
+                    else {
+                        alertbox.display("Signup Popup", "User doesn't exist or password is wrong!");
+                    }
+                }
 
 
 
-        });
+        );
 
         back.setOnAction(( e -> {
             guesthomepage = new GuestHomePage();
@@ -124,5 +124,6 @@ public class LoginPage extends Scene {
         }));
 
     }
+
 
 }
