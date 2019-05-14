@@ -54,7 +54,7 @@ public class ViewProcessingItem extends Application{
             @Override
             public void handle(ActionEvent e) {
                 SuperHomePage hg = new SuperHomePage();
-                hg.start(primaryStage);
+
 
             }
         });

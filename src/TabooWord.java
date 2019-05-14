@@ -67,8 +67,6 @@ public class TabooWord extends Application {
         back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                SuperHomePage sh = new SuperHomePage();
-                sh.start(primaryStage);
 
             }
         });

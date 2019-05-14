@@ -15,6 +15,11 @@ public class SuperHomePage extends Scene {
 
 
     GridPane grid;
+    private String username;
+
+    public void setUsername(String username){
+        this.username = username;
+    }
 
     public SuperHomePage() {
 

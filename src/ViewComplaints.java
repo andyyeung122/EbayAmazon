@@ -36,7 +36,7 @@ public class ViewComplaints  extends Application {
             @Override
             public void handle(ActionEvent e) {
                 SuperHomePage sh = new SuperHomePage();
-                sh.start(primaryStage);
+
 
             }
 

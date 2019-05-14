@@ -54,7 +54,7 @@ public class ViewApplication extends Application{
             @Override
             public void handle(ActionEvent e) {
                 SuperHomePage home = new SuperHomePage();
-                home.start(primaryStage);
+
 
             }
         });
