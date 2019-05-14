@@ -26,17 +26,21 @@ public class Items extends VBox{
         vbox.setPrefWidth(10);
         vbox.setPrefHeight(40);
         vbox.getChildren().addAll(label, btn );
+
     }
 
     public VBox getVbox() {
+
         return vbox;
     }
 
     private void setName() {
 
+
     }
 
     private void setSeller() {
+
 
     }
 
