@@ -134,7 +134,6 @@ public class OrdHomePage extends Scene{
             editProfile.setPrimaryStage(primaryStage);
             primaryStage.setScene(editProfile);
             primaryStage.setTitle("Edit Profile");
-            primaryStage.show();
         }));
 
         sellItem.setOnAction(( e -> {
@@ -174,23 +173,21 @@ public class OrdHomePage extends Scene{
             main.getPrimaryStage().show();
         }));
 
-        logout.setOnAction(( e -> {
-            System.out.println(username);
+
+        logout.setOnAction( e -> {
             guesthomepage = new GuestHomePage();
             guesthomepage.setPrimaryStage(primaryStage);
-            primaryStage.setScene(guesthomepage);
             primaryStage.setTitle("Guest Home Page");
-            primaryStage.show();
-        })
-        );
+            primaryStage.setScene(guesthomepage);
+        });
 
-        inbox.setOnAction(( e -> {
+        inbox.setOnAction( e -> {
             NotificationsPage notificationpage = new NotificationsPage();
             Stage window = notificationpage.setWindow();
             window.setTitle("Submit Complaint");
             window.setScene(notificationpage);
             window.show();
-        }));
+        });
 
 
     }

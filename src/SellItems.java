@@ -80,7 +80,7 @@ public class SellItems extends Scene {
         fixedPrice.setToggleGroup(toggleGroup);
 
         final FileChooser fileChooser = new FileChooser();
-//String itemName, String sellerUsername, String imageLocation, String associatedKeywords, int fixedPrice
+
         addItem.setOnAction(e -> {
             String itemNameString = itemNameField.getText();
             String filePathString = file.toString();

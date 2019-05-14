@@ -14,7 +14,7 @@ public class EditProfile extends Scene {
 
     GridPane grid;
     private Main main = new Main();
-    private static OrdHomePage ordhomepage = new OrdHomePage();
+    private static OrdHomePage ordhomepage;
     private static AlertBox alertbox = new AlertBox();
     private String username;
     private Stage primaryStage;
@@ -86,8 +86,7 @@ public class EditProfile extends Scene {
         updatebtn.setAlignment(Pos.BASELINE_RIGHT);
         updatebtn.getChildren().add(update);
         grid.add(update, 0, 7);
-//String oldUsername, String newUsername, String password, String name,String address, String creditCard, String phoneNumber
-        // Connect to database, add new user
+
         update.setOnAction( e -> {
             String newName = fullNameTextField.getText();
             String newUsername = userNameTextField.getText();
