@@ -25,7 +25,7 @@ public class OrdHomePage extends Scene{
     private static ManageItemsPage manageitems = new ManageItemsPage();
     private static FriendsPage friendspage = new FriendsPage();
     private static OrdTransactionHistory ordtranshist = new OrdTransactionHistory();
-    private static GuestHomePage guesthomepage = new GuestHomePage();
+    private static GuestHomePage guesthomepage;
     private static NotificationsPage notificationspage = new NotificationsPage();
 
 
@@ -173,21 +173,20 @@ public class OrdHomePage extends Scene{
             main.getPrimaryStage().show();
         }));
 
-        logout.setOnAction(( e -> {
-            System.out.println(username);
-            main.getPrimaryStage().setScene(guesthomepage);
-            main.getPrimaryStage().setTitle("Guest Home Page");
-            main.getPrimaryStage().show();
-        })
-        );
+        logout.setOnAction( e -> {
+            guesthomepage = new GuestHomePage();
+            guesthomepage.setPrimaryStage(primaryStage);
+            primaryStage.setTitle("Guest Home Page");
+            primaryStage.setScene(guesthomepage);
+        });
 
-        inbox.setOnAction(( e -> {
+        inbox.setOnAction( e -> {
             NotificationsPage notificationpage = new NotificationsPage();
             Stage window = notificationpage.setWindow();
             window.setTitle("Submit Complaint");
             window.setScene(notificationpage);
             window.show();
-        }));
+        });
 
 
     }
