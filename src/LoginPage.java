@@ -16,6 +16,7 @@ public class LoginPage extends Scene {
     Data data=new Data();
     GridPane grid;
     private Main main = new Main();
+    private static AlertBox alertbox = new AlertBox();
     private  SuperHomePage superHomePage=new SuperHomePage();
     private static SignUpPage signuppage = new SignUpPage();
     private static OrdHomePage ordhomepage = new OrdHomePage();
@@ -72,7 +73,7 @@ public class LoginPage extends Scene {
 
         // Connect to Database
         login.setOnAction( e -> {
-            if(!data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())) {
+            if(!data.isSuperUser(userNameTextField.getText(),passWordTextField.getText())&&data.isOrdinairyUser(userNameTextField.getText(),passWordTextField.getText())&&data.isRegisteredUser(userNameTextField.getText())==true) {
                 main.getPrimaryStage().setScene(ordhomepage);
                 main.getPrimaryStage().setTitle("Home Page");
                 main.getPrimaryStage().show();
@@ -83,6 +84,9 @@ public class LoginPage extends Scene {
                 main.getPrimaryStage().setTitle("Home Page");
                 main.getPrimaryStage().show();
 
+            }
+            else{
+                alertbox.display("Signup Popup", "User doesn't exist or password is wrong!");
             }
 
 
