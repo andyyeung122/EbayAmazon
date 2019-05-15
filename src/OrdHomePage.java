@@ -26,7 +26,7 @@ public class OrdHomePage extends Scene{
     private static FriendsPage friendspage = new FriendsPage();
     private static OrdTransactionHistory ordtranshist = new OrdTransactionHistory();
     private static GuestHomePage guesthomepage;
-    private static NotificationsPage notificationspage = new NotificationsPage();
+    private static NotificationsPage notificationspage;
 
 
     public void setUsername(String username){
@@ -113,7 +113,7 @@ public class OrdHomePage extends Scene{
         historyBtn.getChildren().add(history);
         grid.add(historyBtn, 4, 4);
 
-        Button inbox = new Button("NotificationsPage");
+        Button inbox = new Button("Notifications");
         HBox inboxBtn = new HBox(10);
         inboxBtn.setAlignment(Pos.TOP_RIGHT);
         inboxBtn.getChildren().add(inbox);
@@ -181,11 +181,9 @@ public class OrdHomePage extends Scene{
         });
 
         inbox.setOnAction( e -> {
-            NotificationsPage notificationpage = new NotificationsPage();
-            Stage window = notificationpage.setWindow();
-            window.setTitle("Submit Complaint");
-            window.setScene(notificationpage);
-            window.show();
+            notificationpage = new NotificationsPage();
+            notificationpage.setUsername(username);
+            notificationpage.showWindow();
         });
 
 

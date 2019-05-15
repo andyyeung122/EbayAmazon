@@ -1,9 +1,6 @@
 
 public class Notification extends Message{
 
-    private int id;
-    private String title;
-    private String message;
     private String receiver;
     private boolean warning;
 
@@ -23,5 +20,10 @@ public class Notification extends Message{
 
     public boolean isWarning(){
         return warning;
+    }
+
+    @Override
+    public String toString(){
+        return getTitle();
     }
 }
