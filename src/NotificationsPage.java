@@ -22,7 +22,7 @@ public class NotificationsPage extends Scene {
     private GridPane grid;
     private ListView<Notification> listView;
     private ObservableList<Notification> listOfNotifications;
-   // private NotificationDetails notificationDetails;
+    private NotificationDetails notificationDetails;
 
     private String username;
     private Stage newStage;
@@ -45,7 +45,7 @@ public class NotificationsPage extends Scene {
         Button saveKeywordsButton = new Button("Save Keywords");
         Button detailsButton = new Button("View Details");
         VBox keywordBox = new VBox(8);
-        Data.editKeywords("dude11","what,is,going,on");
+
         listOfNotifications = FXCollections.observableArrayList(Data.getNotificationsFor(username)); 
         listView = new ListView<Notification>(listOfNotifications);
 
@@ -57,8 +57,8 @@ public class NotificationsPage extends Scene {
         detailsButton.setOnAction(e ->{
             Notification selectedNote = listView.getSelectionModel().getSelectedItem();
             if(selectedNote != null){
-//                notificationDetails = new NotificationDetails(selectedNote);
-//                notificationDetails.openWindow();
+                notificationDetails = new NotificationDetails(selectedNote);
+                notificationDetails.openWindow();
 
             }
 

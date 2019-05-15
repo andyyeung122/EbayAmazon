@@ -951,8 +951,9 @@ public class Data{
     public static ArrayList<String> getFriendsOf(String username){
         ArrayList<String> listOfFriends = new ArrayList<>();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT friend FROM Friend WHERE user=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT friend FROM Friend WHERE user=? UNION SELECT user FROM Friend Where friend=?");
             preparedStatement.setString(1,username);
+            preparedStatement.setString(2,username);
             ResultSet queryOutput = preparedStatement.executeQuery();
 
             while(queryOutput.next())
@@ -1327,7 +1328,7 @@ public class Data{
 
     //NOTE: change friend message page and remove Title
     //sends a notification (as a message) from one user to another (users should be friends), place sender username in title (tested)
-    public static void sendFriendMessage(String sender, String receiver, String messageTitle, String messageContents){
+    public static void sendFriendMessage(String sender, String receiver, String messageContents){
         String newTitle = "Message From " + sender;
         createNotification(newTitle,messageContents,receiver,false);
     }
@@ -1346,9 +1347,11 @@ public class Data{
     //removes entry (user,friend) from table Friend (tested)
     public static void deleteFriend(String user, String friend){
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Friend WHERE user=? AND friend=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Friend WHERE (user=? AND friend=?) OR (user=? AND friend=?)");
             preparedStatement.setString(1,user);
             preparedStatement.setString(2,friend);
+            preparedStatement.setString(3,friend);
+            preparedStatement.setString(4,user);
             preparedStatement.executeUpdate();
             preparedStatement.close(); 
         }catch(Exception expt){
