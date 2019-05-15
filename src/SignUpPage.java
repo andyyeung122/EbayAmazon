@@ -94,5 +94,6 @@ public class SignUpPage extends Scene {
             main.getPrimaryStage().show();
         });
 
+
     }
 }

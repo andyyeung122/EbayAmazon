@@ -1,6 +1,8 @@
 
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,17 +15,21 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class ViewApplication extends Scene{
 
     GridPane grid;
     private Main main = new Main();
     private  SuperHomePage superHomePage=new SuperHomePage();
+    private Data data=new Data();
+
 
 
 
 
         public ViewApplication() {
-            super(new GridPane(),600,500);
+            super(new GridPane(),1000,700);
             grid = (GridPane)this.getRoot();
             grid.setAlignment(Pos.CENTER);
             grid.setHgap(10);
@@ -37,14 +43,28 @@ public class ViewApplication extends Scene{
             title1.setFont(Font.font("Verdana", 20.0));
 
 
+
             // get data of item to sell from database
-            TableView userApplication = new TableView();
+            TableView<User> userApplication = new TableView();
             TableColumn name = new TableColumn("Name");
             TableColumn userName = new TableColumn("UserName");
             TableColumn password = new TableColumn("Password");
             TableColumn address = new TableColumn(" Address");
             TableColumn phone = new TableColumn("Phone Number");
-            TableColumn creditCard = new TableColumn("Phone Number");
+            TableColumn creditCard = new TableColumn("Card");
+
+            name.setMinWidth(100);
+            userName.setMinWidth(100);
+            password.setMinWidth(100);
+            address.setMinWidth(200);
+            phone.setMinWidth(200);
+            creditCard.setMinWidth(200);
+
+
+            ArrayList<User> unregisteredUsers = data.getUnregisteredUsers();
+            ObservableList<User> datas= FXCollections.observableList(unregisteredUsers);
+
+            userApplication.setItems(datas);
 
 
 
