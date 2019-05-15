@@ -96,8 +96,14 @@ public class GuestHomePage extends Scene {
             Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
         }
 
+          //IMPORTANT!!! Removes items from itemArrayList
+//        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
+//            Data.removeItem(unregisteredItemArrayList.get(k).getItemID());
+//        }
+
+
         for( int i = 0; i < itemArrayList.size(); i++){
-            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName()));
+            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
             System.out.println(itemArrayList.get(i).getItemName());
         }
 
