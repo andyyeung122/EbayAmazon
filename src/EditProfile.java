@@ -13,9 +13,8 @@ import javafx.stage.Stage;
 public class EditProfile extends Scene {
 
     GridPane grid;
-    private Main main = new Main();
-    private static OrdHomePage ordhomepage;
-    private static AlertBox alertbox = new AlertBox();
+    private OrdHomePage ordhomepage;
+    private AlertBox alertbox = new AlertBox();
     private String username;
     private Stage primaryStage;
 

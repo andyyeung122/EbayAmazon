@@ -40,7 +40,7 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
-            String password = "pringles";
+            String password = "209539352";
 
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 
@@ -935,7 +935,7 @@ public class Data{
             if(queryOutput.next())
                 keywords = queryOutput.getString("desiredKeyWords");
             preparedStatement.close();
-            queryOutput.close()
+            queryOutput.close();
 
         }catch(Exception expt){
             expt.printStackTrace();

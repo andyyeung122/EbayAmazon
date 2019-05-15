@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -18,15 +19,12 @@ import java.util.List;
 
 public class NotificationsPage extends Scene {
 
-    GridPane grid;
-    ListView<Notification> listView;
-    ObservableList<Notification> listOfNotifications;
+    private GridPane grid;
+    private ListView<Notification> listView;
+    private ObservableList<Notification> listOfNotifications;
+    private NotificationDetails notificationDetails;
     private String username;
     private Stage newStage;
-
-    public void setUsername(String username){
-        this.username = username;
-    }
 
     public void openWindow(){
         newStage = new Stage();
@@ -35,8 +33,8 @@ public class NotificationsPage extends Scene {
         newStage.show();
     }
 
-    public NotificationsPage(){
-        super(new GridPane(),600,300);
+    public NotificationsPage(String username){
+        super(new GridPane(),300,300);
         grid = (GridPane)this.getRoot();
 
         String keywords = Data.getKeywordsOf(username);
@@ -45,7 +43,8 @@ public class NotificationsPage extends Scene {
         TextArea keywordsTextArea = new TextArea(keywords);
         Button saveKeywordsButton = new Button("Save Keywords");
         Button detailsButton = new Button("View Details");
-
+        VBox keywordBox = new VBox(8);
+        Data.editKeywords("dude11","what,is,going,on");
         listOfNotifications = FXCollections.observableArrayList(Data.getNotificationsFor(username)); 
         listView = new ListView<Notification>(listOfNotifications);
 
@@ -54,14 +53,26 @@ public class NotificationsPage extends Scene {
             Data.editKeywords(username,newKeywords);
         });
 
-        grid.add(desiredKeywordsLabel,0,0);
-        gird.add(keywordsTextArea,1,0);
-        grid.add(saveKeywordsButton,1,1);
-        grid.add(notificationLabel,0,2);
-        grid.add(listView,0,3);
-        grid.add(detailsButton,0,4);
-        grid.setHGap(10);
-        grid.setVGap(10);
+        detailsButton.setOnAction(e ->{
+            Notification selectedNote = listView.getSelectionModel().getSelectedItem();
+            if(selectedNote != null){
+                notificationDetails = new NotificationDetails(selectedNote);
+                notificationDetails.openWindow();
+            }
+
+        });
+
+
+        keywordsTextArea.setPrefColumnCount(8);
+        keywordsTextArea.setPrefRowCount(2);
+
+        keywordBox.getChildren().addAll(desiredKeywordsLabel,keywordsTextArea, saveKeywordsButton);
+        grid.add(keywordBox,0,0);
+        grid.add(notificationLabel,0,1);
+        grid.add(listView,0,2);
+        grid.add(detailsButton,0,3);
+        grid.setHgap(10);
+        grid.setVgap(10);
         grid.setPadding(new Insets(10,10,10,10));
 
         listView.setMinHeight(10);

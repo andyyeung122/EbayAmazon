@@ -161,6 +161,15 @@ public class Testing{
         Data.sendNotificationsFor(64);
 
         System.out.println(Calendar.getInstance().getTimeInMillis());
+
+        Data.createFixedItem("bob","dude55","bob","bob,bob", 20);
+        Data.createFixedItem("bob","dude55","bob","bob,bob", 20);
+        Data.createFixedItem("bob","dude55","bob","bob,bob", 20);
+
+        ArrayList<Item> itemArrayList = Data.getItemsOnSale();
+
+        for(Item item : itemArrayList)
+            System.out.println(item.getItemName());
         Data.closeResources();
         
     }
