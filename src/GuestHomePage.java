@@ -102,10 +102,8 @@ public class GuestHomePage extends Scene {
 
             }
             else {
-                for (int rowLength = 0; rowLength <= ((double)((itemSearchArrayList.size()) / 3)); rowLength++) {
-                    for (int columnLength = 0; columnLength < 3; columnLength++) {
-                        itemGridSearch.getChildren().add(itemList.get((3 * rowLength) + columnLength).getVbox());
-                    }
+                for (int rowLength = 0; rowLength <= itemSearchArrayList.size(); rowLength++) {
+                        itemGridSearch.getChildren().add(itemList.get(rowLength).getVbox());
                 }
             }
             grid.add(itemGridSearch,0,3);
@@ -149,7 +147,6 @@ public class GuestHomePage extends Scene {
             for (int rowLength = 0; rowLength < itemArrayList.size(); rowLength++) {
                     itemGrid.getChildren().add(itemList.get(rowLength).getVbox());
                     System.out.println((double)((itemArrayList.size()) / 3));
-
         }
         }
         return itemGrid;

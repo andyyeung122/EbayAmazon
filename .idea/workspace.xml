@@ -10,16 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af98651d-4bc9-47f2-bc12-8e198c13edc5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/Data.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/NotificationsPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/NotificationsPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/OrdHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/OrdHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewProcessingItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/ViewProcessingItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NotificationsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotificationsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GuestHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuestHomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OrdHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewProcessingItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewProcessingItem.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,12 +30,12 @@
     <session id="-892741290">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2054" />
+          <entry key="java" value="2092" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2054" />
+          <entry key="JAVA" value="2092" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -113,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="206">
-              <caret line="914" column="38" lean-forward="true" selection-start-line="914" selection-start-column="38" selection-end-line="914" selection-end-column="38" />
+              <caret line="921" column="38" lean-forward="true" selection-start-line="921" selection-start-column="38" selection-end-line="921" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -165,11 +157,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="206" column="80" lean-forward="true" selection-start-line="206" selection-start-column="80" selection-end-line="206" selection-end-column="80" />
+            <state relative-caret-position="93">
+              <caret line="146" column="8" selection-start-line="146" selection-start-column="8" selection-end-line="146" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -177,8 +169,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="152" column="9" lean-forward="true" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
+            <state relative-caret-position="177">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -198,7 +190,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onacti</find>
       <find>username</find>
       <find>onac</find>
       <find>main</find>
@@ -228,6 +219,7 @@
       <find>price</find>
       <find>createratin</find>
       <find>YE</find>
+      <find>manage</find>
     </findStrings>
     <replaceStrings>
       <replace>grid</replace>
@@ -251,7 +243,6 @@
         <option value="$PROJECT_DIR$/src/SendMessage.java" />
         <option value="$PROJECT_DIR$/src/ManageItemsPage.java" />
         <option value="$PROJECT_DIR$/src/ItemsBox.java" />
-        <option value="$PROJECT_DIR$/src/GuestHomePage.java" />
         <option value="$PROJECT_DIR$/src/LoginPage.java" />
         <option value="$PROJECT_DIR$/src/Complaint.java" />
         <option value="$PROJECT_DIR$/src/ViewComplaints.java" />
@@ -260,8 +251,9 @@
         <option value="$PROJECT_DIR$/src/SuperHomePage.java" />
         <option value="$PROJECT_DIR$/src/NotificationsPage.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
         <option value="$PROJECT_DIR$/src/Data.java" />
+        <option value="$PROJECT_DIR$/src/GuestHomePage.java" />
+        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
       </list>
     </option>
   </component>
@@ -497,6 +489,15 @@
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="15565000" />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
@@ -514,8 +515,8 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3285968" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3291815" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32740214" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50364375" side_tool="true" weight="0.24333926" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49959514" weight="0.3285968" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49635628" weight="0.19039147" />
@@ -818,27 +819,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="206" column="80" lean-forward="true" selection-start-line="206" selection-start-column="80" selection-end-line="206" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="152" column="9" lean-forward="true" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
-          <caret line="914" column="38" lean-forward="true" selection-start-line="914" selection-start-column="38" selection-end-line="914" selection-end-column="38" />
+          <caret line="921" column="38" lean-forward="true" selection-start-line="921" selection-start-column="38" selection-end-line="921" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -846,6 +830,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="39" column="49" lean-forward="true" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="146" column="8" selection-start-line="146" selection-start-column="8" selection-end-line="146" selection-end-column="8" />
         </state>
       </provider>
     </entry>

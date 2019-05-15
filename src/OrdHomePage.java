@@ -1,4 +1,6 @@
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,7 +23,7 @@ public class OrdHomePage extends Scene{
     private String username;
     private String password;
     private EditProfile editProfile;
-    private ManageItemsPage manageitems = new ManageItemsPage();
+
     private FriendsPage friendspage;
     private OrdTransactionHistory ordtranshist;
     private GuestHomePage guesthomepage;
@@ -91,11 +93,6 @@ public class OrdHomePage extends Scene{
 
         VBox buttonBox = new VBox(10);
 
-        Button manage = new Button("Manage Items");
-        HBox manageBtn = new HBox(10);
-        manageBtn.setAlignment(Pos.TOP_RIGHT);
-        manageBtn.getChildren().add(manage);
-        buttonBox.getChildren().add(manageBtn);
 
         Button submitComplaint = new Button("Submit Complaint");
         HBox submitComplaintBtn = new HBox(10);
@@ -128,9 +125,7 @@ public class OrdHomePage extends Scene{
         buttonBox.getChildren().add(inboxBtn);
         grid.add(buttonBox,4,3);
 
-        manage.setOnAction( e -> {
 
-        });
 
         editProfileBttn.setOnAction(( e -> {
             editProfile = new EditProfile();
@@ -150,11 +145,6 @@ public class OrdHomePage extends Scene{
             window.show();
         }));
 
-        manage.setOnAction(( e-> {
-            primaryStage.setScene(manageitems);
-            primaryStage.setTitle("Manage ItemsBox");
-            primaryStage.show();
-        }));
 
         submitComplaint.setOnAction(( e -> {
             SubmitComplaintPage submitcomplaintpage = new SubmitComplaintPage();
@@ -193,15 +183,49 @@ public class OrdHomePage extends Scene{
             notificationspage = new NotificationsPage(username);
             notificationspage.openWindow();
         });
+
+        search.setOnAction( e -> {
+            grid.getChildren().remove(getNodeByRowColumnIndex(3,0,grid));
+
+            String itemToSearch = searchTextField.getText();
+            FlowPane itemGridSearch = new FlowPane();
+
+            ArrayList<Item> itemSearchArrayList = Data.searchForItems(itemToSearch);
+
+            ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
+
+            for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+                Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+            }
+
+            //IMPORTANT!!! Removes items from itemArrayList
+//        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
+//            Data.removeItem(unregisteredItemArrayList.get(k).getItemID());
+//        }
+
+
+            for( int i = 0; i < itemSearchArrayList.size(); i++){
+                itemList.add(new OrdItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),itemSearchArrayList.get(i).getSeller()));
+//                System.out.println(itemSearchArrayList.get(i).getItemName());
+            }
+
+            if (itemList.size() == 0){
+
+            }
+            else {
+                for (int rowLength = 0; rowLength <= itemSearchArrayList.size(); rowLength++) {
+                    itemGridSearch.getChildren().add(itemList.get(rowLength).getVbox());
+                }
+            }
+            grid.add(itemGridSearch,0,3);
+
+        });
+
     }
 
     public FlowPane getItemGrid() {
         FlowPane itemGrid = new FlowPane();
 
-//        ColumnConstraints colConstraintOne = new ColumnConstraints(100);
-//        ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
-//        ColumnConstraints colConstraintThree = new ColumnConstraints(100);
-//        itemGrid.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
 
         ArrayList<Item> itemArrayList = Data.getItemsOnSale();
         ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
@@ -229,12 +253,24 @@ public class OrdHomePage extends Scene{
 
         }
         else {
-            for (int rowLength = 0; rowLength < ((double)((itemArrayList.size()) / 3)); rowLength++) {
-                for (int columnLength = 0; columnLength < 3; columnLength++) {
-                    itemGrid.getChildren().add(itemList.get((3 * rowLength) + columnLength).getVbox());
-                }
+            for (int rowLength = 0; rowLength < itemArrayList.size(); rowLength++) {
+                itemGrid.getChildren().add(itemList.get(rowLength).getVbox());
+                System.out.println((double)((itemArrayList.size()) / 3));
             }
         }
         return itemGrid;
+    }
+
+    public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
+        Node result = null;
+        ObservableList<Node> childrens = gridPane.getChildren();
+
+        for (Node node : childrens) {
+            if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
+        }
+        return result;
     }
 }
