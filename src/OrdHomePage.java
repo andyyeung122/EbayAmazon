@@ -145,7 +145,6 @@ public class OrdHomePage extends Scene{
             window.show();
         }));
 
-
         submitComplaint.setOnAction(( e -> {
             SubmitComplaintPage submitcomplaintpage = new SubmitComplaintPage();
             submitcomplaintpage.setUsername(username);
