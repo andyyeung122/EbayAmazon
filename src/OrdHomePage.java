@@ -217,7 +217,7 @@ public class OrdHomePage extends Scene{
 
 
         for( int i = 0; i < itemArrayList.size(); i++){
-            itemList.add(new OrdItemsBox(itemArrayList.get(i).getItemID(),itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
+            itemList.add(new OrdItemsBox(itemArrayList.get(i).getItemID(),itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),username));
             System.out.println(itemArrayList.get(i).getItemName());
         }
         float f = itemArrayList.size()/3;

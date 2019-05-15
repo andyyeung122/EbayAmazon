@@ -30,7 +30,7 @@ public class OrdItemsBox extends VBox{
     private String username;
     private String password;
 
-    public OrdItemsBox(int itemId, String itemNameString, String imageLocationString, String sellerString) {
+    public OrdItemsBox(int itemId, String itemNameString, String imageLocationString, String buyer) {
 
         int totalPrice = Data.getFixedPrice(itemId);
         //Image pic = new Image();
@@ -76,10 +76,15 @@ public class OrdItemsBox extends VBox{
             addgrid.add(buyBtn,0,5);
 
             buyBtn.setOnAction(( el -> {
-                    Data.removeItem(itemId);
-                    window2.close();
-                    AlertBox alertbox = new AlertBox();
-                    alertbox.display("Successful", "Item Bought!");
+                int priceOfItem = 0;
+                if(Data.isBidItem(itemID))
+                    price = Data.getHighestBid();
+                else if(Data.isFixedItem(itemID))
+                    price = Data.getFixedPrice();
+                Data.createPurchase(itemId,buyer,price);
+                window2.close();
+                AlertBox alertbox = new AlertBox();
+                alertbox.display("Successful", "Item Bought!");
 
             }));
 

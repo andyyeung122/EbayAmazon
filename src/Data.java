@@ -689,6 +689,10 @@ public class Data{
         return new User(username);
     }
 
+    public static int getBid(String username, int itemID){
+        return -0;
+    }
+
     //returns an Item object with the qualities associated with itemID (tested)
     public static Item getItem(int itemID){
         try{
