@@ -64,7 +64,7 @@ public class OrdItemsBox extends VBox{
             Text itemName = new Text("Item Name:" + " " + itemNameString);
             addgrid.add(itemName, 0,1);
 
-            Text sellerName = new Text("Seller:" + " " + sellerString);
+            Text sellerName = new Text("Seller:" + " " + Data.getItem(itemId).getSeller());
             addgrid.add(sellerName , 0, 2);
 
             addgrid.add(imageView2,0,3);
@@ -77,11 +77,12 @@ public class OrdItemsBox extends VBox{
 
             buyBtn.setOnAction(( el -> {
                 int priceOfItem = 0;
-                if(Data.isBidItem(itemID))
-                    price = Data.getHighestBid();
-                else if(Data.isFixedItem(itemID))
-                    price = Data.getFixedPrice();
-                Data.createPurchase(itemId,buyer,price);
+                if(Data.isBidItem(itemId))
+                    priceOfItem = Data.getHighestBid(itemId);
+                else if(Data.isFixedItem(itemId))
+                    priceOfItem = Data.getFixedPrice(itemId);
+                    System.out.println(buyer);
+                Data.createPurchase(itemId,buyer,priceOfItem);
                 window2.close();
                 AlertBox alertbox = new AlertBox();
                 alertbox.display("Successful", "Item Bought!");

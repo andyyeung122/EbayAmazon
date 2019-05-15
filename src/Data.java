@@ -40,7 +40,7 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
-            String password = "pringles";
+            String password = "209539352";
 
 
 
@@ -1506,7 +1506,7 @@ public class Data{
         return itemList;
     }
 
-    private static int getLastItemIndex(){
+    public static int getLastItemIndex(){
         int id = 0;
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT id FROM Item ORDER BY id DESC LIMIT 1");

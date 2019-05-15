@@ -43,8 +43,13 @@ public class OrdHomePage extends Scene{
         this.password = password;
     }
 
-    public OrdHomePage() {
+    public OrdHomePage(){
+        this("");
+    }
+
+    public OrdHomePage(String username) {
         super(new GridPane(),620,550);
+        this.username=username;
 
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
@@ -205,7 +210,7 @@ public class OrdHomePage extends Scene{
 
 
             for( int i = 0; i < itemSearchArrayList.size(); i++){
-                itemList.add(new OrdItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),itemSearchArrayList.get(i).getSeller()));
+                itemList.add(new OrdItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),username));
 //                System.out.println(itemSearchArrayList.get(i).getItemName());
             }
 
