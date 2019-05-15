@@ -94,6 +94,7 @@ public class LoginPage extends Scene {
                     } else if (data.isOrdinairyUser(accusername, accuserpassword)) {
                         ordhomepage = new OrdHomePage();
                         ordhomepage.setUsername(accusername);
+                        ordhomepage.setPassword(accuserpassword);
                         ordhomepage.setPrimaryStage(primaryStage);
                         primaryStage.setScene(ordhomepage);
                         primaryStage.setTitle("Home Page");

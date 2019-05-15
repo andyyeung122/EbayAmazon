@@ -119,14 +119,7 @@ public class GuestHomePage extends Scene {
                 }
             }
         }
-
-//        itemList.add(new ItemsBox());
-//        itemList.add(new ItemsBox());
-//        itemGrid.add(itemList.get(0).getVbox(), 0,0);
-//        itemGrid.add(itemList.get(1).getVbox(), 0,1);
-
         return itemGrid;
     }
-
 
 }

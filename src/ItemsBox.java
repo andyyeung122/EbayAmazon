@@ -1,3 +1,4 @@
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -41,10 +42,16 @@ public class ItemsBox extends VBox{
         vbox.getChildren().addAll(label, imageView, Detailsbtn );
 
         Detailsbtn.setOnAction(( e -> {
+            File file2 = new File(imageLocationString);
+            Image image2 = new Image(file2.toURI().toString(),75,75,false,false);
+            ImageView imageView2 = new ImageView(image2);
+
             GridPane addgrid = new GridPane();
             addgrid.setHgap(10);
             addgrid.setVgap(10);
-            Scene scene2 = new Scene(addgrid, 300,200);
+            addgrid.setAlignment(Pos.CENTER);
+
+            Scene scene2 = new Scene(addgrid, 200,200);
             Stage window2 = new Stage();
             Text title2 = new Text("Item Detail");
             title2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -56,8 +63,10 @@ public class ItemsBox extends VBox{
             Text sellerName = new Text("Seller:" + " " + sellerString);
             addgrid.add(sellerName , 0, 2);
 
+            addgrid.add(imageView2,0,3);
+
             Button buyBtn = new Button("Buy");
-            addgrid.add(buyBtn,0,3);
+            addgrid.add(buyBtn,0,4);
 
             buyBtn.setOnAction(( el -> {
                 if(Data.isOrdinairyUser(username, password)){
