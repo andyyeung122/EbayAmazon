@@ -45,6 +45,7 @@ public class OrdHomePage extends Scene{
 
     public OrdHomePage() {
         super(new GridPane(),540,550);
+
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);

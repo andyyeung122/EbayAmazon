@@ -42,6 +42,7 @@ public class Data{
             String user = "root";
             String password = "pringles";
 
+
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 
             connection = DriverManager.getConnection(host,user,password);
@@ -265,6 +266,7 @@ public class Data{
             createUser(username,password,name,false);
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT IGNORE INTO OrdinairyUser VALUES(?,?,?,?,?,?,?,?,?,?,?);");
             preparedStatement.setString(1,username);
+
             preparedStatement.setString(2,address);
             preparedStatement.setString(3,creditCard);
             preparedStatement.setString(4,phoneNumber);

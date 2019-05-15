@@ -23,6 +23,7 @@ public class NotificationsPage extends Scene {
     private ListView<Notification> listView;
     private ObservableList<Notification> listOfNotifications;
    // private NotificationDetails notificationDetails;
+
     private String username;
     private Stage newStage;
 
@@ -58,6 +59,7 @@ public class NotificationsPage extends Scene {
             if(selectedNote != null){
 //                notificationDetails = new NotificationDetails(selectedNote);
 //                notificationDetails.openWindow();
+
             }
 
         });
