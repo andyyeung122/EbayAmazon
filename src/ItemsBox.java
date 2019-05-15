@@ -27,7 +27,7 @@ public class ItemsBox extends VBox{
     public boolean isBid = false;
     FileInputStream inputStream;
 
-    public ItemsBox(String itemNameString, String imageLocationString, String sellerString) {
+    public ItemsBox(String itemNameString, String imageLocationString, String sellerString, String username, String password) {
         //Image pic = new Image();
         Button Detailsbtn = new Button("Details");
         Label label = new Label(itemNameString);
@@ -58,6 +58,16 @@ public class ItemsBox extends VBox{
 
             Button buyBtn = new Button("Buy");
             addgrid.add(buyBtn,0,3);
+
+            buyBtn.setOnAction(( el -> {
+                if(Data.isOrdinairyUser(username, password)){
+                    //Buy Item
+                }
+                else {
+                    AlertBox alertbox = new AlertBox();
+                    alertbox.display("Message", "Login to buy Items");
+                }
+            }));
 
             window2.setTitle("Item Detail");
             window2.setScene(scene2);

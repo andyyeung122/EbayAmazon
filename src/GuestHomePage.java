@@ -21,6 +21,8 @@ public class GuestHomePage extends Scene {
     public LoginPage loginpage;
     private static Main main = new Main();
     private Stage primaryStage;
+    private String username = "";
+    private String password = "";
     private List<ItemsBox> itemList = new ArrayList<>();
 
     public void setPrimaryStage(Stage primaryStage){
@@ -103,7 +105,7 @@ public class GuestHomePage extends Scene {
 
 
         for( int i = 0; i < itemArrayList.size(); i++){
-            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
+            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller(),username, password));
             System.out.println(itemArrayList.get(i).getItemName());
         }
 
