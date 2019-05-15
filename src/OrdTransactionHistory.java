@@ -17,9 +17,17 @@ public class OrdTransactionHistory extends Scene {
     GridPane grid;
     private List<ItemsBox> soldItems = new ArrayList<>();
     private List<ItemsBox> purchasedItems = new ArrayList<>();
-    private Main main = new Main();
-    private static OrdHomePage ordhomepage = new OrdHomePage();
+    private OrdHomePage ordhomepage;
+    private Stage primaryStage;
+    private String username;
 
+    public void setPrimaryStage(Stage primaryStage){
+        this.primaryStage = primaryStage;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
 
     public OrdTransactionHistory() {
         super(new GridPane(),390,300);
@@ -80,9 +88,12 @@ public class OrdTransactionHistory extends Scene {
         }));
 
         back.setOnAction(( e -> {
-            main.getPrimaryStage().setScene(ordhomepage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            ordhomepage = new OrdHomePage();
+            ordhomepage.setPrimaryStage(primaryStage);
+            ordhomepage.setUsername(username);
+            primaryStage.setScene(ordhomepage);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
         }));
     }
 }

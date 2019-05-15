@@ -38,5 +38,10 @@ public class Item{
     public String getKeyWords(){
         return associatedKeyWords;
     }
+
+    @Override
+    public String toString(){
+        return itemName;
+    }
 }
 

@@ -10,10 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af98651d-4bc9-47f2-bc12-8e198c13edc5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/GuestHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuestHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ItemsBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ItemsBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EditProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NotificationsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotificationsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OrdHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrdTransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdTransactionHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,12 +36,12 @@
     <session id="-892741290">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2010" />
+          <entry key="java" value="2036" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2010" />
+          <entry key="JAVA" value="2036" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -111,24 +115,28 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="74" column="36" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
+            <state relative-caret-position="68">
+              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
               <folding>
-                <element signature="e#1380#1381#0" expanded="true" />
-                <element signature="e#1420#1421#0" expanded="true" />
+                <element signature="e#1517#1518#0" expanded="true" />
+                <element signature="e#1557#1558#0" expanded="true" />
+                <element signature="e#1612#1613#0" expanded="true" />
+                <element signature="e#1660#1661#0" expanded="true" />
+                <element signature="e#1708#1709#0" expanded="true" />
+                <element signature="e#1748#1749#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="96" column="63" selection-start-line="96" selection-start-column="63" selection-end-line="96" selection-end-column="63" />
+            <state relative-caret-position="378">
+              <caret line="98" column="59" lean-forward="true" selection-start-line="98" selection-start-column="59" selection-end-line="98" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,7 +216,7 @@
         <entry file="file://$PROJECT_DIR$/src/Data.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="323" column="49" selection-start-line="323" selection-start-column="44" selection-end-line="323" selection-end-column="49" />
+              <caret line="323" column="49" selection-start-line="323" selection-start-column="49" selection-end-line="323" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -284,8 +292,8 @@
         <option value="$PROJECT_DIR$/src/ManageItemsPage.java" />
         <option value="$PROJECT_DIR$/src/ItemsBox.java" />
         <option value="$PROJECT_DIR$/src/GuestHomePage.java" />
-        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
         <option value="$PROJECT_DIR$/src/LoginPage.java" />
+        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
       </list>
     </option>
   </component>
@@ -818,7 +826,7 @@
     <entry file="file://$PROJECT_DIR$/src/Data.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="323" column="49" selection-start-line="323" selection-start-column="44" selection-end-line="323" selection-end-column="49" />
+          <caret line="323" column="49" selection-start-line="323" selection-start-column="49" selection-end-line="323" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -861,23 +869,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
+    <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="74" column="36" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
+        <state relative-caret-position="378">
+          <caret line="98" column="59" lean-forward="true" selection-start-line="98" selection-start-column="59" selection-end-line="98" selection-end-column="59" />
           <folding>
-            <element signature="e#1380#1381#0" expanded="true" />
-            <element signature="e#1420#1421#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
+    <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="96" column="63" selection-start-line="96" selection-start-column="63" selection-end-line="96" selection-end-column="63" />
+        <state relative-caret-position="68">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1517#1518#0" expanded="true" />
+            <element signature="e#1557#1558#0" expanded="true" />
+            <element signature="e#1612#1613#0" expanded="true" />
+            <element signature="e#1660#1661#0" expanded="true" />
+            <element signature="e#1708#1709#0" expanded="true" />
+            <element signature="e#1748#1749#0" expanded="true" />
           </folding>
         </state>
       </provider>

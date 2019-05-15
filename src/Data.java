@@ -40,7 +40,7 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
-            String password = "pringles";
+            String password = "209539352";
 
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 
@@ -923,6 +923,26 @@ public class Data{
             expt.printStackTrace();
         }
         return listOfNotifications;
+    }
+
+    public static String getKeywordsOf(String username){
+        String keywords = "";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT desiredKeyWords FROM OrdinairyUser WHERE username=?");
+            preparedStatement.setString(1,username);
+
+            ResultSet queryOutput = preparedStatement.executeQuery();
+            if(queryOutput.next())
+                keywords = queryOutput.getString("desiredKeyWords");
+            preparedStatement.close();
+            queryOutput.close();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+
+        return keywords;
+
     }
 
     //returns an ArrayList list of friends for user with the specified username (tested)

@@ -16,19 +16,19 @@ import java.util.ArrayList;
 
 public class OrdHomePage extends Scene{
 
-    GridPane grid;
+    private GridPane grid;
     private Data data = new Data();
     private List<ItemsBox> itemList = new ArrayList<>();
-    private static Main main = new Main();
     private Stage primaryStage;
     private String username;
     private String password;
-    private static EditProfile editProfile;
-    private static ManageItemsPage manageitems = new ManageItemsPage();
-    private static FriendsPage friendspage = new FriendsPage();
-    private static OrdTransactionHistory ordtranshist = new OrdTransactionHistory();
-    private static GuestHomePage guesthomepage;
-    private static NotificationsPage notificationspage = new NotificationsPage();
+    private EditProfile editProfile;
+    private ManageItemsPage manageitems = new ManageItemsPage();
+    private FriendsPage friendspage = new FriendsPage();
+    private OrdTransactionHistory ordtranshist;
+    private GuestHomePage guesthomepage;
+    private NotificationsPage notificationspage;
+
 
 
     public void setUsername(String username){
@@ -121,7 +121,7 @@ public class OrdHomePage extends Scene{
         historyBtn.getChildren().add(history);
         grid.add(historyBtn, 4, 4);
 
-        Button inbox = new Button("NotificationsPage");
+        Button inbox = new Button("Notifications");
         HBox inboxBtn = new HBox(10);
         inboxBtn.setAlignment(Pos.TOP_RIGHT);
         inboxBtn.getChildren().add(inbox);
@@ -155,9 +155,9 @@ public class OrdHomePage extends Scene{
         }));
 
         manage.setOnAction(( e-> {
-            main.getPrimaryStage().setScene(manageitems);
-            main.getPrimaryStage().setTitle("Manage ItemsBox");
-            main.getPrimaryStage().show();
+            primaryStage.setScene(manageitems);
+            primaryStage.setTitle("Manage ItemsBox");
+            primaryStage.show();
         }));
 
         submitComplaint.setOnAction(( e -> {
@@ -170,15 +170,17 @@ public class OrdHomePage extends Scene{
         }));
 
         friends.setOnAction(( e -> {
-            main.getPrimaryStage().setScene(friendspage);
-            main.getPrimaryStage().setTitle("Friends");
-            main.getPrimaryStage().show();
+            primaryStage.setScene(friendspage);
+            primaryStage.setTitle("Friends");
+            primaryStage.show();
         }));
 
         history.setOnAction(( e -> {
-            main.getPrimaryStage().setScene(ordtranshist);
-            main.getPrimaryStage().setTitle("Transaction History");
-            main.getPrimaryStage().show();
+            ordtranshist = new OrdTransactionHistory();
+            ordtranshist.setPrimaryStage(primaryStage);
+            ordtranshist.setUsername(username);
+            primaryStage.setTitle("Transaction History");
+            primaryStage.setScene(ordtranshist);
         }));
 
 
@@ -190,11 +192,8 @@ public class OrdHomePage extends Scene{
         });
 
         inbox.setOnAction( e -> {
-            NotificationsPage notificationpage = new NotificationsPage();
-            Stage window = notificationpage.setWindow();
-            window.setTitle("Submit Complaint");
-            window.setScene(notificationpage);
-            window.show();
+            notificationspage = new NotificationsPage(username);
+            notificationspage.openWindow();
         });
     }
 
