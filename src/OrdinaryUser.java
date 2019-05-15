@@ -50,6 +50,8 @@ public class OrdinaryUser extends Scene {
         grid.add(review, 1,2);
 
          Button sendWarning = new Button("Send Warning");
+
+         Button back=new Button("Back");
         sendWarning.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -62,8 +64,17 @@ public class OrdinaryUser extends Scene {
         vbox.setSpacing(5);
         vbox.setPadding(new Insets(10, 0, 0, 10));
         vbox.setAlignment(Pos.BOTTOM_LEFT);
-        vbox.getChildren().addAll(sendWarning);
+        vbox.getChildren().addAll(sendWarning,back);
         grid.add(vbox,1,3);
+
+
+        back.setOnAction(e-> {
+            main.getPrimaryStage().setScene(superHomePage);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
+
+
+        });
 
 
 
