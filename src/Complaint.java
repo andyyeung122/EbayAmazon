@@ -10,6 +10,7 @@ public class Complaint extends Message{
 
     public Complaint(int id, String title, String message, String sender, boolean handled){
         super(id,title,message);
+
         this.sender = sender;
         this.handled = handled;
     }

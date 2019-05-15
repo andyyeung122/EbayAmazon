@@ -57,6 +57,7 @@ public class GuestHomePage extends Scene {
         searchBtn.getChildren().add(search);
         grid.add(searchBtn, 1, 2);
 
+
         grid.add(getItemGrid(), 0, 3);
 
         // Link to DB
@@ -105,15 +106,18 @@ public class GuestHomePage extends Scene {
 
 
         for( int i = 0; i < itemArrayList.size(); i++){
-            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller(),username, password));
+            itemList.add(new ItemsBox(itemArrayList.get(i).getItemID(),itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
             System.out.println(itemArrayList.get(i).getItemName());
         }
+        float f = itemArrayList.size()/3;
+
+        System.out.println(Math.ceil((double)itemArrayList.size()/3));
 
         if (itemList.size() == 0){
 
         }
         else {
-            for (int rowLength = 0; rowLength < (itemArrayList.size()) / 3; rowLength++) {
+            for (int rowLength = 0; rowLength < ((double)((itemArrayList.size()) / 3)); rowLength++) {
                 for (int columnLength = 0; columnLength < 3; columnLength++) {
                     itemGrid.add(itemList.get((3 * rowLength) + columnLength).getVbox(), columnLength, rowLength);
                 }

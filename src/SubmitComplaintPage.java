@@ -16,7 +16,12 @@ import javafx.stage.Stage;
 public class SubmitComplaintPage extends Scene {
 
     GridPane grid;
-    private static Stage window = new Stage();
+    private Stage window = new Stage();
+    private String username;
+
+    public void setUsername(String username){
+        this.username = username;
+    }
 
     public SubmitComplaintPage() {
         super(new GridPane(),600,300);
@@ -60,6 +65,15 @@ public class SubmitComplaintPage extends Scene {
         submitbtn.getChildren().add(submit);
         grid.add(submit, 0, 3);
 
+        submit.setOnAction(e->{
+            String inputTitle = titleTextField.getText();
+            String inputMessage = messageTextField.getText();
+            if(!title.equals("")){
+                Data.createComplaint(inputTitle,inputMessage,username);
+                window.close();
+            }
+        });
+
         backtohome.setOnAction(( e -> {
             window.close();
 
@@ -67,7 +81,7 @@ public class SubmitComplaintPage extends Scene {
 
     }
 
-    public static Stage setWindow() {
+    public Stage setWindow() {
         return window;
     }
 
