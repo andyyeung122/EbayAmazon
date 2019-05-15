@@ -56,53 +56,59 @@ public class ItemsBox extends VBox{
         vbox.getChildren().addAll(label, imageView, Detailsbtn );
 
         Detailsbtn.setOnAction(( e -> {
-            File file2 = new File(imageLocationString);
-            Image image2 = new Image(file2.toURI().toString(),75,75,false,false);
-            ImageView imageView2 = new ImageView(image2);
+            if(Data.isFixedItem(itemId)) {
+                File file2 = new File(imageLocationString);
+                Image image2 = new Image(file2.toURI().toString(), 75, 75, false, false);
+                ImageView imageView2 = new ImageView(image2);
 
-            GridPane addgrid = new GridPane();
-            addgrid.setHgap(10);
-            addgrid.setVgap(10);
-            addgrid.setAlignment(Pos.CENTER);
+                GridPane addgrid = new GridPane();
+                addgrid.setHgap(10);
+                addgrid.setVgap(10);
+                addgrid.setAlignment(Pos.CENTER);
 
-            Scene scene2 = new Scene(addgrid, 200,250);
-            Stage window2 = new Stage();
-            Text title2 = new Text("Item Detail");
-            title2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-            addgrid.add(title2, 0, 0, 2, 1);
+                Scene scene2 = new Scene(addgrid, 200, 250);
+                Stage window2 = new Stage();
+                Text title2 = new Text("Item Detail");
+                title2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+                addgrid.add(title2, 0, 0, 2, 1);
 
-            Text itemName = new Text("Item Name:" + " " + itemNameString);
-            addgrid.add(itemName, 0,1);
+                Text itemName = new Text("Item Name:" + " " + itemNameString);
+                addgrid.add(itemName, 0, 1);
 
-            Text sellerName = new Text("Seller:" + " " + sellerString);
-            addgrid.add(sellerName , 0, 2);
+                Text sellerName = new Text("Seller:" + " " + sellerString);
+                addgrid.add(sellerName, 0, 2);
 
-            addgrid.add(imageView2,0,3);
+                addgrid.add(imageView2, 0, 3);
 
-            Text price = new Text("" + Data.getFixedPrice(itemId));
-            addgrid.add(price,0,4);
+                Text price = new Text("" + Data.getFixedPrice(itemId));
+                addgrid.add(price, 0, 4);
 
-            Button buyBtn = new Button("Buy");
-            addgrid.add(buyBtn,0,5);
+                Button buyBtn = new Button("Buy");
+                addgrid.add(buyBtn, 0, 5);
 
-            buyBtn.setOnAction(( el -> {
-                System.out.println(username + password);
-                if(Data.isOrdinairyUser(username, password)){
-                    Data.removeItem(itemId);
-                    window2.close();
-                    AlertBox alertbox = new AlertBox();
-                    alertbox.display("Successful", "Item Bought!");
-                }
-                else {
-                    AlertBox alertbox = new AlertBox();
-                    alertbox.display("Message", "Login to buy Items");
-                }
-            }));
+                buyBtn.setOnAction((el -> {
+                    System.out.println(username + password);
+                    if (Data.isOrdinairyUser(username, password)) {
+                        Data.removeItem(itemId);
+                        window2.close();
+                        AlertBox alertbox = new AlertBox();
+                        alertbox.display("Successful", "Item Bought!");
+                    } else {
+                        AlertBox alertbox = new AlertBox();
+                        alertbox.display("Message", "Login to buy Items");
+                    }
+                }));
 
-            window2.setTitle("Item Detail");
-            window2.setScene(scene2);
-            window2.show();
+
+                window2.setTitle("Item Detail");
+                window2.setScene(scene2);
+                window2.show();
+            }
+            else if(Data.isBidItem(itemId)){
+
+            }
         }));
+
     }
 
     public VBox getVbox() {
