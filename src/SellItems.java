@@ -115,6 +115,7 @@ public class SellItems extends Scene {
                 int price = (int)(Double.parseDouble(totalPriceField.getText()) * 100);
                 Data.createFixedItem(itemNameString,username,filePathString,keywordString,price);
             }
+            Data.sendNotificationsFor(Data.getLastItemIndex());
             window.close();
         });
 

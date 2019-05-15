@@ -40,7 +40,11 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
+<<<<<<< HEAD
             String password = "Eque7400";
+=======
+            String password = "209539352";
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
 
 
 
@@ -687,6 +691,10 @@ public class Data{
             expt.printStackTrace();
         }
         return new User(username);
+    }
+
+    public static int getBid(String username, int itemID){
+        return -0;
     }
 
     //returns an Item object with the qualities associated with itemID (tested)
@@ -1502,7 +1510,7 @@ public class Data{
         return itemList;
     }
 
-    private static int getLastItemIndex(){
+    public static int getLastItemIndex(){
         int id = 0;
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT id FROM Item ORDER BY id DESC LIMIT 1");

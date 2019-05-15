@@ -10,11 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af98651d-4bc9-47f2-bc12-8e198c13edc5" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/DeleteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeleteUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GuestHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuestHomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OrdHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdHomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OrdinaryUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdinaryUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SuperHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SuperHomePage.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/GuestHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuestHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrdHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdHomePage.java" afterDir="false" />
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,12 +38,20 @@
     <session id="-892741290">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+<<<<<<< HEAD
           <entry key="java" value="2092" />
+=======
+          <entry key="java" value="2601" />
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+<<<<<<< HEAD
           <entry key="JAVA" value="2092" />
+=======
+          <entry key="JAVA" value="2601" />
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -97,6 +110,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/Complaint.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
@@ -120,6 +134,9 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ViewComplaints.java">
+=======
+        <entry file="file://$PROJECT_DIR$/src/SignUpPage.java">
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="520">
               <caret line="87" column="11" lean-forward="true" selection-start-line="81" selection-start-column="8" selection-end-line="87" selection-end-column="11" />
@@ -131,10 +148,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="615">
               <caret line="129" column="55" selection-start-line="129" selection-start-column="55" selection-end-line="129" selection-end-column="55" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/SellItems.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,6 +192,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -194,6 +219,13 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
             </state>
           </provider>
         </entry>
@@ -201,8 +233,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/User.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="15">
               <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+=======
+            <state relative-caret-position="102">
+              <caret line="73" selection-start-line="73" selection-end-line="79" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
             </state>
           </provider>
         </entry>
@@ -279,11 +319,18 @@
         <option value="$PROJECT_DIR$/src/NotificationsPage.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/Data.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/GuestHomePage.java" />
         <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
         <option value="$PROJECT_DIR$/src/SuperHomePage.java" />
         <option value="$PROJECT_DIR$/src/DeleteUser.java" />
         <option value="$PROJECT_DIR$/src/OrdinaryUser.java" />
+=======
+        <option value="$PROJECT_DIR$/src/OrdItemsBox.java" />
+        <option value="$PROJECT_DIR$/src/SellItems.java" />
+        <option value="$PROJECT_DIR$/src/GuestHomePage.java" />
+        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
       </list>
     </option>
   </component>
@@ -801,6 +848,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="120">
           <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
         </state>
@@ -820,6 +868,10 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="206">
+          <caret line="942" column="38" lean-forward="true" selection-start-line="942" selection-start-column="38" selection-end-line="942" selection-end-column="38" />
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
         </state>
       </provider>
     </entry>
@@ -833,6 +885,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Complaint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -841,6 +894,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
+=======
+    <entry file="file://$PROJECT_DIR$/src/Data.java">
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="114" column="43" lean-forward="true" selection-start-line="114" selection-start-column="43" selection-end-line="114" selection-end-column="43" />
@@ -863,8 +919,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="660">
           <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="223" />
+=======
+        <state relative-caret-position="330">
+          <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
           <folding>
             <element signature="e#954#955#0" expanded="true" />
             <element signature="e#994#995#0" expanded="true" />
@@ -876,6 +937,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/DeleteUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="653">
@@ -887,6 +949,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="71" column="59" lean-forward="true" selection-start-line="71" selection-start-column="59" selection-end-line="71" selection-end-column="59" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="73" selection-start-line="73" selection-end-line="79" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="138" column="35" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+>>>>>>> e93312eef965c4d7e16e15e18a4d3cee77c26eb8
         </state>
       </provider>
     </entry>

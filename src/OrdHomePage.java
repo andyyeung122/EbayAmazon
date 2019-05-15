@@ -28,6 +28,7 @@ public class OrdHomePage extends Scene{
     private OrdTransactionHistory ordtranshist;
     private GuestHomePage guesthomepage;
     private NotificationsPage notificationspage;
+    private OrdHomePage ordhomepage;
 
 
 
@@ -43,8 +44,13 @@ public class OrdHomePage extends Scene{
         this.password = password;
     }
 
-    public OrdHomePage() {
+    public OrdHomePage(){
+        this("");
+    }
+
+    public OrdHomePage(String username) {
         super(new GridPane(),620,550);
+        this.username=username;
 
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
@@ -84,6 +90,12 @@ public class OrdHomePage extends Scene{
         HBox searchBtn = new HBox(10);
         searchBtn.getChildren().add(search);
         grid.add(searchBtn, 1, 2);
+
+        Button login1 = new Button("Refresh");
+        HBox loginBtn1 = new HBox(10);
+        loginBtn1.setAlignment(Pos.TOP_RIGHT);
+        loginBtn1.getChildren().add(login1);
+        grid.add(loginBtn1, 1, 0);
 
         Button sellItem = new Button("Sell Items");
         HBox sellBtn = new HBox(10);
@@ -125,7 +137,13 @@ public class OrdHomePage extends Scene{
         buttonBox.getChildren().add(inboxBtn);
         grid.add(buttonBox,4,3);
 
-
+        login1.setOnAction(e -> {
+            ordhomepage = new OrdHomePage();
+            ordhomepage.setPrimaryStage(primaryStage);
+            primaryStage.setScene(ordhomepage);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
+        });
 
         editProfileBttn.setOnAction(( e -> {
             editProfile = new EditProfile();
@@ -204,7 +222,7 @@ public class OrdHomePage extends Scene{
 
 
             for( int i = 0; i < itemSearchArrayList.size(); i++){
-                itemList.add(new OrdItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),itemSearchArrayList.get(i).getSeller()));
+                itemList.add(new OrdItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),username));
 //                System.out.println(itemSearchArrayList.get(i).getItemName());
             }
 
@@ -241,7 +259,7 @@ public class OrdHomePage extends Scene{
 
 
         for( int i = 0; i < itemArrayList.size(); i++){
-            itemList.add(new OrdItemsBox(itemArrayList.get(i).getItemID(),itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
+            itemList.add(new OrdItemsBox(itemArrayList.get(i).getItemID(),itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),username));
             System.out.println(itemArrayList.get(i).getItemName());
         }
         float f = itemArrayList.size()/3;
