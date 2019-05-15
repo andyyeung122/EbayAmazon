@@ -28,6 +28,7 @@ public class OrdHomePage extends Scene{
     private OrdTransactionHistory ordtranshist;
     private GuestHomePage guesthomepage;
     private NotificationsPage notificationspage;
+    private OrdHomePage ordhomepage;
 
 
 
@@ -85,6 +86,12 @@ public class OrdHomePage extends Scene{
         searchBtn.getChildren().add(search);
         grid.add(searchBtn, 1, 2);
 
+        Button login1 = new Button("Refresh");
+        HBox loginBtn1 = new HBox(10);
+        loginBtn1.setAlignment(Pos.TOP_RIGHT);
+        loginBtn1.getChildren().add(login1);
+        grid.add(loginBtn1, 1, 0);
+
         Button sellItem = new Button("Sell Items");
         HBox sellBtn = new HBox(10);
         sellBtn.setAlignment(Pos.TOP_RIGHT);
@@ -125,7 +132,13 @@ public class OrdHomePage extends Scene{
         buttonBox.getChildren().add(inboxBtn);
         grid.add(buttonBox,4,3);
 
-
+        login1.setOnAction(e -> {
+            ordhomepage = new OrdHomePage();
+            ordhomepage.setPrimaryStage(primaryStage);
+            primaryStage.setScene(ordhomepage);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
+        });
 
         editProfileBttn.setOnAction(( e -> {
             editProfile = new EditProfile();
