@@ -32,12 +32,11 @@ public class SendMessage extends Scene{
         Text title = new Text("Send Message");
         grid.add(title,0,0,2,1);
         title.setFont(Font.font("Verdana", 20.0D));
-        Label selectUser = new Label("Select User");
+        Label selectUser = new Label("User name");
         grid.add(selectUser, 0, 1);
-        ComboBox userName = new ComboBox();
-        userName.getItems().addAll(
-                "User_name1","User_name2", "User_name3"
-        );
+        TextField  userName = new TextField();
+
+
         grid.add(userName, 1,1);
         Label sendMessage = new Label("Message");
         grid.add(sendMessage, 0, 2);
@@ -47,6 +46,13 @@ public class SendMessage extends Scene{
 
         //send message to ordinary user
         Button send = new Button("Send");
+
+        send.setOnAction(e->{
+            String name =userName.getText();
+
+
+
+        });
 
 
         Button back1 = new Button("Back");

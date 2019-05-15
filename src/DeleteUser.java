@@ -63,6 +63,14 @@ public class DeleteUser extends Scene{
 
         });
 
+        removeUser.setOnAction(e->{
+            String name=userName_tf.getText();
+            data.blockUserPerm(name);
+
+
+                }
+                );
+
     }
 
 

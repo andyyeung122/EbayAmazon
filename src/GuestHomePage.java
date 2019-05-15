@@ -119,9 +119,9 @@ public class GuestHomePage extends Scene {
         ArrayList<Item> itemArrayList = Data.getItemsOnSale();
         ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
 
-        for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-            Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-        }
+       // for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+          //  Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+        //}
 
           //IMPORTANT!!! Removes items from itemArrayList
 //        for (int k = 0; k < itemArrayList.size(); k++){
@@ -138,13 +138,12 @@ public class GuestHomePage extends Scene {
         if (itemList.size() == 0){
 
         }
-//        else if(((double)((itemArrayList.size()) / 3)) == 0) {
-//            for (int rowLength = 0; rowLength < ((double)((itemArrayList.size()) / 3)); rowLength++) {
-//                for (int columnLength = 0; columnLength < itemArrayList.size(); columnLength++) {
-//                    itemGrid.getChildren().add(itemList.get((3 * rowLength) + columnLength).getVbox());
-//                }
-//            }
-//        }
+    //   else if(((double)((itemArrayList.size()) / 3)) == 0) {
+      //     for (int rowLength = 0; rowLength < ((double)((itemArrayList.size()) / 3)); rowLength++) {                for (int columnLength = 0; columnLength < itemArrayList.size(); columnLength++) {
+        //            itemGrid.getChildren().add(itemList.get((3 * rowLength) + columnLength).getVbox());
+          //      }
+            //}
+        //}
         else {
             for (int rowLength = 0; rowLength < itemArrayList.size(); rowLength++) {
                     itemGrid.getChildren().add(itemList.get(rowLength).getVbox());
