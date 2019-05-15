@@ -3,6 +3,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
@@ -22,13 +23,13 @@ public class ItemsBox extends VBox{
     public boolean isFixed = false;
     public boolean isBid = false;
 
-    public ItemsBox() {
+    public ItemsBox(String itemNameString) {
         //Image pic = new Image();
-        setName();
-        setSeller();
-        setPrice();
         Button Detailsbtn = new Button("Details");
-        Label label = new Label("Ordinary User");
+        Label label = new Label(itemNameString);
+//        Image image = new Image(imageLocationString);
+//        ImageView imageView = new ImageView(image);
+
         vbox.setStyle(cssLayout);
         vbox.setPrefWidth(10);
         vbox.setPrefHeight(40);
@@ -62,18 +63,6 @@ public class ItemsBox extends VBox{
 
     public VBox getVbox() {
         return vbox;
-    }
-
-    private void setName() {
-
-    }
-
-    private void setSeller() {
-
-    }
-
-    private void setPrice() {
-
     }
 
     private void setIsFixed() {
