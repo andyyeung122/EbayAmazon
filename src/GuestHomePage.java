@@ -30,7 +30,7 @@ public class GuestHomePage extends Scene {
     }
 
     public GuestHomePage() {
-        super(new GridPane(),560,600);
+        super(new GridPane(),570,600);
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
@@ -125,9 +125,9 @@ public class GuestHomePage extends Scene {
         ArrayList<Item> itemArrayList = Data.getItemsOnSale();
         ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
 
-        for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-            Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-        }
+      //  for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+      //      Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+      //  }
 
           //IMPORTANT!!! Removes items from itemArrayList
 //        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
