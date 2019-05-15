@@ -43,6 +43,7 @@ public class Data{
             String password = "pringles";
 
 
+
             String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
 
             connection = DriverManager.getConnection(host,user,password);
