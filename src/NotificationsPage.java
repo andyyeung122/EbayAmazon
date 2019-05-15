@@ -61,9 +61,6 @@ public class NotificationsPage extends Scene {
                // notificationDetails = new NotificationDetails(selectedNote);
                // notificationDetails.openWindow();
 
-//                notificationDetails = new NotificationDetails(selectedNote);
-//                notificationDetails.openWindow();
-
 
             }
 

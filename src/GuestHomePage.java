@@ -1,5 +1,8 @@
+import javafx.animation.PauseTransition;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -11,6 +14,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -70,68 +74,56 @@ public class GuestHomePage extends Scene {
         });
 
         search.setOnAction( e -> {
-//            String itemToSearch = searchTextField.getText();
-//        grid.getChildren().remove(0,3);
-//            GridPane itemGridSearch = new GridPane();
-//
-//            ColumnConstraints colConstraintOne = new ColumnConstraints(100);
-//            ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
-//            ColumnConstraints colConstraintThree = new ColumnConstraints(100);
-//            itemGridSearch.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
-//
-//            ArrayList<Item> itemSearchArrayList = Data.searchForItems(itemToSearch);
-//            ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
-//
-//            for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-//                Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-//            }
-//
-//            //IMPORTANT!!! Removes items from itemArrayList
-////        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
-////            Data.removeItem(unregisteredItemArrayList.get(k).getItemID());
-////        }
-//
-//
-//            for( int i = 0; i < itemSearchArrayList.size(); i++){
-//                itemList.add(new ItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),itemSearchArrayList.get(i).getSeller()));
+        grid.getChildren().remove(getNodeByRowColumnIndex(3,0,grid));
+
+            String itemToSearch = searchTextField.getText();
+            FlowPane itemGridSearch = new FlowPane();
+
+            ArrayList<Item> itemSearchArrayList = Data.searchForItems(itemToSearch);
+
+            ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
+
+            for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+                Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+            }
+
+            //IMPORTANT!!! Removes items from itemArrayList
+//        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
+//            Data.removeItem(unregisteredItemArrayList.get(k).getItemID());
+//        }
+
+
+            for( int i = 0; i < itemSearchArrayList.size(); i++){
+                itemList.add(new ItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),itemSearchArrayList.get(i).getSeller()));
 //                System.out.println(itemSearchArrayList.get(i).getItemName());
-//            }
-//            float f = itemSearchArrayList.size()/3;
-//
-//            System.out.println(Math.ceil((double)itemSearchArrayList.size()/3));
-//
-//            if (itemList.size() == 0){
-//
-//            }
-//            else {
-//                for (int rowLength = 0; rowLength < ((double)((itemSearchArrayList.size()) / 3)); rowLength++) {
-//                    for (int columnLength = 0; columnLength < 3; columnLength++) {
-//                        itemGridSearch.add(itemList.get((3 * rowLength) + columnLength).getVbox(), columnLength, rowLength);
-//                    }
-//                }
-//            }
-//            grid.add(itemGridSearch,0,3);
+            }
+
+            if (itemList.size() == 0){
+
+            }
+            else {
+                for (int rowLength = 0; rowLength <= itemSearchArrayList.size(); rowLength++) {
+                        itemGridSearch.getChildren().add(itemList.get(rowLength).getVbox());
+                }
+            }
+            grid.add(itemGridSearch,0,3);
+
        });
     }
 
     public FlowPane getItemGrid() {
         FlowPane itemGrid = new FlowPane();
 
-//        ColumnConstraints colConstraintOne = new ColumnConstraints(100);
-//        ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
-//        ColumnConstraints colConstraintThree = new ColumnConstraints(100);
-//        itemGrid.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
-
         ArrayList<Item> itemArrayList = Data.getItemsOnSale();
         ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
 
-      //  for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-      //      Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-      //  }
+        for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+            Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+        }
 
           //IMPORTANT!!! Removes items from itemArrayList
-//        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
-//            Data.removeItem(unregisteredItemArrayList.get(k).getItemID());
+//        for (int k = 0; k < itemArrayList.size(); k++){
+//            Data.removeItem(itemArrayList.get(k).getItemID());
 //        }
 
 
@@ -139,21 +131,37 @@ public class GuestHomePage extends Scene {
             itemList.add(new ItemsBox(itemArrayList.get(i).getItemID(),itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
             System.out.println(itemArrayList.get(i).getItemName());
         }
-        float f = itemArrayList.size()/3;
 
-        System.out.println(Math.ceil((double)itemArrayList.size()/3));
 
         if (itemList.size() == 0){
 
         }
+//        else if(((double)((itemArrayList.size()) / 3)) == 0) {
+//            for (int rowLength = 0; rowLength < ((double)((itemArrayList.size()) / 3)); rowLength++) {
+//                for (int columnLength = 0; columnLength < itemArrayList.size(); columnLength++) {
+//                    itemGrid.getChildren().add(itemList.get((3 * rowLength) + columnLength).getVbox());
+//                }
+//            }
+//        }
         else {
-            for (int rowLength = 0; rowLength < ((double)((itemArrayList.size()) / 3)); rowLength++) {
-                for (int columnLength = 0; columnLength < 3; columnLength++) {
-                    itemGrid.getChildren().add(itemList.get((3 * rowLength) + columnLength).getVbox());
-                }
-            }
+            for (int rowLength = 0; rowLength < itemArrayList.size(); rowLength++) {
+                    itemGrid.getChildren().add(itemList.get(rowLength).getVbox());
+                    System.out.println((double)((itemArrayList.size()) / 3));
+        }
         }
         return itemGrid;
     }
 
+    public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
+        Node result = null;
+        ObservableList<Node> childrens = gridPane.getChildren();
+
+        for (Node node : childrens) {
+            if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
+        }
+        return result;
+    }
 }

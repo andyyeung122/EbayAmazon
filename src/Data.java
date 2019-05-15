@@ -40,7 +40,7 @@ public class Data{
             String host = "jdbc:mysql://localhost:3306/";
             String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
             String user = "root";
-            String password = "Eque7400";
+            String password = "pringles";
 
 
 
@@ -777,6 +777,24 @@ public class Data{
             expt.printStackTrace();
         }
         return 0;
+    }
+
+    public static int getSoldPrice(int itemID){
+        int price = 0;
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT price FROM Purchase WHERE itemID=?");
+            preparedStatement.setInt(1,itemID);
+            ResultSet queryOutput = preparedStatement.executeQuery();
+            if(queryOutput.next()){
+                price = queryOutput.getInt("price");
+            }
+
+            preparedStatement.close();
+            queryOutput.close();
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+        return price;
     }
 
     //returns an ArrayList of users where item keywords match user keywords for the specified itemID (tested)
