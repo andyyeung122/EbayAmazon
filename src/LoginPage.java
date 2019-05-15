@@ -22,6 +22,7 @@ public class LoginPage extends Scene {
     private static SignUpPage signuppage;
     private static OrdHomePage ordhomepage;
     private static GuestHomePage guesthomepage;
+    private static ItemsBox itemsbox;
     public String accusername = "";
 
     public void setPrimaryStage(Stage primaryStage){

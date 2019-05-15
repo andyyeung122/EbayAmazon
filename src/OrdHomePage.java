@@ -18,7 +18,7 @@ public class OrdHomePage extends Scene{
 
     private GridPane grid;
     private Data data = new Data();
-    private List<ItemsBox> itemList = new ArrayList<>();
+    private List<OrdItemsBox> itemList = new ArrayList<>();
     private Stage primaryStage;
     private String username;
     private String password;
@@ -44,11 +44,10 @@ public class OrdHomePage extends Scene{
     }
 
     public OrdHomePage() {
-        super(new GridPane(),400,550);
+        super(new GridPane(),540,550);
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
-
 
         data.makeUserVip(username);
         if(data.isUserVip(username)) {
@@ -126,11 +125,6 @@ public class OrdHomePage extends Scene{
         inboxBtn.setAlignment(Pos.TOP_RIGHT);
         inboxBtn.getChildren().add(inbox);
         grid.add(inboxBtn, 4, 7);
-
-//        itemList.add(new ItemsBox());
-//        itemList.add(new ItemsBox());
-//        itemList.add(new ItemsBox());
-//        grid.add(itemList.get(0), 1,1);
 
         manage.setOnAction( e -> {
 
@@ -219,7 +213,8 @@ public class OrdHomePage extends Scene{
 
 
         for( int i = 0; i < itemArrayList.size(); i++){
-            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller(),username, password));
+            itemList.add(new OrdItemsBox(itemArrayList.get(i).getItemID(), itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
+
             System.out.println(itemArrayList.get(i).getItemName());
         }
 

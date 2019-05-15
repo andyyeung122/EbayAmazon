@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 
-public class ItemsBox extends VBox{
+public class OrdItemsBox extends VBox{
     public VBox vbox = new VBox();
     public Pane pane = new Pane();
     public String cssLayout = "-fx-border-color: black;\n" +
@@ -30,19 +30,7 @@ public class ItemsBox extends VBox{
     private String username;
     private String password;
 
-    public ItemsBox(){
-
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public ItemsBox(int itemId, String itemNameString, String imageLocationString, String sellerString) {
+    public OrdItemsBox(int itemId, String itemNameString, String imageLocationString, String sellerString) {
         //Image pic = new Image();
         Button Detailsbtn = new Button("Details");
         Label label = new Label(itemNameString);
@@ -83,17 +71,11 @@ public class ItemsBox extends VBox{
             addgrid.add(buyBtn,0,4);
 
             buyBtn.setOnAction(( el -> {
-                System.out.println(username + password);
-                if(Data.isOrdinairyUser(username, password)){
                     Data.removeItem(itemId);
                     window2.close();
                     AlertBox alertbox = new AlertBox();
                     alertbox.display("Successful", "Item Bought!");
-                }
-                else {
-                    AlertBox alertbox = new AlertBox();
-                    alertbox.display("Message", "Login to buy Items");
-                }
+
             }));
 
             window2.setTitle("Item Detail");

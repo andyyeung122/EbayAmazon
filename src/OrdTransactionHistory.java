@@ -3,6 +3,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -56,13 +57,16 @@ public class OrdTransactionHistory extends Scene {
             secondStage.setTitle("Transaction History");
             secondStage.setScene(secondScene);
             TableView transactionTable = new TableView();
-            TableColumn itemName = new TableColumn("Item Name");
-            TableColumn soldPurchase = new TableColumn("Price Sold");
+            TableColumn<Item, String> itemName = new TableColumn("Item Name");
+            TableColumn<Item, String> soldPurchase = new TableColumn("Price Sold");
             transactionTable.getColumns().addAll(itemName,soldPurchase);
             transactionTable.prefHeightProperty().bind(secondStage.heightProperty());
             transactionTable.prefWidthProperty().bind(secondStage.widthProperty());
             soldPurchase.prefWidthProperty().bind(transactionTable.widthProperty().multiply(0.3));
             itemName.prefWidthProperty().bind(transactionTable.widthProperty().multiply(0.7));
+
+            itemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+            soldPurchase.setCellValueFactory(new PropertyValueFactory<>("itemName"));
 
             secondaryLayout.add(transactionTable,1,1);
             secondStage.show();
