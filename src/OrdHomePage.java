@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -91,41 +92,44 @@ public class OrdHomePage extends Scene{
         sellBtn.getChildren().add(sellItem);
         grid.add(sellBtn, 4, 2);
 
+        VBox buttonBox = new VBox(10);
+
         Button manage = new Button("Manage Items");
         HBox manageBtn = new HBox(10);
         manageBtn.setAlignment(Pos.TOP_RIGHT);
         manageBtn.getChildren().add(manage);
-        grid.add(manageBtn, 4, 3);
+        buttonBox.getChildren().add(manageBtn);
 
         Button submitComplaint = new Button("Submit Complaint");
         HBox submitComplaintBtn = new HBox(10);
         submitComplaintBtn.setAlignment(Pos.TOP_RIGHT);
         submitComplaintBtn.getChildren().add(submitComplaint);
-        grid.add(submitComplaintBtn, 4, 5);
+        buttonBox.getChildren().add(submitComplaintBtn);
 
         Button editProfileBttn = new Button("Edit Profile");
         HBox editProfileBtn = new HBox(10);
         editProfileBtn.setAlignment(Pos.TOP_RIGHT);
         editProfileBtn.getChildren().add(editProfileBttn);
-        grid.add(editProfileBtn, 4, 1);
+        buttonBox.getChildren().add(editProfileBtn);
 
         Button friends = new Button("Friends");
         HBox friendsBtn = new HBox(10);
         friendsBtn.setAlignment(Pos.TOP_RIGHT);
         friendsBtn.getChildren().add(friends);
-        grid.add(friendsBtn, 4, 6);
+        buttonBox.getChildren().add(friendsBtn);
 
         Button history = new Button("Transaction History");
         HBox historyBtn = new HBox(10);
         historyBtn.setAlignment(Pos.TOP_RIGHT);
         historyBtn.getChildren().add(history);
-        grid.add(historyBtn, 4, 4);
+        buttonBox.getChildren().add(historyBtn);
 
         Button inbox = new Button("Notifications");
         HBox inboxBtn = new HBox(10);
         inboxBtn.setAlignment(Pos.TOP_RIGHT);
         inboxBtn.getChildren().add(inbox);
-        grid.add(inboxBtn, 4, 7);
+        buttonBox.getChildren().add(inboxBtn);
+        grid.add(buttonBox,4,3);
 
         manage.setOnAction( e -> {
 
@@ -157,6 +161,7 @@ public class OrdHomePage extends Scene{
 
         submitComplaint.setOnAction(( e -> {
             SubmitComplaintPage submitcomplaintpage = new SubmitComplaintPage();
+            submitcomplaintpage.setUsername(username);
             Stage window = submitcomplaintpage.setWindow();
             window.setTitle("Submit Complaint");
             window.setWidth(300);
