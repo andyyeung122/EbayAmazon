@@ -2,6 +2,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -20,12 +21,14 @@ public class OrdHomePage extends Scene{
     private List<ItemsBox> itemList = new ArrayList<>();
     private Stage primaryStage;
     private String username;
+    private String password;
     private EditProfile editProfile;
     private ManageItemsPage manageitems = new ManageItemsPage();
     private FriendsPage friendspage = new FriendsPage();
     private OrdTransactionHistory ordtranshist;
     private GuestHomePage guesthomepage;
     private NotificationsPage notificationspage;
+
 
 
     public void setUsername(String username){
@@ -36,8 +39,12 @@ public class OrdHomePage extends Scene{
         this.primaryStage = primaryStage;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public OrdHomePage() {
-        super(new GridPane(),400,550);
+        super(new GridPane(),600,550);
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
@@ -64,6 +71,8 @@ public class OrdHomePage extends Scene{
         TextField searchTextField = new TextField();
         searchTextField.setPromptText("Search Item");
         grid.add(searchTextField, 0, 2);
+
+        grid.add(getItemGrid(),0,3);
 
         Button logout = new Button("Log out");
         HBox logoutBtn = new HBox(10);
@@ -186,7 +195,44 @@ public class OrdHomePage extends Scene{
             notificationspage = new NotificationsPage(username);
             notificationspage.openWindow();
         });
+    }
+
+    public GridPane getItemGrid() {
+        GridPane itemGrid = new GridPane();
+
+        ColumnConstraints colConstraintOne = new ColumnConstraints(100);
+        ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
+        ColumnConstraints colConstraintThree = new ColumnConstraints(100);
+        itemGrid.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
+
+        ArrayList<Item> itemArrayList = Data.getItemsOnSale();
+        ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
+
+        for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+            Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+        }
+
+        //IMPORTANT!!! Removes items from itemArrayList
+//        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
+//            Data.removeItem(unregisteredItemArrayList.get(k).getItemID());
+//        }
 
 
+        for( int i = 0; i < itemArrayList.size(); i++){
+            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller(),username, password));
+            System.out.println(itemArrayList.get(i).getItemName());
+        }
+
+        if (itemList.size() == 0){
+
+        }
+        else {
+            for (int rowLength = 0; rowLength < (itemArrayList.size()) / 3; rowLength++) {
+                for (int columnLength = 0; columnLength < 3; columnLength++) {
+                    itemGrid.add(itemList.get((3 * rowLength) + columnLength).getVbox(), columnLength, rowLength);
+                }
+            }
+        }
+        return itemGrid;
     }
 }
