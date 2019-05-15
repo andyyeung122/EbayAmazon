@@ -28,7 +28,7 @@ public class GuestHomePage extends Scene {
     }
 
     public GuestHomePage() {
-        super(new GridPane(),400,600);
+        super(new GridPane(),500,600);
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
@@ -84,16 +84,26 @@ public class GuestHomePage extends Scene {
     public GridPane getItemGrid() {
         GridPane itemGrid = new GridPane();
 
-        ColumnConstraints colConstraint = new ColumnConstraints(100);
-        itemGrid.getColumnConstraints().add(colConstraint);
+        ColumnConstraints colConstraintOne = new ColumnConstraints(100);
+        ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
+        ColumnConstraints colConstraintThree = new ColumnConstraints(100);
+        itemGrid.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
 
-        Data.createFixedItem("bob","dude55","bob","bob,bob", 20);
-        Data.createFixedItem("bob","dude55","bob","bob,bob", 20);
-        Data.createFixedItem("bob","dude55","bob","bob,bob", 20);
         ArrayList<Item> itemArrayList = Data.getItemsOnSale();
+        ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
+
+        for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+            Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+        }
+
+          //IMPORTANT!!! Removes items from itemArrayList
+//        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
+//            Data.removeItem(unregisteredItemArrayList.get(k).getItemID());
+//        }
+
 
         for( int i = 0; i < itemArrayList.size(); i++){
-            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName()));
+            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
             System.out.println(itemArrayList.get(i).getItemName());
         }
 
@@ -102,8 +112,8 @@ public class GuestHomePage extends Scene {
         }
         else {
             for (int rowLength = 0; rowLength < (itemArrayList.size()) / 3; rowLength++) {
-                for (int columnLength = 0; columnLength < 2; columnLength++) {
-                    itemGrid.add(itemList.get((3 * rowLength) + columnLength).getVbox(), rowLength, columnLength);
+                for (int columnLength = 0; columnLength < 3; columnLength++) {
+                    itemGrid.add(itemList.get((3 * rowLength) + columnLength).getVbox(), columnLength, rowLength);
                 }
             }
         }
