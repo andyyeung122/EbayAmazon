@@ -44,8 +44,13 @@ public class OrdHomePage extends Scene{
         this.password = password;
     }
 
-    public OrdHomePage() {
+    public OrdHomePage(){
+        this("");
+    }
+
+    public OrdHomePage(String username) {
         super(new GridPane(),620,550);
+        this.username=username;
 
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
@@ -206,9 +211,11 @@ public class OrdHomePage extends Scene{
 
             ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
 
-//            for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-//                Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-//            }
+
+      //      for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+       //         Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+      //      }
+
 
             //IMPORTANT!!! Removes items from itemArrayList
 //        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
@@ -217,7 +224,7 @@ public class OrdHomePage extends Scene{
 
 
             for( int i = 0; i < itemSearchArrayList.size(); i++){
-                itemList.add(new OrdItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),itemSearchArrayList.get(i).getSeller()));
+                itemList.add(new OrdItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),username));
 //                System.out.println(itemSearchArrayList.get(i).getItemName());
             }
 
@@ -254,6 +261,7 @@ public class OrdHomePage extends Scene{
 
 
         for( int i = 0; i < itemArrayList.size(); i++){
+
             itemList.add(new OrdItemsBox(itemArrayList.get(i).getItemID(),itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
 
         }

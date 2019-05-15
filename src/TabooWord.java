@@ -26,6 +26,7 @@ public class TabooWord extends Scene {
     GridPane grid;
     private Main main = new Main();
     private  SuperHomePage superHomePage=new SuperHomePage();
+    private Data data = new Data();
 
     public TabooWord() {
         super(new GridPane(),390,300);
@@ -40,6 +41,8 @@ public class TabooWord extends Scene {
         grid.add(title,0,0,2,1);
         title.setFont(Font.font("Verdana", 20.0D));
         Label nameLabel = new Label("Taboo Words");
+
+
         nameLabel.setFont(new Font("Roman", 20));
         TextField nameTxt = new TextField();
         nameTxt.setPromptText("Name");
@@ -54,7 +57,8 @@ public class TabooWord extends Scene {
 
         Button add = new Button("Add");
         add.setOnAction((e) -> {
-            this.WordsList.add(new TabooWord.WordList(nameTxt.getText()));
+
+           // data.createTabooWord(this.selectedIndex);
             nameTxt.clear();
         });
         Button delete= new Button("Delete");
