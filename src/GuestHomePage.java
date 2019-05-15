@@ -61,7 +61,7 @@ public class GuestHomePage extends Scene {
         HBox searchBtn = new HBox(10);
         searchBtn.getChildren().add(search);
         grid.add(searchBtn, 1, 2);
-        
+
 
         grid.add(getItemGrid(), 0, 3);
 
@@ -85,9 +85,9 @@ public class GuestHomePage extends Scene {
 
             ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
 
-            for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-                Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-            }
+//            for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+//                Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+//            }
 
             //IMPORTANT!!! Removes items from itemArrayList
 //        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
@@ -119,9 +119,9 @@ public class GuestHomePage extends Scene {
         ArrayList<Item> itemArrayList = Data.getItemsOnSale();
         ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
 
-        for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-            Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-        }
+//        for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+//            Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+//        }
 
           //IMPORTANT!!! Removes items from itemArrayList
 //        for (int k = 0; k < itemArrayList.size(); k++){
@@ -131,7 +131,7 @@ public class GuestHomePage extends Scene {
 
         for( int i = 0; i < itemArrayList.size(); i++){
             itemList.add(new ItemsBox(itemArrayList.get(i).getItemID(),itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
-            System.out.println(itemArrayList.get(i).getItemName());
+
         }
 
 
@@ -148,7 +148,7 @@ public class GuestHomePage extends Scene {
         else {
             for (int rowLength = 0; rowLength < itemArrayList.size(); rowLength++) {
                     itemGrid.getChildren().add(itemList.get(rowLength).getVbox());
-                    System.out.println((double)((itemArrayList.size()) / 3));
+
         }
         }
         return itemGrid;
