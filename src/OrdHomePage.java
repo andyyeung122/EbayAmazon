@@ -209,9 +209,9 @@ public class OrdHomePage extends Scene{
         ArrayList<Item> itemArrayList = Data.getItemsOnSale();
         ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
 
-        for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-            Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-        }
+       // for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+       //     Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+      //  }
 
         //IMPORTANT!!! Removes items from itemArrayList
 //        for (int k = 0; k < unregisteredItemArrayList.size(); k++){

@@ -22,7 +22,7 @@ public class NotificationsPage extends Scene {
     private GridPane grid;
     private ListView<Notification> listView;
     private ObservableList<Notification> listOfNotifications;
-    private NotificationDetails notificationDetails;
+    //private NotificationDetails notificationDetails;
 
     private String username;
     private Stage newStage;
@@ -57,8 +57,8 @@ public class NotificationsPage extends Scene {
         detailsButton.setOnAction(e ->{
             Notification selectedNote = listView.getSelectionModel().getSelectedItem();
             if(selectedNote != null){
-                notificationDetails = new NotificationDetails(selectedNote);
-                notificationDetails.openWindow();
+               // notificationDetails = new NotificationDetails(selectedNote);
+               // notificationDetails.openWindow();
 
             }
 
