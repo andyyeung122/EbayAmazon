@@ -11,6 +11,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import java.io.File;
@@ -32,6 +34,14 @@ public class SellItems extends Scene {
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
+
+        Data.createTabooWord("chicken");
+        Data.createTabooWord("ccny");
+        Data.createTabooWord("hunter");
+        Data.createTabooWord("bob");
+        Data.createTabooWord("paper");
+
+        ArrayList<String> tabooWordsList = Data.getTabooWords();
 
         Text findItem = new Text("Enter Item Details:");
         grid.add(findItem, 0,0);
@@ -82,9 +92,22 @@ public class SellItems extends Scene {
         final FileChooser fileChooser = new FileChooser();
 
         addItem.setOnAction(e -> {
+
             String itemNameString = itemNameField.getText();
             String filePathString = file.toString();
-            String keywordString = keywordField.getText(); 
+            String keywordString = keywordField.getText();
+            System.out.println(tabooWordsList.get(0));
+            for(int i = 0; i < tabooWordsList.size(); i++){
+                if( itemNameString == tabooWordsList.get(i)){
+                    AlertBox alertbox = new AlertBox();
+                    alertbox.display("Error","Invalid Item Name");
+                    window.close();
+                    break;
+                }
+                else {
+                    continue;
+                }
+            }
             if(rb.getText() == "Bid Price"){
                 long currentTime = Calendar.getInstance().getTimeInMillis();
                 Data.createBidItem(itemNameString,username,filePathString,keywordString,currentTime);

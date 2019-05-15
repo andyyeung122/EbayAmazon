@@ -28,6 +28,7 @@ public class GuestHomePage extends Scene {
     private static Main main = new Main();
     private Stage primaryStage;
     private List<ItemsBox> itemList = new ArrayList<>();
+    private GuestHomePage guesthomepage;
 
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage = primaryStage;
@@ -60,9 +61,10 @@ public class GuestHomePage extends Scene {
         HBox searchBtn = new HBox(10);
         searchBtn.getChildren().add(search);
         grid.add(searchBtn, 1, 2);
-
+        
 
         grid.add(getItemGrid(), 0, 3);
+
 
         // Link to DB
         login.setOnAction( e -> {
