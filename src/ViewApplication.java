@@ -43,8 +43,6 @@ public class ViewApplication extends Scene{
             grid.add(title1,0,0,2,1);
             title1.setFont(Font.font("Verdana", 20.0));
 
-
-
             // get data of item to sell from database
 
             TableColumn<User,String> name = new TableColumn("Name");

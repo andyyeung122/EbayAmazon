@@ -9,6 +9,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +58,10 @@ public class OrdTransactionHistory extends Scene {
             Stage secondStage = new Stage();
             secondStage.setTitle("Transaction History");
             secondStage.setScene(secondScene);
-            TableView transactionTable = new TableView();
+            ObservableList<Item> listOfItems = FXCollections.observableArrayList(Data.getItemsSoldBy(username));
+            for(Item item : listOfItems)
+                item.calculatePrice();
+            TableView transactionTable = new TableView(listOfItems);
             TableColumn<Item, String> itemName = new TableColumn("Item Name");
             TableColumn<Item, String> soldPurchase = new TableColumn("Price Sold");
             transactionTable.getColumns().addAll(itemName,soldPurchase);
@@ -66,7 +71,7 @@ public class OrdTransactionHistory extends Scene {
             itemName.prefWidthProperty().bind(transactionTable.widthProperty().multiply(0.7));
 
             itemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
-            soldPurchase.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+            soldPurchase.setCellValueFactory(new PropertyValueFactory<>("soldPrice"));
 
             secondaryLayout.add(transactionTable,1,1);
             secondStage.show();
@@ -78,7 +83,10 @@ public class OrdTransactionHistory extends Scene {
             Stage thirdStage = new Stage();
             thirdStage.setTitle("Transaction History");
             thirdStage.setScene(thirdScene);
-            TableView transactionTable = new TableView();
+            ObservableList<Item> listOfItems = FXCollections.observableArrayList(Data.getItemsPurchasedBy(username));
+            for(Item item : listOfItems)
+                item.calculatePrice();
+            TableView transactionTable = new TableView(listOfItems);
             TableColumn itemName = new TableColumn("Item Name");
             TableColumn soldPurchase = new TableColumn("Price Purchased");
             transactionTable.getColumns().addAll(itemName,soldPurchase);
@@ -86,6 +94,9 @@ public class OrdTransactionHistory extends Scene {
             transactionTable.prefWidthProperty().bind(thirdStage.widthProperty());
             soldPurchase.prefWidthProperty().bind(transactionTable.widthProperty().multiply(0.3));
             itemName.prefWidthProperty().bind(transactionTable.widthProperty().multiply(0.7));
+
+            itemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+            soldPurchase.setCellValueFactory(new PropertyValueFactory<>("soldPrice"));
 
             thirdLayout.add(transactionTable,1,1);
             thirdStage.show();
