@@ -6,6 +6,7 @@ public class Item{
     private String seller;
     private String imageLocation;
     private String associatedKeyWords;
+    private double soldPrice = 0;
 
     public Item(int itemID){
         this(itemID,"","","","");
@@ -37,6 +38,14 @@ public class Item{
 
     public String getKeyWords(){
         return associatedKeyWords;
+    }
+
+    public double getSoldPrice(){
+        return soldPrice;
+    }
+
+    public void calculatePrice(){
+        soldPrice = Data.getSoldPrice(itemID) / 100.0;
     }
 
     @Override
