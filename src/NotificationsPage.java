@@ -57,8 +57,13 @@ public class NotificationsPage extends Scene {
         detailsButton.setOnAction(e ->{
             Notification selectedNote = listView.getSelectionModel().getSelectedItem();
             if(selectedNote != null){
+<<<<<<< HEAD
                // notificationDetails = new NotificationDetails(selectedNote);
                // notificationDetails.openWindow();
+=======
+//                notificationDetails = new NotificationDetails(selectedNote);
+//                notificationDetails.openWindow();
+>>>>>>> 92208a4fa5ae1ca4c6606f2c765cc746205ba1a3
 
             }
 

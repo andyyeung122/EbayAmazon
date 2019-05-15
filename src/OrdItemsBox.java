@@ -31,6 +31,8 @@ public class OrdItemsBox extends VBox{
     private String password;
 
     public OrdItemsBox(int itemId, String itemNameString, String imageLocationString, String sellerString) {
+
+        int totalPrice = Data.getFixedPrice(itemId);
         //Image pic = new Image();
         Button Detailsbtn = new Button("Details");
         Label label = new Label(itemNameString);
@@ -53,7 +55,7 @@ public class OrdItemsBox extends VBox{
             addgrid.setVgap(10);
             addgrid.setAlignment(Pos.CENTER);
 
-            Scene scene2 = new Scene(addgrid, 200,200);
+            Scene scene2 = new Scene(addgrid, 200,250);
             Stage window2 = new Stage();
             Text title2 = new Text("Item Detail");
             title2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -67,8 +69,11 @@ public class OrdItemsBox extends VBox{
 
             addgrid.add(imageView2,0,3);
 
+            Text price = new Text("" + totalPrice);
+            addgrid.add(price,0,4);
+
             Button buyBtn = new Button("Buy");
-            addgrid.add(buyBtn,0,4);
+            addgrid.add(buyBtn,0,5);
 
             buyBtn.setOnAction(( el -> {
                     Data.removeItem(itemId);
