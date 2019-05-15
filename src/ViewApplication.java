@@ -74,6 +74,8 @@ public class ViewApplication extends Scene{
 
             userApplication.setItems(datas);
 
+
+
             userApplication.getColumns().addAll(name,userName,address,phone,creditCard);
 
 

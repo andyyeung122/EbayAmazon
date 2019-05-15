@@ -26,6 +26,7 @@ public class SuperHomePage extends Scene {
     private static TabooWord tabooWords=new TabooWord();
     private static SendMessage sendMessages=new SendMessage();
     private static ViewComplaints viewComplaint=new ViewComplaints();
+    private static OrdinaryUser ordinaryUser=new OrdinaryUser();
 
 
     public void setUsername(String username){
@@ -113,6 +114,14 @@ public class SuperHomePage extends Scene {
             main.getPrimaryStage().setScene(viewComplaint);
             main.getPrimaryStage().setTitle("Home Page");
             main.getPrimaryStage().show();
+        });
+
+        outstandingUser.setOnAction(e->{
+
+            main.getPrimaryStage().setScene(ordinaryUser);
+            main.getPrimaryStage().setTitle("Home Page");
+            main.getPrimaryStage().show();
+
         });
 
 
