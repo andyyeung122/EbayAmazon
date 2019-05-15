@@ -76,6 +76,7 @@ public class LoginPage extends Scene {
         // Connect to Database
         signup.setOnAction( e -> {
             signuppage = new SignUpPage();
+            signuppage.setPrimaryStage(primaryStage);
             primaryStage.setScene(signuppage);
             primaryStage.setTitle("SignUp Page");
             primaryStage.show();

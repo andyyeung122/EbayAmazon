@@ -8,15 +8,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class SignUpPage extends Scene {
 
     GridPane grid;
     private Main main = new Main();
-    private static LoginPage loginpage = new LoginPage();
+    public LoginPage loginpage;
+    private Stage primaryStage;
     private static AlertBox alertbox = new AlertBox();
     private Data data = new Data();
 
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
     public SignUpPage() {
         super(new GridPane(),390,300);
@@ -89,9 +94,10 @@ public class SignUpPage extends Scene {
 
         // Leave alone
         backtologin.setOnAction( e -> {
-            main.getPrimaryStage().setScene(loginpage);
-            main.getPrimaryStage().setTitle("Login Page");
-            main.getPrimaryStage().show();
+            loginpage = new LoginPage();
+            loginpage.setPrimaryStage(primaryStage);
+            primaryStage.setScene(loginpage);
+            primaryStage.setTitle("Login Page");
         });
 
 
