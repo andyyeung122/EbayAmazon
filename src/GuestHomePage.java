@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
@@ -29,7 +30,7 @@ public class GuestHomePage extends Scene {
     }
 
     public GuestHomePage() {
-        super(new GridPane(),500,600);
+        super(new GridPane(),560,600);
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
         grid.setVgap(10);
@@ -69,57 +70,57 @@ public class GuestHomePage extends Scene {
         });
 
         search.setOnAction( e -> {
-            String itemToSearch = searchTextField.getText();
-        grid.getChildren().remove(0,3);
-            GridPane itemGridSearch = new GridPane();
-
-            ColumnConstraints colConstraintOne = new ColumnConstraints(100);
-            ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
-            ColumnConstraints colConstraintThree = new ColumnConstraints(100);
-            itemGridSearch.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
-
-            ArrayList<Item> itemSearchArrayList = Data.searchForItems(itemToSearch);
-            ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
-
-            for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-                Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-            }
-
-            //IMPORTANT!!! Removes items from itemArrayList
-//        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
-//            Data.removeItem(unregisteredItemArrayList.get(k).getItemID());
-//        }
-
-
-            for( int i = 0; i < itemSearchArrayList.size(); i++){
-                itemList.add(new ItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),itemSearchArrayList.get(i).getSeller()));
-                System.out.println(itemSearchArrayList.get(i).getItemName());
-            }
-            float f = itemSearchArrayList.size()/3;
-
-            System.out.println(Math.ceil((double)itemSearchArrayList.size()/3));
-
-            if (itemList.size() == 0){
-
-            }
-            else {
-                for (int rowLength = 0; rowLength < ((double)((itemSearchArrayList.size()) / 3)); rowLength++) {
-                    for (int columnLength = 0; columnLength < 3; columnLength++) {
-                        itemGridSearch.add(itemList.get((3 * rowLength) + columnLength).getVbox(), columnLength, rowLength);
-                    }
-                }
-            }
-            grid.add(itemGridSearch,0,3);
-        });
+//            String itemToSearch = searchTextField.getText();
+//        grid.getChildren().remove(0,3);
+//            GridPane itemGridSearch = new GridPane();
+//
+//            ColumnConstraints colConstraintOne = new ColumnConstraints(100);
+//            ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
+//            ColumnConstraints colConstraintThree = new ColumnConstraints(100);
+//            itemGridSearch.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
+//
+//            ArrayList<Item> itemSearchArrayList = Data.searchForItems(itemToSearch);
+//            ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
+//
+//            for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+//                Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+//            }
+//
+//            //IMPORTANT!!! Removes items from itemArrayList
+////        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
+////            Data.removeItem(unregisteredItemArrayList.get(k).getItemID());
+////        }
+//
+//
+//            for( int i = 0; i < itemSearchArrayList.size(); i++){
+//                itemList.add(new ItemsBox(itemSearchArrayList.get(i).getItemID(),itemSearchArrayList.get(i).getItemName(),itemSearchArrayList.get(i).getImageLocation(),itemSearchArrayList.get(i).getSeller()));
+//                System.out.println(itemSearchArrayList.get(i).getItemName());
+//            }
+//            float f = itemSearchArrayList.size()/3;
+//
+//            System.out.println(Math.ceil((double)itemSearchArrayList.size()/3));
+//
+//            if (itemList.size() == 0){
+//
+//            }
+//            else {
+//                for (int rowLength = 0; rowLength < ((double)((itemSearchArrayList.size()) / 3)); rowLength++) {
+//                    for (int columnLength = 0; columnLength < 3; columnLength++) {
+//                        itemGridSearch.add(itemList.get((3 * rowLength) + columnLength).getVbox(), columnLength, rowLength);
+//                    }
+//                }
+//            }
+//            grid.add(itemGridSearch,0,3);
+       });
     }
 
-    public GridPane getItemGrid() {
-        GridPane itemGrid = new GridPane();
+    public FlowPane getItemGrid() {
+        FlowPane itemGrid = new FlowPane();
 
-        ColumnConstraints colConstraintOne = new ColumnConstraints(100);
-        ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
-        ColumnConstraints colConstraintThree = new ColumnConstraints(100);
-        itemGrid.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
+//        ColumnConstraints colConstraintOne = new ColumnConstraints(100);
+//        ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
+//        ColumnConstraints colConstraintThree = new ColumnConstraints(100);
+//        itemGrid.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
 
         ArrayList<Item> itemArrayList = Data.getItemsOnSale();
         ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
@@ -148,7 +149,7 @@ public class GuestHomePage extends Scene {
         else {
             for (int rowLength = 0; rowLength < ((double)((itemArrayList.size()) / 3)); rowLength++) {
                 for (int columnLength = 0; columnLength < 3; columnLength++) {
-                    itemGrid.add(itemList.get((3 * rowLength) + columnLength).getVbox(), columnLength, rowLength);
+                    itemGrid.getChildren().add(itemList.get((3 * rowLength) + columnLength).getVbox());
                 }
             }
         }
