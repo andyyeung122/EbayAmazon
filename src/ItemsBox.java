@@ -13,6 +13,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
+
 public class ItemsBox extends VBox{
     public VBox vbox = new VBox();
     public Pane pane = new Pane();
@@ -22,18 +25,20 @@ public class ItemsBox extends VBox{
 
     public boolean isFixed = false;
     public boolean isBid = false;
+    FileInputStream inputStream;
 
-    public ItemsBox(String itemNameString) {
+    public ItemsBox(String itemNameString, String imageLocationString, String sellerString) {
         //Image pic = new Image();
         Button Detailsbtn = new Button("Details");
         Label label = new Label(itemNameString);
-//        Image image = new Image(imageLocationString);
-//        ImageView imageView = new ImageView(image);
+        File file = new File(imageLocationString);
+        Image image = new Image(file.toURI().toString(),75,75,false,false);
+        ImageView imageView = new ImageView(image);
 
         vbox.setStyle(cssLayout);
         vbox.setPrefWidth(10);
         vbox.setPrefHeight(40);
-        vbox.getChildren().addAll(label, Detailsbtn );
+        vbox.getChildren().addAll(label, imageView, Detailsbtn );
 
         Detailsbtn.setOnAction(( e -> {
             GridPane addgrid = new GridPane();
@@ -45,15 +50,14 @@ public class ItemsBox extends VBox{
             title2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
             addgrid.add(title2, 0, 0, 2, 1);
 
-            Text itemName = new Text("Item Name: ");
+            Text itemName = new Text("Item Name:" + " " + itemNameString);
             addgrid.add(itemName, 0,1);
 
-            Text sellerName = new Text("Seller:");
+            Text sellerName = new Text("Seller:" + " " + sellerString);
             addgrid.add(sellerName , 0, 2);
 
             Button buyBtn = new Button("Buy");
             addgrid.add(buyBtn,0,3);
-
 
             window2.setTitle("Item Detail");
             window2.setScene(scene2);

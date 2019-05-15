@@ -8,32 +8,90 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.geometry.Insets;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationsPage extends Scene {
 
-    GridPane grid;
-    ListView<HBox> listView;
-    private List<String> messageList = new ArrayList<>();
-    private static Stage window = new Stage();
+    private GridPane grid;
+    private ListView<Notification> listView;
+    private ObservableList<Notification> listOfNotifications;
+    //private NotificationDetails notificationDetails;
+    private String username;
+    private Stage newStage;
+
+    public void openWindow(){
+        newStage = new Stage();
+        newStage.setScene(this);
+        newStage.setTitle("Notifications");
+        newStage.show();
+    }
+
+    public NotificationsPage(String username){
+        super(new GridPane(),300,300);
+        grid = (GridPane)this.getRoot();
+
+        String keywords = Data.getKeywordsOf(username);
+        Label desiredKeywordsLabel = new Label("Desired Keywords");
+        Label notificationLabel = new Label("Notifications");
+        TextArea keywordsTextArea = new TextArea(keywords);
+        Button saveKeywordsButton = new Button("Save Keywords");
+        Button detailsButton = new Button("View Details");
+        VBox keywordBox = new VBox(8);
+        Data.editKeywords("dude11","what,is,going,on");
+        listOfNotifications = FXCollections.observableArrayList(Data.getNotificationsFor(username)); 
+        listView = new ListView<Notification>(listOfNotifications);
+
+        saveKeywordsButton.setOnAction(e ->{
+            String newKeywords = keywordsTextArea.getText();
+            Data.editKeywords(username,newKeywords);
+        });
+
+        detailsButton.setOnAction(e ->{
+            Notification selectedNote = listView.getSelectionModel().getSelectedItem();
+            if(selectedNote != null){
+                //notificationDetails = new NotificationDetails(selectedNote);
+                //notificationDetails.openWindow();
+            }
+
+        });
 
 
+        keywordsTextArea.setPrefColumnCount(8);
+        keywordsTextArea.setPrefRowCount(2);
 
-    public NotificationsPage(){
+        keywordBox.getChildren().addAll(desiredKeywordsLabel,keywordsTextArea, saveKeywordsButton);
+        grid.add(keywordBox,0,0);
+        grid.add(notificationLabel,0,1);
+        grid.add(listView,0,2);
+        grid.add(detailsButton,0,3);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(10,10,10,10));
 
-        super(new ListView<HBox>(),600,300);
-        listView = (ListView)this.getRoot();
         listView.setMinHeight(10);
         listView.setMinWidth(10);
-        List<HBox> listHbox = new ArrayList<>();
 
-        ObservableList<String> list = FXCollections.observableArrayList(
-                "Item 1", "Item 2", "Item 3", "Item 4");
+
+
+
+    }
+
+
+
+
+}
+
+/*
+    private List<String> messageList = new ArrayList<>();
+        List<HBox> listHbox = new ArrayList<>();
+        ObservableList<String> list = FXCollections.observableArrayList(Data.getNotificationsFor());
         messageList.addAll(list);
         for ( int i = 0; i < messageList.size(); i++ ) {
             HBox hbox = new HBox();
@@ -46,14 +104,6 @@ public class NotificationsPage extends Scene {
                 System.out.println("Open Worked");
             }));
         }
-
         ObservableList<HBox> myObservableList = FXCollections.observableList(listHbox);
         listView.setItems(myObservableList);
-    }
-
-    public static Stage setWindow() {
-        return window;
-    }
-
-
-}
+*/
