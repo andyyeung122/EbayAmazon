@@ -118,6 +118,7 @@ public class LoginPage extends Scene {
 
         back.setOnAction(( e -> {
             guesthomepage = new GuestHomePage();
+            guesthomepage.setPrimaryStage(primaryStage);
             primaryStage.setScene(guesthomepage);
             primaryStage.setTitle("Guest Home Page");
             primaryStage.show();

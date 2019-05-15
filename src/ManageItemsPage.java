@@ -48,10 +48,10 @@ public class ManageItemsPage extends Scene {
 
         itemGrid.getColumnConstraints().add(colConstraint);
 
-        currentSellingItemsList.add(new ItemsBox());
-        currentSellingItemsList.add(new ItemsBox());
-        itemGrid.add(currentSellingItemsList.get(0).getVbox(), 0,0);
-        itemGrid.add(currentSellingItemsList.get(1).getVbox(), 0,1);
+//        currentSellingItemsList.add(new ItemsBox());
+//        currentSellingItemsList.add(new ItemsBox());
+//        itemGrid.add(currentSellingItemsList.get(0).getVbox(), 0,0);
+//        itemGrid.add(currentSellingItemsList.get(1).getVbox(), 0,1);
 
         return itemGrid;
     }

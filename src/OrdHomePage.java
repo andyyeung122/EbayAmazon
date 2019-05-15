@@ -119,10 +119,10 @@ public class OrdHomePage extends Scene{
         inboxBtn.getChildren().add(inbox);
         grid.add(inboxBtn, 4, 7);
 
-        itemList.add(new ItemsBox());
 //        itemList.add(new ItemsBox());
 //        itemList.add(new ItemsBox());
-        grid.add(itemList.get(0), 1,1);
+//        itemList.add(new ItemsBox());
+//        grid.add(itemList.get(0), 1,1);
 
         manage.setOnAction( e -> {
 
@@ -172,6 +172,7 @@ public class OrdHomePage extends Scene{
             main.getPrimaryStage().setTitle("Transaction History");
             main.getPrimaryStage().show();
         }));
+
 
         logout.setOnAction( e -> {
             guesthomepage = new GuestHomePage();

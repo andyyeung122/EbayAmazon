@@ -10,6 +10,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,15 +83,38 @@ public class GuestHomePage extends Scene {
 
     public GridPane getItemGrid() {
         GridPane itemGrid = new GridPane();
-        ColumnConstraints colConstraint = new ColumnConstraints(100);
 
+        ColumnConstraints colConstraint = new ColumnConstraints(100);
         itemGrid.getColumnConstraints().add(colConstraint);
 
-        itemList.add(new ItemsBox());
-        itemList.add(new ItemsBox());
-        itemGrid.add(itemList.get(0).getVbox(), 0,0);
-        itemGrid.add(itemList.get(1).getVbox(), 0,1);
+        Data.createFixedItem("bob","dude55","bob","bob,bob", 20);
+        Data.createFixedItem("bob","dude55","bob","bob,bob", 20);
+        Data.createFixedItem("bob","dude55","bob","bob,bob", 20);
+        ArrayList<Item> itemArrayList = Data.getItemsOnSale();
+
+        for( int i = 0; i < itemArrayList.size(); i++){
+            itemList.add(new ItemsBox(itemArrayList.get(i).getItemName()));
+            System.out.println(itemArrayList.get(i).getItemName());
+        }
+
+        if (itemList.size() == 0){
+
+        }
+        else {
+            for (int rowLength = 0; rowLength < (itemArrayList.size()) / 3; rowLength++) {
+                for (int columnLength = 0; columnLength < 2; columnLength++) {
+                    itemGrid.add(itemList.get((3 * rowLength) + columnLength).getVbox(), rowLength, columnLength);
+                }
+            }
+        }
+
+//        itemList.add(new ItemsBox());
+//        itemList.add(new ItemsBox());
+//        itemGrid.add(itemList.get(0).getVbox(), 0,0);
+//        itemGrid.add(itemList.get(1).getVbox(), 0,1);
 
         return itemGrid;
     }
+
+
 }
