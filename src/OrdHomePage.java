@@ -2,10 +2,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -45,7 +42,7 @@ public class OrdHomePage extends Scene{
     }
 
     public OrdHomePage() {
-        super(new GridPane(),540,550);
+        super(new GridPane(),620,550);
 
         grid = (GridPane)this.getRoot();
         grid.setHgap(10);
@@ -198,20 +195,20 @@ public class OrdHomePage extends Scene{
         });
     }
 
-    public GridPane getItemGrid() {
-        GridPane itemGrid = new GridPane();
+    public FlowPane getItemGrid() {
+        FlowPane itemGrid = new FlowPane();
 
-        ColumnConstraints colConstraintOne = new ColumnConstraints(100);
-        ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
-        ColumnConstraints colConstraintThree = new ColumnConstraints(100);
-        itemGrid.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
+//        ColumnConstraints colConstraintOne = new ColumnConstraints(100);
+//        ColumnConstraints colConstraintTwo = new ColumnConstraints(100);
+//        ColumnConstraints colConstraintThree = new ColumnConstraints(100);
+//        itemGrid.getColumnConstraints().addAll(colConstraintOne, colConstraintTwo, colConstraintThree);
 
         ArrayList<Item> itemArrayList = Data.getItemsOnSale();
         ArrayList<Item> unregisteredItemArrayList = Data.getUnregisteredItems();
 
-        for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
-            Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
-        }
+       // for ( int k = 0; k < unregisteredItemArrayList.size(); k++){
+       //    Data.registerItem(unregisteredItemArrayList.get(k).getItemID());
+      //  }
 
         //IMPORTANT!!! Removes items from itemArrayList
 //        for (int k = 0; k < unregisteredItemArrayList.size(); k++){
@@ -220,18 +217,20 @@ public class OrdHomePage extends Scene{
 
 
         for( int i = 0; i < itemArrayList.size(); i++){
-            itemList.add(new OrdItemsBox(itemArrayList.get(i).getItemID(), itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
-
+            itemList.add(new OrdItemsBox(itemArrayList.get(i).getItemID(),itemArrayList.get(i).getItemName(),itemArrayList.get(i).getImageLocation(),itemArrayList.get(i).getSeller()));
             System.out.println(itemArrayList.get(i).getItemName());
         }
+        float f = itemArrayList.size()/3;
+
+        System.out.println(Math.ceil((double)itemArrayList.size()/3));
 
         if (itemList.size() == 0){
 
         }
         else {
-            for (int rowLength = 0; rowLength < (itemArrayList.size()) / 3; rowLength++) {
+            for (int rowLength = 0; rowLength < ((double)((itemArrayList.size()) / 3)); rowLength++) {
                 for (int columnLength = 0; columnLength < 3; columnLength++) {
-                    itemGrid.add(itemList.get((3 * rowLength) + columnLength).getVbox(), columnLength, rowLength);
+                    itemGrid.getChildren().add(itemList.get((3 * rowLength) + columnLength).getVbox());
                 }
             }
         }
