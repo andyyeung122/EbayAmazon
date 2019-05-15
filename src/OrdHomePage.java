@@ -25,7 +25,7 @@ public class OrdHomePage extends Scene{
     private String password;
     private EditProfile editProfile;
     private ManageItemsPage manageitems = new ManageItemsPage();
-    private FriendsPage friendspage = new FriendsPage();
+    private FriendsPage friendspage;
     private OrdTransactionHistory ordtranshist;
     private GuestHomePage guesthomepage;
     private NotificationsPage notificationspage;
@@ -170,9 +170,10 @@ public class OrdHomePage extends Scene{
         }));
 
         friends.setOnAction(( e -> {
+            friendspage = new FriendsPage(username);
+            friendspage.setPrimaryStage(primaryStage);
             primaryStage.setScene(friendspage);
             primaryStage.setTitle("Friends");
-            primaryStage.show();
         }));
 
         history.setOnAction(( e -> {

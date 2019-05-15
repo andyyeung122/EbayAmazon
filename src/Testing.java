@@ -148,7 +148,7 @@ public class Testing{
         Data.removeTabooWord("Fudge");
         Data.sendMessage("dude77","Stop sending spam!","Please stop spamming users. It's not nice");
         Data.sendWarning("dude77","Stop sending spam!","This is a warning to stop samming");
-        Data.sendFriendMessage("dude55","dude77","Send more nudes","I need 'em man. Need more nudes");
+        Data.sendFriendMessage("dude55","dude77","I need 'em man. Need more nudes");
         Data.handleComplaint(17);
         Data.deleteFriendRequest("dude55","dude77");
         Data.approveCancellation(3);
