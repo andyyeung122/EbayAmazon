@@ -24,16 +24,52 @@ If you're using any code style like xo, standard etc. That will help others whil
 
 # Features
 
-What makes your project stand out?
+1. user can sign up to become a ordinary user.
+2. ordinary user can add other user as friend and send message to each other.
+3. ordinary user can recieve special notification according to their key word.
 
 
 # Code Example
+connect to database
+```
+private static void getConnection(){
+        try{
+            String host = "jdbc:mysql://localhost:3306/";
+            String databaseHost = "jdbc:mysql://localhost:3306/EbayAmazon";
+            String user = "root";
 
-Show what the library does as concisely as possible, developers should be able to figure out how your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+            String password = "";
+
+
+
+
+            String createDatabase = "CREATE DATABASE IF NOT EXISTS EbayAmazon;";
+
+            connection = DriverManager.getConnection(host,user,password);
+            Statement statement = connection.createStatement();
+
+            executeUpdate(createDatabase);
+
+            connection = DriverManager.getConnection(databaseHost,user,password);
+            statement = connection.createStatement();
+
+            statement.close();
+
+        }catch(Exception expt){
+            expt.printStackTrace();
+        }
+    }
+```
 
 # Installation
 
-Provide step by step series of examples and explanations about how to get a development env running.
+1. download the mysql in order to use database
+[click here to download](https://dev.mysql.com/downloads)
+
+2 download database driver and add it as library
+[click here to download](https://dev.mysql.com/downloads/connector/)
+
+
 
 # Tests
 Describe and show how to run the tests with code examples.
