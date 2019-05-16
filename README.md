@@ -6,13 +6,7 @@ We want to develop an eBusiness platform such that every responsible user can bi
 
 This is a computer science courese group project. The goal for this project is that all group members work as a team, and help each other. The primary goal for any team is to grow better and better as each day goes by. But this cannot be achieved unless the whole team stays committed to this goal. A team’s success lies on how well their foundation is built. One of the best ways to enhance the skills and abilities of each member of your team is by conducting a thorough training process from the beginning until the end of your team’s journey. 
 
-# Build status
 
-Build status of continus integration i.e. travis, appveyor etc. Ex. -
-
-# Code style
-
-If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
 
 # Screenshots
 
@@ -72,7 +66,6 @@ private static void getConnection(){
 
 
 # Tests
-Describe and show how to run the tests with code examples.
+Run the Testing class in data file, so it will create database table for you. Also some users and data will insert to the table.
 
-# How to use?
-The project is like a real Amazon webiste with the addition of selling items for free. Any person can make an account bu signing up, and logging in. Once they are approved the user is able to sell items and interact with other users. Then the Admin(Super User) can manage all the requests to add new content and either approve or reject. This is just a basic program, that let's you play around with selling adn buying items.
+
