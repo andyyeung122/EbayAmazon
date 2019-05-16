@@ -66,6 +66,6 @@ private static void getConnection(){
 
 
 # Tests
-All the functions we need are in the Data class. Run the Testing class in data file, so it will create database table for you. Also some users and data will insert to the table.
+All the functions we need are in the Data class. Run the Testing class in src file, so it will create database table for you. Also some users and data will insert to the table.
 
 
