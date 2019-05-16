@@ -16,7 +16,12 @@ import javafx.stage.Stage;
 public class ViewTransactionHistory extends Scene {
     GridPane grid;
     private Main main = new Main();
-    private  SuperHomePage superHomePage=new SuperHomePage();
+    private Stage primaryStage;
+    private  SuperHomePage superhomepage;
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
     public ViewTransactionHistory() {
         super(new GridPane(),390,300);
@@ -78,9 +83,11 @@ public class ViewTransactionHistory extends Scene {
         Button back = new Button("Back");
         back.setOnAction(e->{
 
-            main.getPrimaryStage().setScene(superHomePage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            superhomepage = new SuperHomePage();
+            superhomepage.setPrimaryStage(primaryStage );
+            primaryStage.setScene(superhomepage);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
 
 
             }

@@ -18,8 +18,12 @@ public class SendMessage extends Scene{
 
     GridPane grid;
     private Main main = new Main();
-    private  SuperHomePage superHomePage=new SuperHomePage();
+    private Stage primaryStage;
+    private  SuperHomePage superHomePage;
 
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
     public SendMessage (){
         super(new GridPane(),390,300);
@@ -57,9 +61,11 @@ public class SendMessage extends Scene{
 
         Button back1 = new Button("Back");
         back1.setOnAction(e-> {
-            main.getPrimaryStage().setScene(superHomePage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            superHomePage = new SuperHomePage();
+            superHomePage.setPrimaryStage(primaryStage );
+            primaryStage.setScene(superHomePage);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
         });
 
         HBox buttonbox = new HBox(10.0D);

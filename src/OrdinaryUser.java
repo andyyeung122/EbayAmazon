@@ -21,9 +21,14 @@ public class OrdinaryUser extends Scene {
 
     GridPane grid;
     private Main main = new Main();
-    private  SuperHomePage superHomePage=new SuperHomePage();
+    private Stage primaryStage;
+    private  SuperHomePage superHomePage;
     private Data data=new Data();
     TableView<User>review;
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
     public OrdinaryUser() {
         super(new GridPane(),500,400);
@@ -69,10 +74,11 @@ public class OrdinaryUser extends Scene {
 
 
         back.setOnAction(e-> {
-            main.getPrimaryStage().setScene(superHomePage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
-
+            superHomePage = new SuperHomePage();
+            superHomePage.setPrimaryStage(primaryStage );
+            primaryStage.setScene(superHomePage);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
 
         });
 

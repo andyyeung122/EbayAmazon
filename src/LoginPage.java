@@ -90,10 +90,11 @@ public class LoginPage extends Scene {
                     if (data.isSuperUser(accusername, accuserpassword)) {
                         superHomePage = new SuperHomePage();
                         superHomePage.setUsername(accusername);
+                        superHomePage.setPrimaryStage(primaryStage);
                         primaryStage.setScene(superHomePage);
                         primaryStage.setTitle("Home Page");
                         primaryStage.show();
-                    } else if (data.isOrdinairyUser(accusername, accuserpassword)) {
+                    } else if (data.isOrdinairyUser(accusername, accuserpassword) && Data.isRegisteredUser(accusername) && !Data.isPermBlocked(accusername)) {
                         ordhomepage = new OrdHomePage(accusername);
                         ordhomepage.setUsername(accusername);
                         ordhomepage.setPassword(accuserpassword);

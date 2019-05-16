@@ -11,17 +11,22 @@
   <component name="ChangeListManager">
     <list default="true" id="af98651d-4bc9-47f2-bc12-8e198c13edc5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/DeleteUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/DeleteUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/Data.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/GuestHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/GuestHomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/LoginPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/LoginPage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/OrdHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/OrdHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/SendMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/SendMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord$WordList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord$WordList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/TabooWord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EbayAmazon2/SuperHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EbayAmazon2/SuperHomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DeleteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeleteUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GuestHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuestHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrdHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrdinaryUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrdinaryUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SendMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SendMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SuperHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SuperHomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TabooWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TabooWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewComplaints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewComplaints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewProcessingItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewProcessingItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewTransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewTransactionHistory.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,29 +45,29 @@
     <session id="-892741290">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2601" />
+          <entry key="java" value="3405" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2601" />
+          <entry key="JAVA" value="3405" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="26" />
+          <entry key="java" value="37" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="26" />
+          <entry key="JAVA" value="37" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.17" value="1" />
@@ -106,37 +111,39 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Complaint.java">
+        <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+            <state relative-caret-position="135">
+              <caret line="151" selection-start-line="151" selection-end-line="155" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1260#1261#0" expanded="true" />
+                <element signature="e#1308#1309#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Message.java">
+        <entry file="file://$PROJECT_DIR$/src/DeleteUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            <state relative-caret-position="255">
+              <caret line="72" column="37" lean-forward="true" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+              <folding>
+                <element signature="e#746#747#0" expanded="true" />
+                <element signature="e#794#795#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
+        <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-436">
-              <caret line="173" column="12" lean-forward="true" selection-start-line="173" selection-start-column="12" selection-end-line="173" selection-end-column="12" />
+            <state relative-caret-position="238">
+              <caret line="96" column="124" selection-start-line="96" selection-start-column="124" selection-end-line="96" selection-end-column="124" />
               <folding>
-                <element signature="e#991#992#0" expanded="true" />
-                <element signature="e#1031#1032#0" expanded="true" />
-                <element signature="e#1086#1087#0" expanded="true" />
-                <element signature="e#1134#1135#0" expanded="true" />
-                <element signature="e#1182#1183#0" expanded="true" />
-                <element signature="e#1222#1223#0" expanded="true" />
-                <element signature="e#1249#1250#0" expanded="true" />
-                <element signature="e#1273#1274#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,94 +152,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/OrdinaryUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="71" column="59" selection-start-line="71" selection-start-column="59" selection-end-line="71" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+            <state relative-caret-position="204">
+              <caret line="81" selection-start-line="81" selection-end-line="81" />
               <folding>
-                <element signature="e#980#981#0" expanded="true" />
-                <element signature="e#1028#1029#0" expanded="true" />
+                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#932#933#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SubmitComplaintPage.java">
+        <entry file="file://$PROJECT_DIR$/src/ViewComplaints.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="53" column="42" lean-forward="true" selection-end-line="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ManageItemsPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-97">
-              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+            <state relative-caret-position="254">
+              <caret line="88" column="47" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
-        <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-485">
-              <caret line="210" column="15" lean-forward="true" selection-start-line="210" selection-start-column="15" selection-end-line="210" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TabooWord.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-=======
-        <entry file="file://$PROJECT_DIR$/src/DeleteUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="44" column="36" lean-forward="true" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
->>>>>>> 1c1b8d006719a85db0b7db620308066d0fa1c9c4
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
-        <entry file="file://$PROJECT_DIR$/src/OrdTransactionHistory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="65" column="83" lean-forward="true" selection-start-line="65" selection-start-column="83" selection-end-line="65" selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
-=======
-        <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="104" column="11" lean-forward="true" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
->>>>>>> 1c1b8d006719a85db0b7db620308066d0fa1c9c4
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#993#994#0" expanded="true" />
+                <element signature="e#1041#1042#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -241,8 +179,66 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SendMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
+            <state relative-caret-position="203">
+              <caret line="68" column="11" lean-forward="true" selection-start-line="68" selection-start-column="11" selection-end-line="68" selection-end-column="11" />
+              <folding>
+                <element signature="e#743#744#0" expanded="true" />
+                <element signature="e#791#792#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TabooWord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
+              <folding>
+                <element signature="e#1272#1273#0" expanded="true" />
+                <element signature="e#1320#1321#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#904#905#0" expanded="true" />
+                <element signature="e#952#953#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewProcessingItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="99" column="55" lean-forward="true" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#866#867#0" expanded="true" />
+                <element signature="e#914#915#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewTransactionHistory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="87" column="47" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
+              <folding>
+                <element signature="e#668#669#0" expanded="true" />
+                <element signature="e#716#717#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -259,13 +255,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setprimar</find>
-      <find>sh</find>
-      <find>guest</find>
-      <find>historyGrid</find>
-      <find>itemGrid</find>
-      <find>applicationGrid</find>
-      <find>tabooGrid</find>
       <find>messageGrid</find>
       <find>get</find>
       <find>getitem</find>
@@ -275,7 +264,6 @@
       <find>fixeditem</find>
       <find>registeritem</find>
       <find>createbiditem</find>
-      <find>create</find>
       <find>getitems</find>
       <find>arraylist</find>
       <find>isfix</find>
@@ -285,9 +273,17 @@
       <find>createratin</find>
       <find>YE</find>
       <find>manage</find>
-      <find>createpurchase</find>
       <find>taboowor</find>
       <find>alert</find>
+      <find>seller</find>
+      <find>getitemspur</find>
+      <find>data.</find>
+      <find>logout</find>
+      <find>purchase</find>
+      <find>createpurchase</find>
+      <find>create</find>
+      <find>rating</find>
+      <find>login1</find>
       <find>print</find>
     </findStrings>
     <replaceStrings>
@@ -306,30 +302,26 @@
         <option value="$PROJECT_DIR$/src/AlertBox.java" />
         <option value="$PROJECT_DIR$/src/Items.java" />
         <option value="$PROJECT_DIR$/src/EditProfile.java" />
-        <option value="$PROJECT_DIR$/src/ViewTransactionHistory.java" />
         <option value="$PROJECT_DIR$/src/ItemsBox.java" />
-        <option value="$PROJECT_DIR$/src/LoginPage.java" />
         <option value="$PROJECT_DIR$/src/Complaint.java" />
-        <option value="$PROJECT_DIR$/src/ViewComplaints.java" />
-        <option value="$PROJECT_DIR$/src/ViewProcessingItem.java" />
-        <option value="$PROJECT_DIR$/src/ViewApplication.java" />
         <option value="$PROJECT_DIR$/src/NotificationsPage.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/Data.java" />
         <option value="$PROJECT_DIR$/src/OrdItemsBox.java" />
         <option value="$PROJECT_DIR$/src/SellItems.java" />
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
-        <option value="$PROJECT_DIR$/src/GuestHomePage.java" />
-=======
-        <option value="$PROJECT_DIR$/src/DeleteUser.java" />
-        <option value="$PROJECT_DIR$/src/TabooWord.java" />
-        <option value="$PROJECT_DIR$/src/GuestHomePage.java" />
-        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
-        <option value="$PROJECT_DIR$/src/SuperHomePage.java" />
-        <option value="$PROJECT_DIR$/src/SendMessage.java" />
         <option value="$PROJECT_DIR$/src/ManageItemsPage.java" />
->>>>>>> 1c1b8d006719a85db0b7db620308066d0fa1c9c4
+        <option value="$PROJECT_DIR$/src/OrdHomePage.java" />
+        <option value="$PROJECT_DIR$/src/GuestHomePage.java" />
+        <option value="$PROJECT_DIR$/src/ViewTransactionHistory.java" />
+        <option value="$PROJECT_DIR$/src/ViewProcessingItem.java" />
+        <option value="$PROJECT_DIR$/src/ViewApplication.java" />
+        <option value="$PROJECT_DIR$/src/TabooWord.java" />
+        <option value="$PROJECT_DIR$/src/SendMessage.java" />
+        <option value="$PROJECT_DIR$/src/ViewComplaints.java" />
+        <option value="$PROJECT_DIR$/src/OrdinaryUser.java" />
+        <option value="$PROJECT_DIR$/src/SuperHomePage.java" />
+        <option value="$PROJECT_DIR$/src/DeleteUser.java" />
+        <option value="$PROJECT_DIR$/src/LoginPage.java" />
       </list>
     </option>
   </component>
@@ -340,10 +332,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="y" value="24" />
+    <option name="x" value="235" />
+    <option name="y" value="477" />
     <option name="width" value="1440" />
-    <option name="height" value="877" />
+    <option name="height" value="879" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -351,21 +343,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="EbayAmazon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EbayAmazon" type="462c0819:PsiDirectoryNode" />
+              <item name="EbayAmazon2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EbayAmazon2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="EbayAmazon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EbayAmazon" type="462c0819:PsiDirectoryNode" />
+              <item name="EbayAmazon2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EbayAmazon2" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="EbayAmazon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EbayAmazon" type="462c0819:PsiDirectoryNode" />
+              <item name="EbayAmazon2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EbayAmazon2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -373,8 +367,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -382,7 +374,7 @@
     <property name="SearchEverywhereHistoryKey" value="YES\&#9;null&#9;null&#10;getItemId&#9;PSI&#9;JAVA://Item#getItemID" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557947677909" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557968325823" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/drivers/mariadb-java-client-2.4.1.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -576,33 +568,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="24" width="1440" height="877" extended-state="0" />
-    <editor active="true" />
+    <frame x="157" y="318" width="960" height="586" extended-state="0" />
     <layout>
-<<<<<<< HEAD
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2" />
-=======
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
->>>>>>> 1c1b8d006719a85db0b7db620308066d0fa1c9c4
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27444443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27224198" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3291815" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32740214" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50364375" side_tool="true" weight="0.24333926" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49959514" weight="0.3285968" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49635628" weight="0.19039147" />
-      <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Favorites" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" weight="0.27224198" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.3291815" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32740214" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50364375" side_tool="true" weight="0.24333926" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49959514" weight="0.3285968" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49635628" weight="0.23620309" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Maven" order="2" weight="0.32955465" />
@@ -700,31 +687,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="84" column="30" lean-forward="true" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/EditProfile.java">
-=======
-    <entry file="file://$PROJECT_DIR$/src/ViewComplaints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="87" column="11" selection-start-line="81" selection-start-column="8" selection-end-line="87" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Items.java">
->>>>>>> 1c1b8d006719a85db0b7db620308066d0fa1c9c4
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="32" selection-start-line="32" selection-end-line="32" />
@@ -735,16 +698,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewProcessingItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="62" column="64" lean-forward="true" selection-start-line="62" selection-start-column="64" selection-end-line="62" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -772,63 +725,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OrdTransactionHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="59" column="46" lean-forward="true" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OrdItemsBox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="41" column="51" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SellItems.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5477#5478#0" expanded="true" />
-            <element signature="e#5506#5507#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/imgs/download.jpeg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3372">
-          <caret line="942" column="50" lean-forward="true" selection-start-line="942" selection-start-column="50" selection-end-line="942" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewTransactionHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="36" column="29" selection-start-line="32" selection-start-column="11" selection-end-line="36" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TabooWord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+        <state relative-caret-position="271">
+          <caret line="981" column="21" lean-forward="true" selection-start-line="981" selection-start-column="21" selection-end-line="981" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -836,13 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3622">
-          <caret line="374" column="46" lean-forward="true" selection-start-line="374" selection-start-column="46" selection-end-line="374" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -867,46 +763,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SignUpPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="41" />
-          <folding>
-            <element signature="e#666#667#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="104" column="11" lean-forward="true" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SendMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/Data.java">
-=======
-    <entry file="file://$PROJECT_DIR$/src/DeleteUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="44" column="36" lean-forward="true" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Complaint.java">
->>>>>>> 1c1b8d006719a85db0b7db620308066d0fa1c9c4
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
@@ -937,65 +794,186 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/TabooWord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/OrdTransactionHistory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="65" column="83" lean-forward="true" selection-start-line="65" selection-start-column="83" selection-end-line="65" selection-end-column="83" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/OrdinaryUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="71" column="59" selection-start-line="71" selection-start-column="59" selection-end-line="71" selection-end-column="59" />
+        <state relative-caret-position="121">
+          <caret line="100" column="50" lean-forward="true" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
+    <entry file="file://$PROJECT_DIR$/src/OrdItemsBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="359">
+          <caret line="100" column="5" lean-forward="true" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
           <folding>
-            <element signature="e#980#981#0" expanded="true" />
-            <element signature="e#1028#1029#0" expanded="true" />
+            <element signature="e#27072#27073#0" expanded="true" />
+            <element signature="e#27097#27098#0" expanded="true" />
+            <element signature="e#60214#60215#0" expanded="true" />
+            <element signature="e#60239#60240#0" expanded="true" />
           </folding>
->>>>>>> 1c1b8d006719a85db0b7db620308066d0fa1c9c4
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SignUpPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#666#667#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SellItems.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-749">
+          <caret line="45" column="52" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5477#5478#0" expanded="true" />
+            <element signature="e#5506#5507#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrdHomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="-485">
-          <caret line="210" column="15" lean-forward="true" selection-start-line="210" selection-start-column="15" selection-end-line="210" selection-end-column="15" />
+        <state relative-caret-position="357">
+          <caret line="111" column="62" lean-forward="true" selection-start-line="111" selection-start-column="62" selection-end-line="111" selection-end-column="62" />
+          <folding>
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1273#1274#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GuestHomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+        <state relative-caret-position="243">
+          <caret line="77" column="34" selection-start-line="77" selection-start-column="34" selection-end-line="77" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-=======
-        <state relative-caret-position="-436">
-          <caret line="173" column="12" lean-forward="true" selection-start-line="173" selection-start-column="12" selection-end-line="173" selection-end-column="12" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewTransactionHistory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="87" column="47" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
           <folding>
-            <element signature="e#991#992#0" expanded="true" />
-            <element signature="e#1031#1032#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
-            <element signature="e#1134#1135#0" expanded="true" />
-            <element signature="e#1182#1183#0" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
-            <element signature="e#1249#1250#0" expanded="true" />
-            <element signature="e#1273#1274#0" expanded="true" />
->>>>>>> 1c1b8d006719a85db0b7db620308066d0fa1c9c4
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewProcessingItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="99" column="55" lean-forward="true" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#866#867#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#952#953#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TabooWord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
+          <folding>
+            <element signature="e#1272#1273#0" expanded="true" />
+            <element signature="e#1320#1321#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SendMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="68" column="11" lean-forward="true" selection-start-line="68" selection-start-column="11" selection-end-line="68" selection-end-column="11" />
+          <folding>
+            <element signature="e#743#744#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewComplaints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="88" column="47" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#993#994#0" expanded="true" />
+            <element signature="e#1041#1042#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OrdinaryUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="151" selection-start-line="151" selection-end-line="155" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1308#1309#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DeleteUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="72" column="37" lean-forward="true" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+          <folding>
+            <element signature="e#746#747#0" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LoginPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="96" column="124" selection-start-line="96" selection-start-column="124" selection-end-line="96" selection-end-column="124" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

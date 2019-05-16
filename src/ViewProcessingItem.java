@@ -20,9 +20,14 @@ public class ViewProcessingItem extends Scene{
 
     GridPane grid;
     private Main main = new Main();
-    private  SuperHomePage superHomePage=new SuperHomePage();
+    private Stage primaryStage;
+    private  SuperHomePage superhomepage;
     private Data data=new Data();
     TableView<Item>itemProcess;
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
     public ViewProcessingItem() {
 
@@ -91,9 +96,11 @@ public class ViewProcessingItem extends Scene{
 
         Button goBack =new Button("Back");
        goBack.setOnAction(e-> {
-             main.getPrimaryStage().setScene(superHomePage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+           superhomepage = new SuperHomePage();
+           superhomepage.setPrimaryStage(primaryStage );
+           primaryStage.setScene(superhomepage);
+           primaryStage.setTitle("Home Page");
+           primaryStage.show();
 
         });
 

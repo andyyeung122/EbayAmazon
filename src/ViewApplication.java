@@ -23,13 +23,16 @@ public class ViewApplication extends Scene{
 
     GridPane grid;
     private Main main = new Main();
-    private  SuperHomePage superHomePage=new SuperHomePage();
+    private Stage primaryStage;
+    private  SuperHomePage superhomepage;
     private Data data=new Data();
     TableView<User>userApplication;
 
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
-
-        public ViewApplication() {
+    public ViewApplication() {
             super(new GridPane(),1000,700);
             grid = (GridPane)this.getRoot();
             grid.setAlignment(Pos.CENTER);
@@ -110,9 +113,11 @@ public class ViewApplication extends Scene{
 
             Button home =new Button("Back");
             home.setOnAction(e-> {
-                main.getPrimaryStage().setScene(superHomePage);
-                main.getPrimaryStage().setTitle("Home Page");
-                main.getPrimaryStage().show();
+                superhomepage = new SuperHomePage();
+                superhomepage.setPrimaryStage(primaryStage );
+                primaryStage.setScene(superhomepage);
+                primaryStage.setTitle("Home Page");
+                primaryStage.show();
 
 
             });

@@ -19,16 +19,20 @@ public class SuperHomePage extends Scene {
     GridPane grid;
     private String username;
     private Main main = new Main();
-    private  GuestHomePage guestHomePage=new GuestHomePage();
-    private static ViewTransactionHistory viewTransactionHistory = new ViewTransactionHistory();
-    private static ViewProcessingItem viewProcessingItems = new ViewProcessingItem();
-    private static ViewApplication viewApplications = new ViewApplication();
-    private static TabooWord tabooWords=new TabooWord();
-    private static SendMessage sendMessages=new SendMessage();
-    private static ViewComplaints viewComplaint=new ViewComplaints();
-    private static OrdinaryUser ordinaryUser=new OrdinaryUser();
-    private  static DeleteUser deleteUsers=new DeleteUser();
+    private Stage primaryStage;
+    private  GuestHomePage guesthomepage;
+    private static ViewTransactionHistory viewTransactionHistory;
+    private static ViewProcessingItem viewProcessingItems;
+    private static ViewApplication viewApplications;
+    private static TabooWord tabooWords;
+    private static SendMessage sendMessages;
+    private static ViewComplaints viewComplaint;
+    private static OrdinaryUser ordinaryUser;
+    private  static DeleteUser deleteUsers;
 
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
     public void setUsername(String username){
         this.username = username;
@@ -69,71 +73,89 @@ public class SuperHomePage extends Scene {
 
 
         viewHistory.setOnAction( e -> {
-            main.getPrimaryStage().setScene(viewTransactionHistory);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            viewTransactionHistory = new ViewTransactionHistory();
+            viewTransactionHistory.setPrimaryStage(primaryStage );
+            primaryStage.setScene(viewTransactionHistory);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
         });
 
         logout.setOnAction( e -> {
-            main.getPrimaryStage().setScene(guestHomePage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            guesthomepage = new GuestHomePage();
+            guesthomepage.setPrimaryStage(primaryStage );
+            primaryStage.setScene(guesthomepage);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
+
         });
 
         viewProcessingItem.setOnAction(e->{
-            main.getPrimaryStage().setScene(viewProcessingItems);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            viewProcessingItems = new ViewProcessingItem();
+            viewProcessingItems.setPrimaryStage(primaryStage );
+            primaryStage.setScene(viewProcessingItems);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
 
 
         });
 
         viewApplication.setOnAction(e->{
-            main.getPrimaryStage().setScene(viewApplications);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            viewApplications = new ViewApplication();
+            viewApplications.setPrimaryStage(primaryStage );
+            primaryStage.setScene(viewApplications);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
 
 
         });
 
         tabooWord.setOnAction(e->{
-            main.getPrimaryStage().setScene(tabooWords);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            tabooWords = new TabooWord();
+            tabooWords.setPrimaryStage(primaryStage );
+            primaryStage.setScene(tabooWords);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
 
 
         });
 
         sendMessage.setOnAction(e->{
-            main.getPrimaryStage().setScene(sendMessages);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            sendMessages = new SendMessage();
+            sendMessages.setPrimaryStage(primaryStage );
+            primaryStage.setScene(sendMessages);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
 
 
         });
         viewComplaints.setOnAction(e->{
-            main.getPrimaryStage().setScene(viewComplaint);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            viewComplaint = new ViewComplaints();
+            viewComplaint.setPrimaryStage(primaryStage );
+            primaryStage.setScene(viewComplaint);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
+
         });
 
         outstandingUser.setOnAction(e->{
 
-            main.getPrimaryStage().setScene(ordinaryUser);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            ordinaryUser = new OrdinaryUser();
+            ordinaryUser.setPrimaryStage(primaryStage );
+            primaryStage.setScene(ordinaryUser);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
 
         });
 
         deleteUser.setOnAction(e->{
 
-            main.getPrimaryStage().setScene(deleteUsers);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
+            deleteUsers = new DeleteUser();
+            deleteUsers.setPrimaryStage(primaryStage );
+            primaryStage.setScene(deleteUsers);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
 
         });
-
-
 
     }
 

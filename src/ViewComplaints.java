@@ -23,9 +23,15 @@ public class ViewComplaints  extends Scene {
 
     GridPane grid;
     private Main main = new Main();
-    private  SuperHomePage superHomePage=new SuperHomePage();
+    private Stage primaryStage;
+    private  SuperHomePage superHomePage;
     private Data data=new Data();
     TableView<Complaint>userApplication;
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
     public ViewComplaints() {
         super(new GridPane(),1000,700);
         grid = (GridPane)this.getRoot();
@@ -80,10 +86,11 @@ public class ViewComplaints  extends Scene {
 
         Button back = new Button("Back");
         back.setOnAction(e-> {
-            main.getPrimaryStage().setScene(superHomePage);
-            main.getPrimaryStage().setTitle("Home Page");
-            main.getPrimaryStage().show();
-
+            superHomePage = new SuperHomePage();
+            superHomePage.setPrimaryStage(primaryStage );
+            primaryStage.setScene(superHomePage);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
 
         });
 

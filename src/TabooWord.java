@@ -25,8 +25,13 @@ public class TabooWord extends Scene {
     private int selectedIndex = -1;
     GridPane grid;
     private Main main = new Main();
-    private  SuperHomePage superHomePage=new SuperHomePage();
+    private Stage primaryStage;;
+    private  SuperHomePage superhomepage;
     private Data data = new Data();
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
 
     public TabooWord() {
         super(new GridPane(),390,300);
@@ -69,9 +74,11 @@ public class TabooWord extends Scene {
 
         Button back = new Button("Back");
         back.setOnAction(e-> {
-                main.getPrimaryStage().setScene(superHomePage);
-                main.getPrimaryStage().setTitle("Home Page");
-                main.getPrimaryStage().show();
+            superhomepage = new SuperHomePage();
+            superhomepage.setPrimaryStage(primaryStage );
+            primaryStage.setScene(superhomepage);
+            primaryStage.setTitle("Home Page");
+            primaryStage.show();
         });
 
         HBox allButton = new HBox(10);
