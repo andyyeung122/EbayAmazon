@@ -4,7 +4,7 @@ We want to develop an eBusiness platform such that every responsible user can bi
 
 # Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain why the project exists.
+This is a computer science courese group project. The goal for this project is that all group members work as a team, and help each other. The primary goal for any team is to grow better and better as each day goes by. But this cannot be achieved unless the whole team stays committed to this goal. A team’s success lies on how well their foundation is built. One of the best ways to enhance the skills and abilities of each member of your team is by conducting a thorough training process from the beginning until the end of your team’s journey. 
 
 # Build status
 
